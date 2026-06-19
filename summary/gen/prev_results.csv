@@ -1,0 +1,331 @@
+problem,p,m,q,n,lb,lb_ref,ub,ub_ref
+cyclic,2,1,2,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
+cyclic,2,1,2,2,3,"Barbulescu et al. 2012 (exhaustive, exact)",3,"Barbulescu et al. 2012 (exhaustive, exact)"
+cyclic,2,1,2,3,4,"Barbulescu et al. 2012 (exhaustive, exact)",4,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,2,1,2,4,8,"Barbulescu et al. 2012 (exhaustive, exact)",8,"Barbulescu et al. 2012 (exhaustive, exact)"
+cyclic,2,1,2,5,10,"Barbulescu et al. 2012 (exhaustive, exact)",10,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,2,1,2,6,11,"Blaser 2005, Lem. 26 + AGW/code block bounds",12,Barbulescu et al. 2012 (symmetric formula)
+cyclic,2,1,2,7,12,"Blaser 2005, Lem. 26 + AGW/code block bounds",13,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,2,1,2,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",22,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+cyclic,2,1,2,9,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",19,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; de Groote 1983 / Toom interp.; trivial
+cyclic,2,1,2,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",29,cyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+cyclic,2,1,2,11,29,"Blaser 2005, Lem. 26 + AGW/code block bounds",34,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; trivial
+cyclic,3,1,3,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
+cyclic,3,1,3,2,2,"Barbulescu et al. 2012 (exhaustive, exact)",2,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,3,1,3,3,5,"Barbulescu et al. 2012 (exhaustive, exact)",5,"Barbulescu et al. 2012 (exhaustive, exact)"
+cyclic,3,1,3,4,5,"Barbulescu et al. 2012 (exhaustive, exact)",5,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,3,1,3,5,10,"Blaser 2005, Lem. 26 + AGW/code block bounds",10,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,3,1,3,6,10,"Winograd 1976, Cor. 1",10,Barbulescu et al. 2012 (symmetric formula)
+cyclic,3,1,3,7,13,"Blaser 2005, Lem. 26 + AGW/code block bounds",16,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; trivial
+cyclic,3,1,3,8,11,"Winograd 1976, Cor. 1",11,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,3,1,3,9,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",27,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+cyclic,3,1,3,10,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",20,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,3,1,3,11,20,"Blaser 2005, Lem. 26 + AGW/code block bounds",23,cyclic CRT (Morgera 1990); Barbulescu et al. 2012; trivial
+cyclic,2,2,4,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,2,2,4,2,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,2,4,3,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,2,2,4,4,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,2,4,5,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,2,2,4,6,9,"Winograd 1976, Cor. 1",9,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,2,4,7,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,2,2,4,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",20,cyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+cyclic,2,2,4,9,13,"Winograd 1976, Cor. 1",13,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,2,2,4,10,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",19,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+cyclic,2,2,4,11,20,"Blaser 2005, Lem. 26 + AGW/code block bounds",23,cyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; trivial
+cyclic,5,1,5,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
+cyclic,5,1,5,2,2,"Winograd 1976, Cor. 1",2,cyclic CRT (Morgera 1990); trivial
+cyclic,5,1,5,3,4,"Winograd 1976, Cor. 1",4,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,5,1,5,4,4,"Winograd 1976, Cor. 1",4,cyclic CRT (Morgera 1990); trivial
+cyclic,5,1,5,5,10,"Blaser 2005, Lem. 26 + AGW/code block bounds",11,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+cyclic,5,1,5,6,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,5,1,5,7,13,"Blaser 2005, Lem. 26 + AGW/code block bounds",15,cyclic CRT (Morgera 1990); Kaminski-Bshouty 1989 Thm 2; trivial
+cyclic,5,1,5,8,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,5,1,5,9,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",18,cyclic CRT (Morgera 1990); Kaminski-Bshouty 1989 Thm 2; de Groote 1983 / Toom interp.; trivial
+cyclic,5,1,5,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",22,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+cyclic,5,1,5,11,20,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,cyclic CRT (Morgera 1990); Shokrollahi 1992; Chaumine 2006; trivial
+cyclic,7,1,7,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
+cyclic,7,1,7,2,2,"Winograd 1976, Cor. 1",2,cyclic CRT (Morgera 1990); trivial
+cyclic,7,1,7,3,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Morgera 1990); trivial
+cyclic,7,1,7,4,5,"Winograd 1976, Cor. 1",5,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,7,1,7,5,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,7,1,7,6,6,"Winograd 1976, Cor. 1",6,cyclic CRT (Morgera 1990); trivial
+cyclic,7,1,7,7,14,"Blaser 2005, Lem. 26 + AGW/code block bounds",16,cyclic CRT (Morgera 1990); fold of M_q
+cyclic,7,1,7,8,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,7,1,7,9,13,"Winograd 1976, Cor. 1",13,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,7,1,7,10,16,"Winograd 1976, Cor. 1",16,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,7,1,7,11,21,"Blaser 2005, Lem. 26 + AGW/code block bounds",26,cyclic CRT (Morgera 1990); fold of M_q; trivial
+cyclic,2,3,8,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,2,3,8,2,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,3,8,3,4,"Winograd 1976, Cor. 1",4,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,2,3,8,4,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,3,8,5,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,2,3,8,6,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Winograd 1976/LSW 1983); AGW 1988; AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,3,8,7,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,2,3,8,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",18,cyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+cyclic,2,3,8,9,13,"Winograd 1976, Cor. 1",13,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,2,3,8,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+cyclic,2,3,8,11,21,"Blaser 2005, Lem. 26 + AGW/code block bounds",25,cyclic CRT (Winograd 1976/LSW 1983); Kaminski-Bshouty 1989 Thm 2; trivial
+cyclic,3,2,9,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,3,2,9,2,2,"Winograd 1976, Cor. 1",2,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,3,2,9,3,5,"Winograd 1976, Cor. 1",5,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,3,2,9,4,4,"Winograd 1976, Cor. 1",4,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,3,2,9,5,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,3,2,9,6,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,3,2,9,7,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,3,2,9,8,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,3,2,9,9,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,cyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+cyclic,3,2,9,10,14,"Winograd 1976, Cor. 1",14,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,3,2,9,11,19,"Winograd 1976, Cor. 1",19,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,11,1,11,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
+cyclic,11,1,11,2,2,"Winograd 1976, Cor. 1",2,cyclic CRT (Morgera 1990); trivial
+cyclic,11,1,11,3,4,"Winograd 1976, Cor. 1",4,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,11,1,11,4,5,"Winograd 1976, Cor. 1",5,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,11,1,11,5,5,"Winograd 1976, Cor. 1",5,cyclic CRT (Morgera 1990); trivial
+cyclic,11,1,11,6,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,11,1,11,7,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,11,1,11,8,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,11,1,11,9,15,"Winograd 1976, Cor. 1",15,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,11,1,11,10,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Morgera 1990); trivial
+cyclic,11,1,11,11,22,"Blaser 2005, Lem. 26 + AGW/code block bounds",26,cyclic CRT (Morgera 1990); fold of M_q
+cyclic,13,1,13,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
+cyclic,13,1,13,2,2,"Winograd 1976, Cor. 1",2,cyclic CRT (Morgera 1990); trivial
+cyclic,13,1,13,3,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Morgera 1990); trivial
+cyclic,13,1,13,4,4,"Winograd 1976, Cor. 1",4,cyclic CRT (Morgera 1990); trivial
+cyclic,13,1,13,5,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,13,1,13,6,6,"Winograd 1976, Cor. 1",6,cyclic CRT (Morgera 1990); trivial
+cyclic,13,1,13,7,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,13,1,13,8,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,13,1,13,9,13,"Winograd 1976, Cor. 1",13,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,13,1,13,10,16,"Winograd 1976, Cor. 1",16,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
+cyclic,13,1,13,11,21,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,cyclic CRT (Morgera 1990); Shokrollahi 1992; Chaumine 2006; trivial
+cyclic,2,4,16,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,2,4,16,2,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,4,16,3,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,2,4,16,4,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,4,16,5,5,"Winograd 1976, Cor. 1",5,cyclic CRT (Winograd 1976/LSW 1983); trivial
+cyclic,2,4,16,6,9,"Winograd 1976, Cor. 1",9,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,4,16,7,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,2,4,16,8,15,"Winograd 1976, Cor. 1",15,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,4,16,9,13,"Winograd 1976, Cor. 1",13,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+cyclic,2,4,16,10,15,"Winograd 1976, Cor. 1",15,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
+cyclic,2,4,16,11,19,"Winograd 1976, Cor. 1",19,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
+extfield,2,1,2,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,2,1,2,2,3,"Barbulescu et al. 2012 (exhaustive, exact)",3,"Barbulescu et al. 2012 (exhaustive, exact)"
+extfield,2,1,2,3,6,"Barbulescu et al. 2012 (exhaustive, exact)",6,"Barbulescu et al. 2012 (exhaustive, exact)"
+extfield,2,1,2,4,9,"Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3",9,"Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3"
+extfield,2,1,2,5,13,code embedding (LSW83/CC88) + Grassl codetables.de,13,Barbulescu et al. 2012 (symmetric formula)
+extfield,2,1,2,6,15,"Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3",15,"Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3"
+extfield,2,1,2,7,18,code embedding (LSW83/CC88) + Grassl codetables.de,22,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,1,2,8,20,code embedding (LSW83/CC88) + Grassl codetables.de,24,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,1,2,9,26,code embedding (LSW83/CC88) + Grassl codetables.de,30,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,1,2,10,28,code embedding (LSW83/CC88) + Grassl codetables.de,33,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,1,2,11,31,code embedding (LSW83/CC88) + Grassl codetables.de,39,"Cenk-Ozbudak 2010, Table 1"
+extfield,3,1,3,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,3,1,3,2,3,"Barbulescu et al. 2012 (exhaustive, exact)",3,"Barbulescu et al. 2012 (exhaustive, exact)"
+extfield,3,1,3,3,6,"Barbulescu et al. 2012 (exhaustive, exact)",6,"Barbulescu et al. 2012 (exhaustive, exact)"
+extfield,3,1,3,4,9,"Barbulescu et al. 2012 (exhaustive, exact)",9,"Barbulescu et al. 2012 (exhaustive, exact)"
+extfield,3,1,3,5,10,"de Groote 1983 (>2n-1, integrality)",11,Barbulescu et al. 2012 (symmetric formula)
+extfield,3,1,3,6,12,"de Groote 1983 (>2n-1, integrality)",15,"Cenk-Ozbudak 2010, Table 1"
+extfield,3,1,3,7,17,code embedding (LSW83/CC88) + Grassl codetables.de,19,"Cenk-Ozbudak 2010, Table 1"
+extfield,3,1,3,8,19,code embedding (LSW83/CC88) + Grassl codetables.de,21,"Cenk-Ozbudak 2010, Table 1"
+extfield,3,1,3,9,21,code embedding (LSW83/CC88) + Grassl codetables.de,26,"Cenk-Ozbudak 2010, Table 1"
+extfield,3,1,3,10,23,code embedding (LSW83/CC88) + Griesmer 1960,27,"Cenk-Ozbudak 2010, Table 1"
+extfield,3,1,3,11,25,code embedding (LSW83/CC88) + Griesmer 1960,34,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,2,4,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,2,2,4,2,3,"de Groote 1983 (=2n-1, n<=q/2+1)",3,de Groote 1983 / Toom interp.
+extfield,2,2,4,3,5,"de Groote 1983 (=2n-1, n<=q/2+1)",5,de Groote 1983 / Toom interp.
+extfield,2,2,4,4,8,Shokrollahi 1992; Chaumine 2006,8,Shokrollahi 1992; Chaumine 2006
+extfield,2,2,4,5,10,"de Groote 1983 (>2n-1, integrality)",11,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,2,4,6,12,"de Groote 1983 (>2n-1, integrality)",14,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,2,4,7,15,code embedding (LSW83/CC88) + Grassl codetables.de,17,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,2,4,8,17,code embedding (LSW83/CC88) + Grassl codetables.de,20,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,2,4,9,19,code embedding (LSW83/CC88) + Griesmer 1960,23,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,2,4,10,21,code embedding (LSW83/CC88) + Griesmer 1960,27,"Cenk-Ozbudak 2010, Table 1"
+extfield,2,2,4,11,23,code embedding (LSW83/CC88) + Griesmer 1960,30,"Cenk-Ozbudak 2010, Table 1"
+extfield,5,1,5,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,5,1,5,2,3,"de Groote 1983 (=2n-1, n<=q/2+1)",3,de Groote 1983 / Toom interp.
+extfield,5,1,5,3,5,"de Groote 1983 (=2n-1, n<=q/2+1)",5,de Groote 1983 / Toom interp.
+extfield,5,1,5,4,8,Shokrollahi 1992; Chaumine 2006,8,Shokrollahi 1992; Chaumine 2006
+extfield,5,1,5,5,10,Shokrollahi 1992; Chaumine 2006,10,Shokrollahi 1992; Chaumine 2006
+extfield,5,1,5,6,12,"de Groote 1983 (>2n-1, integrality)",14,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,5,1,5,7,15,code embedding (LSW83/CC88) + Grassl codetables.de,17,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,5,1,5,8,16,"de Groote 1983 (>2n-1, integrality)",20,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,5,1,5,9,18,"de Groote 1983 (>2n-1, integrality)",23,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,5,1,5,10,20,"de Groote 1983 (>2n-1, integrality)",26,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,5,1,5,11,23,code embedding (LSW83/CC88) + Griesmer 1960,29,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,7,1,7,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,7,1,7,2,3,"de Groote 1983 (=2n-1, n<=q/2+1)",3,de Groote 1983 / Toom interp.
+extfield,7,1,7,3,5,"de Groote 1983 (=2n-1, n<=q/2+1)",5,de Groote 1983 / Toom interp.
+extfield,7,1,7,4,7,"de Groote 1983 (=2n-1, n<=q/2+1)",7,de Groote 1983 / Toom interp.
+extfield,7,1,7,5,10,Shokrollahi 1992; Chaumine 2006,10,Shokrollahi 1992; Chaumine 2006
+extfield,7,1,7,6,12,Shokrollahi 1992; Chaumine 2006,12,Shokrollahi 1992; Chaumine 2006
+extfield,7,1,7,7,14,"de Groote 1983 (>2n-1, integrality)",16,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,7,1,7,8,16,"de Groote 1983 (>2n-1, integrality)",19,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,7,1,7,9,18,"de Groote 1983 (>2n-1, integrality)",22,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,7,1,7,10,20,"de Groote 1983 (>2n-1, integrality)",25,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,7,1,7,11,22,"de Groote 1983 (>2n-1, integrality)",28,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,2,3,8,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,2,3,8,2,3,"de Groote 1983 (=2n-1, n<=q/2+1)",3,de Groote 1983 / Toom interp.
+extfield,2,3,8,3,5,"de Groote 1983 (=2n-1, n<=q/2+1)",5,de Groote 1983 / Toom interp.
+extfield,2,3,8,4,7,"de Groote 1983 (=2n-1, n<=q/2+1)",7,de Groote 1983 / Toom interp.
+extfield,2,3,8,5,9,"de Groote 1983 (=2n-1, n<=q/2+1)",9,de Groote 1983 / Toom interp.
+extfield,2,3,8,6,12,Shokrollahi 1992; Chaumine 2006,12,Shokrollahi 1992; Chaumine 2006
+extfield,2,3,8,7,14,Shokrollahi 1992; Chaumine 2006,14,Shokrollahi 1992; Chaumine 2006
+extfield,2,3,8,8,16,"de Groote 1983 (>2n-1, integrality)",18,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,2,3,8,9,18,"de Groote 1983 (>2n-1, integrality)",21,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,2,3,8,10,20,"de Groote 1983 (>2n-1, integrality)",24,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,2,3,8,11,22,"de Groote 1983 (>2n-1, integrality)",27,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,3,2,9,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,3,2,9,2,3,"de Groote 1983 (=2n-1, n<=q/2+1)",3,de Groote 1983 / Toom interp.
+extfield,3,2,9,3,5,"de Groote 1983 (=2n-1, n<=q/2+1)",5,de Groote 1983 / Toom interp.
+extfield,3,2,9,4,7,"de Groote 1983 (=2n-1, n<=q/2+1)",7,de Groote 1983 / Toom interp.
+extfield,3,2,9,5,9,"de Groote 1983 (=2n-1, n<=q/2+1)",9,de Groote 1983 / Toom interp.
+extfield,3,2,9,6,12,Shokrollahi 1992; Chaumine 2006,12,Shokrollahi 1992; Chaumine 2006
+extfield,3,2,9,7,14,Shokrollahi 1992; Chaumine 2006,14,Shokrollahi 1992; Chaumine 2006
+extfield,3,2,9,8,16,Shokrollahi 1992; Chaumine 2006,16,Shokrollahi 1992; Chaumine 2006
+extfield,3,2,9,9,18,"de Groote 1983 (>2n-1, integrality)",21,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,3,2,9,10,20,"de Groote 1983 (>2n-1, integrality)",24,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,3,2,9,11,22,"de Groote 1983 (>2n-1, integrality)",27,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,11,1,11,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,11,1,11,2,3,"de Groote 1983 (=2n-1, n<=q/2+1)",3,de Groote 1983 / Toom interp.
+extfield,11,1,11,3,5,"de Groote 1983 (=2n-1, n<=q/2+1)",5,de Groote 1983 / Toom interp.
+extfield,11,1,11,4,7,"de Groote 1983 (=2n-1, n<=q/2+1)",7,de Groote 1983 / Toom interp.
+extfield,11,1,11,5,9,"de Groote 1983 (=2n-1, n<=q/2+1)",9,de Groote 1983 / Toom interp.
+extfield,11,1,11,6,11,"de Groote 1983 (=2n-1, n<=q/2+1)",11,de Groote 1983 / Toom interp.
+extfield,11,1,11,7,14,Shokrollahi 1992; Chaumine 2006,14,Shokrollahi 1992; Chaumine 2006
+extfield,11,1,11,8,16,Shokrollahi 1992; Chaumine 2006,16,Shokrollahi 1992; Chaumine 2006
+extfield,11,1,11,9,18,Shokrollahi 1992; Chaumine 2006,18,Shokrollahi 1992; Chaumine 2006
+extfield,11,1,11,10,20,"de Groote 1983 (>2n-1, integrality)",23,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,11,1,11,11,22,"de Groote 1983 (>2n-1, integrality)",26,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,13,1,13,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,13,1,13,2,3,"de Groote 1983 (=2n-1, n<=q/2+1)",3,de Groote 1983 / Toom interp.
+extfield,13,1,13,3,5,"de Groote 1983 (=2n-1, n<=q/2+1)",5,de Groote 1983 / Toom interp.
+extfield,13,1,13,4,7,"de Groote 1983 (=2n-1, n<=q/2+1)",7,de Groote 1983 / Toom interp.
+extfield,13,1,13,5,9,"de Groote 1983 (=2n-1, n<=q/2+1)",9,de Groote 1983 / Toom interp.
+extfield,13,1,13,6,11,"de Groote 1983 (=2n-1, n<=q/2+1)",11,de Groote 1983 / Toom interp.
+extfield,13,1,13,7,13,"de Groote 1983 (=2n-1, n<=q/2+1)",13,de Groote 1983 / Toom interp.
+extfield,13,1,13,8,16,Shokrollahi 1992; Chaumine 2006,16,Shokrollahi 1992; Chaumine 2006
+extfield,13,1,13,9,18,Shokrollahi 1992; Chaumine 2006,18,Shokrollahi 1992; Chaumine 2006
+extfield,13,1,13,10,20,Shokrollahi 1992; Chaumine 2006,20,Shokrollahi 1992; Chaumine 2006
+extfield,13,1,13,11,22,"de Groote 1983 (>2n-1, integrality)",25,mu(n)<=M_q(n); CRT/interpolation (Winograd 1976; cf. FH 2007)
+extfield,2,4,16,1,1,"de Groote 1983 (=2n-1, n<=q/2+1)",1,de Groote 1983 / Toom interp.
+extfield,2,4,16,2,3,"de Groote 1983 (=2n-1, n<=q/2+1)",3,de Groote 1983 / Toom interp.
+extfield,2,4,16,3,5,"de Groote 1983 (=2n-1, n<=q/2+1)",5,de Groote 1983 / Toom interp.
+extfield,2,4,16,4,7,"de Groote 1983 (=2n-1, n<=q/2+1)",7,de Groote 1983 / Toom interp.
+extfield,2,4,16,5,9,"de Groote 1983 (=2n-1, n<=q/2+1)",9,de Groote 1983 / Toom interp.
+extfield,2,4,16,6,11,"de Groote 1983 (=2n-1, n<=q/2+1)",11,de Groote 1983 / Toom interp.
+extfield,2,4,16,7,13,"de Groote 1983 (=2n-1, n<=q/2+1)",13,de Groote 1983 / Toom interp.
+extfield,2,4,16,8,15,"de Groote 1983 (=2n-1, n<=q/2+1)",15,de Groote 1983 / Toom interp.
+extfield,2,4,16,9,17,"de Groote 1983 (=2n-1, n<=q/2+1)",17,de Groote 1983 / Toom interp.
+extfield,2,4,16,10,20,Shokrollahi 1992; Chaumine 2006,20,Shokrollahi 1992; Chaumine 2006
+extfield,2,4,16,11,22,Shokrollahi 1992; Chaumine 2006,22,Shokrollahi 1992; Chaumine 2006
+full,2,1,2,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,2,1,2,2,3,"Barbulescu et al. 2012 (exhaustive, exact)",3,"Barbulescu et al. 2012 (exhaustive, exact)"
+full,2,1,2,3,6,"Kaminski-Bshouty 1989, Thm 2 (exact)",6,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,1,2,4,9,"Kaminski-Bshouty 1989, Thm 2 (exact)",9,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,1,2,5,13,"Barbulescu et al. 2012 (exhaustive, exact)",13,"Barbulescu et al. 2012 (exhaustive, exact)"
+full,2,1,2,6,15,Barbulescu et al. 2012 (exhaustive),17,Barbulescu et al. 2012 (symmetric formula)
+full,2,1,2,7,18,code embedding (LSW83/CC88) + Grassl codetables.de,22,Barbulescu et al. 2012 (symmetric formula)
+full,2,1,2,8,20,code embedding (LSW83/CC88) + Grassl codetables.de,26,"Fan-Hasan 2015 survey, Table 2"
+full,2,1,2,9,26,code embedding (LSW83/CC88) + Grassl codetables.de,30,"Fan-Hasan 2015 survey, Table 2"
+full,2,1,2,10,28,code embedding (LSW83/CC88) + Grassl codetables.de,35,"Fan-Hasan 2015 survey, Table 2"
+full,2,1,2,11,31,code embedding (LSW83/CC88) + Grassl codetables.de,39,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,3,1,3,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,3,1,3,2,3,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",3,"Barbulescu et al. 2012 (exhaustive, exact)"
+full,3,1,3,3,6,"Kaminski-Bshouty 1989, Thm 2 (exact)",6,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,3,1,3,4,9,"Kaminski-Bshouty 1989, Thm 2 (exact)",9,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,3,1,3,5,12,"Kaminski-Bshouty 1989, Thm 2 (exact)",12,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,3,1,3,6,12,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",15,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,3,1,3,7,17,code embedding (LSW83/CC88) + Grassl codetables.de,19,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,3,1,3,8,19,code embedding (LSW83/CC88) + Grassl codetables.de,23,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,3,1,3,9,21,code embedding (LSW83/CC88) + Grassl codetables.de,27,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,3,1,3,10,23,code embedding (LSW83/CC88) + Griesmer 1960,31,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,3,1,3,11,25,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",35,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,2,2,4,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,2,2,4,2,3,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",3,Toom 1963 / interpolation
+full,2,2,4,3,5,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",5,Toom 1963 / interpolation
+full,2,2,4,4,8,"Kaminski-Bshouty 1989, Thm 2 (exact)",8,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,2,4,5,11,"Kaminski-Bshouty 1989, Thm 2 (exact)",11,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,2,4,6,14,"Kaminski-Bshouty 1989, Thm 2 (exact)",14,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,2,4,7,15,code embedding (LSW83/CC88) + Grassl codetables.de,17,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,2,2,4,8,17,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",20,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,2,2,4,9,19,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",23,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,2,2,4,10,22,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",27,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,2,2,4,11,24,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",30,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,5,1,5,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,5,1,5,2,3,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",3,Toom 1963 / interpolation
+full,5,1,5,3,5,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",5,Toom 1963 / interpolation
+full,5,1,5,4,8,"Kaminski-Bshouty 1989, Thm 2 (exact)",8,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,5,1,5,5,11,"Kaminski-Bshouty 1989, Thm 2 (exact)",11,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,5,1,5,6,14,"Kaminski-Bshouty 1989, Thm 2 (exact)",14,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,5,1,5,7,17,"Kaminski-Bshouty 1989, Thm 2 (exact)",17,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,5,1,5,8,16,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",20,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,5,1,5,9,19,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",23,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,5,1,5,10,21,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",26,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,5,1,5,11,24,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",29,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,7,1,7,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,7,1,7,2,3,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",3,Toom 1963 / interpolation
+full,7,1,7,3,5,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",5,Toom 1963 / interpolation
+full,7,1,7,4,7,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",7,Toom 1963 / interpolation
+full,7,1,7,5,10,"Kaminski-Bshouty 1989, Thm 2 (exact)",10,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,7,1,7,6,13,"Kaminski-Bshouty 1989, Thm 2 (exact)",13,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,7,1,7,7,16,"Kaminski-Bshouty 1989, Thm 2 (exact)",16,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,7,1,7,8,19,"Kaminski-Bshouty 1989, Thm 2 (exact)",19,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,7,1,7,9,22,"Kaminski-Bshouty 1989, Thm 2 (exact)",22,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,7,1,7,10,20,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",25,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,7,1,7,11,23,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",28,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,2,3,8,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,2,3,8,2,3,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",3,Toom 1963 / interpolation
+full,2,3,8,3,5,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",5,Toom 1963 / interpolation
+full,2,3,8,4,7,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",7,Toom 1963 / interpolation
+full,2,3,8,5,9,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",9,Toom 1963 / interpolation
+full,2,3,8,6,12,"Kaminski-Bshouty 1989, Thm 2 (exact)",12,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,3,8,7,15,"Kaminski-Bshouty 1989, Thm 2 (exact)",15,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,3,8,8,18,"Kaminski-Bshouty 1989, Thm 2 (exact)",18,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,3,8,9,21,"Kaminski-Bshouty 1989, Thm 2 (exact)",21,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,3,8,10,24,"Kaminski-Bshouty 1989, Thm 2 (exact)",24,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,3,8,11,22,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",27,CRT/interpolation (Winograd 1976; cf. FH 2007)
+full,3,2,9,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,3,2,9,2,3,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",3,Toom 1963 / interpolation
+full,3,2,9,3,5,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",5,Toom 1963 / interpolation
+full,3,2,9,4,7,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",7,Toom 1963 / interpolation
+full,3,2,9,5,9,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",9,Toom 1963 / interpolation
+full,3,2,9,6,12,"Kaminski-Bshouty 1989, Thm 2 (exact)",12,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,3,2,9,7,15,"Kaminski-Bshouty 1989, Thm 2 (exact)",15,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,3,2,9,8,18,"Kaminski-Bshouty 1989, Thm 2 (exact)",18,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,3,2,9,9,21,"Kaminski-Bshouty 1989, Thm 2 (exact)",21,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,3,2,9,10,24,"Kaminski-Bshouty 1989, Thm 2 (exact)",24,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,3,2,9,11,27,"Kaminski-Bshouty 1989, Thm 2 (exact)",27,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,11,1,11,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,11,1,11,2,3,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",3,Toom 1963 / interpolation
+full,11,1,11,3,5,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",5,Toom 1963 / interpolation
+full,11,1,11,4,7,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",7,Toom 1963 / interpolation
+full,11,1,11,5,9,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",9,Toom 1963 / interpolation
+full,11,1,11,6,11,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",11,Toom 1963 / interpolation
+full,11,1,11,7,14,"Kaminski-Bshouty 1989, Thm 2 (exact)",14,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,11,1,11,8,17,"Kaminski-Bshouty 1989, Thm 2 (exact)",17,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,11,1,11,9,20,"Kaminski-Bshouty 1989, Thm 2 (exact)",20,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,11,1,11,10,23,"Kaminski-Bshouty 1989, Thm 2 (exact)",23,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,11,1,11,11,26,"Kaminski-Bshouty 1989, Thm 2 (exact)",26,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,13,1,13,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,13,1,13,2,3,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",3,Toom 1963 / interpolation
+full,13,1,13,3,5,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",5,Toom 1963 / interpolation
+full,13,1,13,4,7,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",7,Toom 1963 / interpolation
+full,13,1,13,5,9,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",9,Toom 1963 / interpolation
+full,13,1,13,6,11,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",11,Toom 1963 / interpolation
+full,13,1,13,7,13,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",13,Toom 1963 / interpolation
+full,13,1,13,8,16,"Kaminski-Bshouty 1989, Thm 2 (exact)",16,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,13,1,13,9,19,"Kaminski-Bshouty 1989, Thm 2 (exact)",19,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,13,1,13,10,22,"Kaminski-Bshouty 1989, Thm 2 (exact)",22,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,13,1,13,11,25,"Kaminski-Bshouty 1989, Thm 2 (exact)",25,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,4,16,1,1,"Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)",1,Toom 1963 / interpolation
+full,2,4,16,2,3,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",3,Toom 1963 / interpolation
+full,2,4,16,3,5,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",5,Toom 1963 / interpolation
+full,2,4,16,4,7,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",7,Toom 1963 / interpolation
+full,2,4,16,5,9,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",9,Toom 1963 / interpolation
+full,2,4,16,6,11,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",11,Toom 1963 / interpolation
+full,2,4,16,7,13,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",13,Toom 1963 / interpolation
+full,2,4,16,8,15,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",15,Toom 1963 / interpolation
+full,2,4,16,9,17,"Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))",17,Toom 1963 / interpolation
+full,2,4,16,10,20,"Kaminski-Bshouty 1989, Thm 2 (exact)",20,"Kaminski-Bshouty 1989, Thm 2 (exact)"
+full,2,4,16,11,23,"Kaminski-Bshouty 1989, Thm 2 (exact)",23,"Kaminski-Bshouty 1989, Thm 2 (exact)"
