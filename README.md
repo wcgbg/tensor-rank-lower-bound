@@ -1,4 +1,4 @@
-# Automated Lower Bounds for Tensor Rank over Finite Fields
+# Automated Lower Bounds for Bilinear Complexity over Finite Fields
 
 We present a general, automated framework for proving lower bounds on the
 bilinear complexity (tensor rank) of multiplication problems over a finite field
@@ -98,7 +98,7 @@ multiplication.
 
 ```bibtex
 @misc{wang2026automatedlowerboundstensor,
-      title={Automated Lower Bounds for Tensor Rank over Finite Fields}, 
+      title={Automated Lower Bounds for Bilinear Complexity over Finite Fields}, 
       author={Chengu Wang},
       year={2026},
       eprint={2603.07280},

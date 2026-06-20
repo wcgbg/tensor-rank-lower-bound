@@ -15,7 +15,7 @@ Design (as requested): *each reference in the literature is one Python function*
 A reference function inspects a cell and, if the theorem/lemma/table it encodes
 says something about that cell, returns a Claim(kind, value, ref).  kind is
 'lb' or 'ub'.  combine() then keeps, per cell, the largest lower bound and the
-smallest upper bound, breaking ties toward the more specific reference.
+smallest upper bound, breaking ties toward the earliest-published reference.
 
 Nothing here is invented: a cell is left blank ('-') when no prior publication is
 known to the author of this script to bound it.  See REFERENCES at the bottom.
@@ -27,15 +27,15 @@ from math import isqrt, gcd
 from collections import namedtuple
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, "prev_results.csv")
+OUT = os.path.join(HERE, "gen", "prev_results.csv")
 
 # Grid to emit: all (problem, q=p^m, n) with these ranges.
 PROBLEMS = ("cyclic", "extfield", "full")
 Q_MAX = 16
 N_MAX = 11
 
-Claim = namedtuple("Claim", ["kind", "value", "ref", "prio"])
-# prio: higher = more specific / preferred when two refs give the same value.
+Claim = namedtuple("Claim", ["kind", "value", "ref", "year"])
+# year: publication year of the credited reference; earliest wins ties.
 
 # --------------------------------------------------------------------------- #
 #  Number-theoretic helpers                                                    #
@@ -213,18 +213,31 @@ F2_FULL = {2: 3, 3: 6, 4: 9, 5: 13, 6: 17, 7: 22, 8: 26, 9: 30, 10: 35}
 # a rank-r bilinear algorithm for F_{q^n}/F_q (or for the product of two n-term
 # polynomials) yields a linear [r, n, >=n]_q code, so
 #       rank >= N_q(n, n) := min length of a q-ary linear code, dim n, dist n.
-# N_q(n,n) >= Griesmer bound g_q(n,n) (Griesmer 1960); for q=2 the values below
-# are verified LOWER bounds on N_2(k,k) from M. Grassl's tables,
-# https://www.codetables.de :
-# (raw pages cached under certs/codetables/, fetched by fetch_codetables.py):
-#   q=2: d_max[12,5]=4 -> N=13;  d_max[14,6]=5 -> N=15;  d_max[17,7]=6 -> N=18;
-#        d_max[19,8]=7 -> N=20;  d_max[25,9]=8 -> N=26;  d_max[27,10]=9 -> N=28;
-#        d_max[30,11]=10, [31,11,11] exists -> N=31.
-#   q=3: d_max[16,7]=6 -> N=17;  d_max[18,8]=7 -> N=19;  d_max[20,9]=8 -> N=21.
-#   q=4: d_max[14,7]=6 -> N=15;  d_max[16,8]=7 -> N=17.
-#   q=5: d_max[14,7]=6 -> N=15.
-# (Entries equal to the Griesmer bound are omitted; code_n falls back to it.)
+# N_q(n,n) >= Griesmer bound g_q(n,n) (Griesmer 1960); the values below sharpen
+# Griesmer using M. Grassl's tables, https://www.codetables.de, whose full BKLC
+# pages (one per field) are cached under paper/ref/codetables/q<q>.html.
+#
+# From a table we read d_lo[n,k] <= d_max[n,k] <= d_hi[n,k] (the cell shows
+# either a single exact value or a range "d_lo-d_hi").  The stored entry is the
+# PROVEN lower bound
+#       N := min { n : d_hi[n,k] >= k }
+# i.e. 1 + (largest length for which the table proves NO [n,k,k]_q code exists,
+# since d_hi[n,k] < k rules out distance k).  This equals the exact N_q(k,k)
+# whenever the table is determined at the crossing (most cells); the entries
+# marked '*' below sit on an open cell (d_lo < k <= d_hi at length N), so there
+# the true N_q(k,k) may be larger and the stored value is a valid lower bound.
+# Only q in {2,3,4,5,7,8,9} have cached tables; for q=11,13,16 code_n falls back
+# to Griesmer.  (Entries equal to the Griesmer bound are omitted likewise.)
+#   q=2: (5,13) (6,15) (7,18) (8,20) (9,26) (10,28) (11,31)
+#   q=3: (3,6) (7,17) (8,19) (9,21) (10,24)* (11,26)*
+#   q=4: (4,8) (7,15) (8,17) (9,20)* (10,23) (11,25)
+#   q=5: (4,8) (5,10) (7,15) (8,17)* (9,19)* (10,21)* (11,24)*
+#   q=7: (5,10) (6,12) (7,14) (8,17) (9,19) (10,21)* (11,23)*
+#   q=8: (6,12) (7,14) (8,16) (9,19) (10,21)* (11,23)*
+#   q=9: (6,12) (7,14) (8,16) (9,18) (11,23)*
+# (pairs are (k, N); '*' = stored value is a lower bound on an open cell.)
 NQKK_EXACT = {
+    # q = 2 (GF(2))
     (2, 5): 13,
     (2, 6): 15,
     (2, 7): 18,
@@ -232,12 +245,49 @@ NQKK_EXACT = {
     (2, 9): 26,
     (2, 10): 28,
     (2, 11): 31,
+    # q = 3 (GF(3))
+    (3, 3): 6,
     (3, 7): 17,
     (3, 8): 19,
     (3, 9): 21,
+    (3, 10): 24,
+    (3, 11): 26,
+    # q = 4 (GF(4))
+    (4, 4): 8,
     (4, 7): 15,
     (4, 8): 17,
+    (4, 9): 20,
+    (4, 10): 23,
+    (4, 11): 25,
+    # q = 5 (GF(5))
+    (5, 4): 8,
+    (5, 5): 10,
     (5, 7): 15,
+    (5, 8): 17,
+    (5, 9): 19,
+    (5, 10): 21,
+    (5, 11): 24,
+    # q = 7 (GF(7))
+    (7, 5): 10,
+    (7, 6): 12,
+    (7, 7): 14,
+    (7, 8): 17,
+    (7, 9): 19,
+    (7, 10): 21,
+    (7, 11): 23,
+    # q = 8 (GF(8))
+    (8, 6): 12,
+    (8, 7): 14,
+    (8, 8): 16,
+    (8, 9): 19,
+    (8, 10): 21,
+    (8, 11): 23,
+    # q = 9 (GF(9))
+    (9, 6): 12,
+    (9, 7): 14,
+    (9, 8): 16,
+    (9, 9): 18,
+    (9, 11): 23,
 }
 
 
@@ -396,21 +446,24 @@ def crt_interp_full_ub(q, t):
 
 
 def full_ub(q, t):
-    """Best published upper bound for the t-term full product M_q(t), with
-    source."""
+    """Best published upper bound for the t-term full product M_q(t), as a
+    (value, source, year) triple, or None.  Ties on value pick the earliest
+    year (e.g. Montgomery 2005 over the Fan-Hasan 2015 survey).  The CRT/
+    interpolation construction is dated by the paper that tabulated the value
+    (Fan-Hasan 2007), not the method's origin."""
     cands = []
     if 2 * t - 1 <= q + 1:
-        cands.append((2 * t - 1, "Toom 1963 / interpolation"))
+        cands.append((2 * t - 1, "Toom 1963 / interpolation", 1963))
     if 2 * (t - 1) > q and t - 1 <= q + 1:
-        cands.append((3 * t - 2 - q // 2, "Kaminski-Bshouty 1989, Thm 2"))
+        cands.append((3 * t - 2 - q // 2, "Kaminski-Bshouty 1989, Thm 2", 1989))
     if q == 2 and t in F2_FULL:
-        cands.append((F2_FULL[t], "Fan-Hasan 2015 survey, Table 2"))
+        cands.append((F2_FULL[t], "Fan-Hasan 2015 survey, Table 2", 2015))
     if t in MONTGOMERY_FULL:
-        cands.append((MONTGOMERY_FULL[t], "Montgomery 2005"))
+        cands.append((MONTGOMERY_FULL[t], "Montgomery 2005", 2005))
     v = crt_interp_full_ub(q, t)
     if v is not None:
-        cands.append((v, "CRT/interpolation (Winograd 1976; cf. FH 2007)"))
-    return min(cands) if cands else None
+        cands.append((v, "CRT/interpolation (Winograd 1976; cf. FH 2007)", 2007))
+    return min(cands, key=lambda c: (c[0], c[2])) if cands else None
 
 
 # ---- per-block bounds for F_q[x]/(p(x)^e), deg p = d  (used for 'cyclic') --- #
@@ -490,9 +543,9 @@ def ref_fiduccia_zalcstein_1971(c):
     'full' product and (mod an irreducible) for 'extfield'."""
     n = c["n"]
     if c["problem"] == "full":
-        return [Claim("lb", 2 * n - 1, "Fiduccia-Zalcstein 1971", 1)]
+        return [Claim("lb", 2 * n - 1, "Fiduccia-Zalcstein 1971", 1971)]
     if c["problem"] == "extfield":
-        return [Claim("lb", 2 * n - 1, "Fiduccia-Zalcstein 1971", 1)]
+        return [Claim("lb", 2 * n - 1, "Fiduccia-Zalcstein 1971", 1971)]
     return []
 
 
@@ -505,7 +558,7 @@ def ref_winograd_1976_cor1(c):
         return []
     q, N, p = c["q"], c["n"], c["p"]
     k = num_distinct_irreducible_factors(q, N, p)
-    return [Claim("lb", 2 * N - k, "Winograd 1976, Cor. 1", 1)]
+    return [Claim("lb", 2 * N - k, "Winograd 1976, Cor. 1", 1976)]
 
 
 def ref_degroote_1983(c):
@@ -517,10 +570,10 @@ def ref_degroote_1983(c):
     q, n = c["q"], c["n"]
     out = []
     if 2 * n - 1 <= q + 1:  # exact 2n-1
-        out.append(Claim("lb", 2 * n - 1, "de Groote 1983 (=2n-1, n<=q/2+1)", 3))
-        out.append(Claim("ub", 2 * n - 1, "de Groote 1983 / Toom interp.", 3))
+        out.append(Claim("lb", 2 * n - 1, "de Groote 1983 (=2n-1, n<=q/2+1)", 1983))
+        out.append(Claim("ub", 2 * n - 1, "de Groote 1983 / Toom interp.", 1983))
     else:  # strict: >= 2n
-        out.append(Claim("lb", 2 * n, "de Groote 1983 (>2n-1, integrality)", 2))
+        out.append(Claim("lb", 2 * n, "de Groote 1983 (>2n-1, integrality)", 1983))
     return out
 
 
@@ -532,8 +585,8 @@ def ref_shokrollahi_1992(c):
     q, n = c["q"], c["n"]
     if (2 * n - 1 > q + 1) and (2 * n <= q + 1 + epsilon(q)):
         return [
-            Claim("lb", 2 * n, "Shokrollahi 1992; Chaumine 2006", 3),
-            Claim("ub", 2 * n, "Shokrollahi 1992; Chaumine 2006", 3),
+            Claim("lb", 2 * n, "Shokrollahi 1992; Chaumine 2006", 1992),
+            Claim("ub", 2 * n, "Shokrollahi 1992; Chaumine 2006", 1992),
         ]
     return []
 
@@ -548,8 +601,8 @@ def ref_chudnovsky_1988(c):
     if (q, n) in exact:
         v = exact[(q, n)]
         return [
-            Claim("lb", v, "Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3", 4),
-            Claim("ub", v, "Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3", 4),
+            Claim("lb", v, "Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3", 1988),
+            Claim("ub", v, "Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3", 1988),
         ]
     return []
 
@@ -564,8 +617,8 @@ def ref_toom_interpolation_full(c):
     q, n = c["q"], c["n"]
     if 2 * n - 1 <= q + 1:
         return [
-            Claim("ub", 2 * n - 1, "Toom 1963 / interpolation", 3),
-            Claim("lb", 2 * n - 1, "Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)", 3),
+            Claim("ub", 2 * n - 1, "Toom 1963 / interpolation", 1963),
+            Claim("lb", 2 * n - 1, "Fiduccia-Zalcstein 1971 (exact, n<=q/2+1)", 1971),
         ]
     return []
 
@@ -581,7 +634,7 @@ def ref_cenk_ozbudak_2010(c):
     if 2 * n - 1 <= q + 1 or 2 * n <= q + 1 + epsilon(q):
         return []
     if q in CENK_OZBUDAK and n in CENK_OZBUDAK[q]:
-        return [Claim("ub", CENK_OZBUDAK[q][n], "Cenk-Ozbudak 2010, Table 1", 2)]
+        return [Claim("ub", CENK_OZBUDAK[q][n], "Cenk-Ozbudak 2010, Table 1", 2010)]
     return []
 
 
@@ -598,7 +651,7 @@ def ref_montgomery_full(c):
                 "ub",
                 MONTGOMERY_FULL[n],
                 "Montgomery 2005 (via Cenk-Ozbudak 2011, Table 1)",
-                2,
+                2005,
             )
         ]
     return []
@@ -613,7 +666,7 @@ def ref_f2_full(c):
         return []
     n = c["n"]
     if n in F2_FULL:
-        return [Claim("ub", F2_FULL[n], "Fan-Hasan 2015 survey, Table 2", 3)]
+        return [Claim("ub", F2_FULL[n], "Fan-Hasan 2015 survey, Table 2", 2015)]
     return []
 
 
@@ -666,13 +719,17 @@ def ref_bdez_2012(c):
     out = []
     if key in BDEZ_EXACT:
         v = BDEZ_EXACT[key]
-        out.append(Claim("lb", v, "Barbulescu et al. 2012 (exhaustive, exact)", 4))
-        out.append(Claim("ub", v, "Barbulescu et al. 2012 (exhaustive, exact)", 4))
+        out.append(Claim("lb", v, "Barbulescu et al. 2012 (exhaustive, exact)", 2012))
+        out.append(Claim("ub", v, "Barbulescu et al. 2012 (exhaustive, exact)", 2012))
     if key in BDEZ_LB:
-        out.append(Claim("lb", BDEZ_LB[key], "Barbulescu et al. 2012 (exhaustive)", 4))
+        out.append(
+            Claim("lb", BDEZ_LB[key], "Barbulescu et al. 2012 (exhaustive)", 2012)
+        )
     if key in BDEZ_UB:
         out.append(
-            Claim("ub", BDEZ_UB[key], "Barbulescu et al. 2012 (symmetric formula)", 4)
+            Claim(
+                "ub", BDEZ_UB[key], "Barbulescu et al. 2012 (symmetric formula)", 2012
+            )
         )
     return out
 
@@ -689,7 +746,7 @@ def ref_kb89_general_lb(c):
     if d < 1:
         return []
     v = 3 * d + 1 - i_q_max_factors(c["q"], d)
-    return [Claim("lb", v, "Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))", 4)]
+    return [Claim("lb", v, "Kaminski-Bshouty 1989, Thm 1 (3d+1-i_q(d))", 1989)]
 
 
 def ref_mu_le_full_product(c):
@@ -704,7 +761,7 @@ def ref_mu_le_full_product(c):
     b = full_ub(c["q"], c["n"])
     if b is None:
         return []
-    return [Claim("ub", b[0], "mu(n)<=M_q(n); " + b[1], 1)]
+    return [Claim("ub", b[0], "mu(n)<=M_q(n); " + b[1], b[2])]
 
 
 def ref_crt_interp_full(c):
@@ -717,7 +774,7 @@ def ref_crt_interp_full(c):
     v = crt_interp_full_ub(c["q"], c["n"])
     if v is None:
         return []
-    return [Claim("ub", v, "CRT/interpolation (Winograd 1976; cf. FH 2007)", 2)]
+    return [Claim("ub", v, "CRT/interpolation (Winograd 1976; cf. FH 2007)", 2007)]
 
 
 def ref_kaminski_bshouty_1989(c):
@@ -737,25 +794,25 @@ def ref_kaminski_bshouty_1989(c):
     v = 3 * n - 2 - q // 2
     if c["problem"] == "full":
         return [
-            Claim("lb", v, "Kaminski-Bshouty 1989, Thm 2 (exact)", 5),
-            Claim("ub", v, "Kaminski-Bshouty 1989, Thm 2 (exact)", 5),
+            Claim("lb", v, "Kaminski-Bshouty 1989, Thm 2 (exact)", 1989),
+            Claim("ub", v, "Kaminski-Bshouty 1989, Thm 2 (exact)", 1989),
         ]
-    return [Claim("ub", v, "Kaminski-Bshouty 1989 Thm 2, via mu<=M", 1)]
+    return [Claim("ub", v, "Kaminski-Bshouty 1989 Thm 2, via mu<=M", 1989)]
 
 
 def ref_code_embedding(c):
     """Code-embedding lower bound: a rank-r algorithm for F_{q^n}/F_q (LSW 1983;
     CC 1988) or for the n-term full product (Brockett/Brown-Dobkin, cf. KB89
     p. 151) yields an [r, n, >=n]_q linear code, so rank >= N_q(n,n).
-    N values: Griesmer 1960 bound, sharpened by Grassl's codetables.de for q=2
-    (e.g. no [12,5,5]_2 (Fontaine-Peterson 1959) -> mu_2(5) >= 13)."""
+    N values: Griesmer 1960 bound, sharpened by Grassl's codetables.de for
+    q in {2,3,4,5,7,8,9} (e.g. no [12,5,5]_2 -> mu_2(5) >= 13)."""
     if c["problem"] not in ("extfield", "full"):
         return []
     q, n = c["q"], c["n"]
     if n < 2:
         return []
     v, src = code_n(q, n)
-    return [Claim("lb", v, f"code embedding (LSW83/CC88) + {src}", 2)]
+    return [Claim("lb", v, f"code embedding (LSW83/CC88) + {src}", 1983)]
 
 
 def ref_blaser_cyclic_lb(c):
@@ -773,7 +830,7 @@ def ref_blaser_cyclic_lb(c):
     total_as = sum(2 * d * e - 1 for d, e in blocks)  # = 2N - k
     best = max(total_as - (2 * d * e - 1) + block_lb(q, d, e) for d, e in blocks)
     if best > 2 * N - k:
-        return [Claim("lb", best, "Blaser 2005, Lem. 26 + AGW/code block bounds", 3)]
+        return [Claim("lb", best, "Blaser 2005, Lem. 26 + AGW/code block bounds", 2005)]
     return []
 
 
@@ -797,7 +854,7 @@ def ref_wagh_morgera_1983(c):
     }
     key = (c["q"], c["n"])
     if key in WM:
-        return [Claim("ub", WM[key], "Wagh-Morgera 1983, Tables I-IV", 5)]
+        return [Claim("ub", WM[key], "Wagh-Morgera 1983, Tables I-IV", 1983)]
     return []
 
 
@@ -820,7 +877,7 @@ def ref_crt_cyclic(c):
         srcs.add(b[1].split("(")[0].split(",")[0].strip())
     method = "Morgera 1990" if c["m"] == 1 else "Winograd 1976/LSW 1983"
     label = f"cyclic CRT ({method}); " + "; ".join(sorted(srcs))
-    return [Claim("ub", total, label, 2)]
+    return [Claim("ub", total, label, 1990 if c["m"] == 1 else 1976)]
 
 
 REFERENCE_FUNCTIONS = [
@@ -858,10 +915,10 @@ def best_bounds(cell):
     lb = ub = None
     if lbs:
         m = max(c.value for c in lbs)
-        lb = max((c for c in lbs if c.value == m), key=lambda c: c.prio)
+        lb = min((c for c in lbs if c.value == m), key=lambda c: c.year)
     if ubs:
         m = min(c.value for c in ubs)
-        ub = max((c for c in ubs if c.value == m), key=lambda c: c.prio)
+        ub = min((c for c in ubs if c.value == m), key=lambda c: c.year)
     return lb, ub
 
 
@@ -957,8 +1014,7 @@ if __name__ == "__main__":
 # Griesmer 1960  "A bound for error-correcting codes", IBM J. Res. Dev. 4
 #     (1960) 532-542 (length bound used in the code-embedding lower bound).
 # Grassl codetables  M. Grassl, "Bounds on the minimum distance of linear
-#     codes", https://www.codetables.de (exact N_2(k,k) for k = 5..8; entries
-#     trace to Fontaine-Peterson 1959 a.o.).
+#     codes", https://www.codetables.de (BKLC tables for q in {2,3,4,5,7,8,9}).
 # Fan-Hasan 2015  "A survey of some recent bit-parallel GF(2^n) multipliers",
 #     Finite Fields Appl. 32 (2015) 5-43 (Table 2: best-known M(k) over F_2).
 # Fan-Hasan 2007  "Comments on 'Five, six, and seven-term Karatsuba-like
