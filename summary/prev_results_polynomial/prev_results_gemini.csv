@@ -1,0 +1,551 @@
+problem,p,m,q,n,lb,lb_ref,ub,ub_ref
+full,2,1,2,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,2,1,2,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,2,1,2,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,2,1,2,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,2,1,2,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,2,1,2,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,2,1,2,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+negacyclic,2,1,2,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,2,1,2,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,2,1,2,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,2,1,2,3,6,Kaminski & Bshouty (1989),6,Kaminski & Bshouty (1989)
+cyclic,2,1,2,3,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+negacyclic,2,1,2,3,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+truncated,2,1,2,3,5,Alder-Strassen (1981),6,Kaminski & Bshouty (1989)
+extfield,2,1,2,3,5,Winograd (1977),6,Kaminski & Bshouty (1989)
+full,2,1,2,4,9,Kaminski & Bshouty (1989),9,Kaminski & Bshouty (1989)
+cyclic,2,1,2,4,7,Alder-Strassen (1981),9,Kaminski & Bshouty (1989)
+negacyclic,2,1,2,4,7,Alder-Strassen (1981),9,Kaminski & Bshouty (1989)
+truncated,2,1,2,4,7,Alder-Strassen (1981),9,Kaminski & Bshouty (1989)
+extfield,2,1,2,4,7,Winograd (1977),9,Kaminski & Bshouty (1989)
+full,2,1,2,5,9,Winograd (1977),,
+cyclic,2,1,2,5,8,Alder-Strassen (1981),,
+negacyclic,2,1,2,5,8,Alder-Strassen (1981),,
+truncated,2,1,2,5,9,Alder-Strassen (1981),,
+extfield,2,1,2,5,9,Winograd (1977),,
+full,2,1,2,6,11,Winograd (1977),,
+cyclic,2,1,2,6,10,Alder-Strassen (1981),,
+negacyclic,2,1,2,6,10,Alder-Strassen (1981),,
+truncated,2,1,2,6,11,Alder-Strassen (1981),,
+extfield,2,1,2,6,11,Winograd (1977),,
+full,2,1,2,7,13,Winograd (1977),,
+cyclic,2,1,2,7,11,Alder-Strassen (1981),,
+negacyclic,2,1,2,7,11,Alder-Strassen (1981),,
+truncated,2,1,2,7,13,Alder-Strassen (1981),,
+extfield,2,1,2,7,13,Winograd (1977),,
+full,2,1,2,8,15,Winograd (1977),,
+cyclic,2,1,2,8,15,Alder-Strassen (1981),,
+negacyclic,2,1,2,8,15,Alder-Strassen (1981),,
+truncated,2,1,2,8,15,Alder-Strassen (1981),,
+extfield,2,1,2,8,15,Winograd (1977),,
+full,2,1,2,9,17,Winograd (1977),,
+cyclic,2,1,2,9,15,Alder-Strassen (1981),,
+negacyclic,2,1,2,9,15,Alder-Strassen (1981),,
+truncated,2,1,2,9,17,Alder-Strassen (1981),,
+extfield,2,1,2,9,17,Winograd (1977),,
+full,2,1,2,10,19,Winograd (1977),,
+cyclic,2,1,2,10,18,Alder-Strassen (1981),,
+negacyclic,2,1,2,10,18,Alder-Strassen (1981),,
+truncated,2,1,2,10,19,Alder-Strassen (1981),,
+extfield,2,1,2,10,19,Winograd (1977),,
+full,2,1,2,11,21,Winograd (1977),,
+cyclic,2,1,2,11,20,Alder-Strassen (1981),,
+negacyclic,2,1,2,11,20,Alder-Strassen (1981),,
+truncated,2,1,2,11,21,Alder-Strassen (1981),,
+extfield,2,1,2,11,21,Winograd (1977),,
+full,2,2,4,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,2,2,4,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,2,2,4,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,2,2,4,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,2,2,4,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,2,2,4,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,2,2,4,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+negacyclic,2,2,4,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,2,2,4,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,2,2,4,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,2,2,4,3,5,Winograd (1977),5,Winograd (1977)
+cyclic,2,2,4,3,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+negacyclic,2,2,4,3,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,2,2,4,3,5,Alder-Strassen (1981),5,Winograd (1977)
+extfield,2,2,4,3,5,Winograd (1977),5,Ballet et al. (2021)
+full,2,2,4,4,8,Kaminski & Bshouty (1989),8,Kaminski & Bshouty (1989)
+cyclic,2,2,4,4,7,Alder-Strassen (1981),8,Kaminski & Bshouty (1989)
+negacyclic,2,2,4,4,7,Alder-Strassen (1981),8,Kaminski & Bshouty (1989)
+truncated,2,2,4,4,7,Alder-Strassen (1981),8,Kaminski & Bshouty (1989)
+extfield,2,2,4,4,7,Winograd (1977),8,Kaminski & Bshouty (1989)
+full,2,2,4,5,11,Kaminski & Bshouty (1989),11,Kaminski & Bshouty (1989)
+cyclic,2,2,4,5,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+negacyclic,2,2,4,5,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+truncated,2,2,4,5,9,Alder-Strassen (1981),11,Kaminski & Bshouty (1989)
+extfield,2,2,4,5,9,Winograd (1977),11,Kaminski & Bshouty (1989)
+full,2,2,4,6,14,Kaminski & Bshouty (1989),14,Kaminski & Bshouty (1989)
+cyclic,2,2,4,6,9,Alder-Strassen (1981),9,Lempel-Winograd (1983)
+negacyclic,2,2,4,6,9,Alder-Strassen (1981),9,Lempel-Winograd (1983)
+truncated,2,2,4,6,11,Alder-Strassen (1981),14,Kaminski & Bshouty (1989)
+extfield,2,2,4,6,11,Winograd (1977),14,Kaminski & Bshouty (1989)
+full,2,2,4,7,13,Winograd (1977),,
+cyclic,2,2,4,7,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+negacyclic,2,2,4,7,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+truncated,2,2,4,7,13,Alder-Strassen (1981),,
+extfield,2,2,4,7,13,Winograd (1977),,
+full,2,2,4,8,15,Winograd (1977),,
+cyclic,2,2,4,8,15,Alder-Strassen (1981),,
+negacyclic,2,2,4,8,15,Alder-Strassen (1981),,
+truncated,2,2,4,8,15,Alder-Strassen (1981),,
+extfield,2,2,4,8,15,Winograd (1977),,
+full,2,2,4,9,17,Winograd (1977),,
+cyclic,2,2,4,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+negacyclic,2,2,4,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+truncated,2,2,4,9,17,Alder-Strassen (1981),,
+extfield,2,2,4,9,17,Winograd (1977),,
+full,2,2,4,10,19,Winograd (1977),,
+cyclic,2,2,4,10,17,Alder-Strassen (1981),,
+negacyclic,2,2,4,10,17,Alder-Strassen (1981),,
+truncated,2,2,4,10,19,Alder-Strassen (1981),,
+extfield,2,2,4,10,19,Winograd (1977),,
+full,2,2,4,11,21,Winograd (1977),,
+cyclic,2,2,4,11,19,Alder-Strassen (1981),,
+negacyclic,2,2,4,11,19,Alder-Strassen (1981),,
+truncated,2,2,4,11,21,Alder-Strassen (1981),,
+extfield,2,2,4,11,21,Winograd (1977),,
+full,2,3,8,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,2,3,8,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,2,3,8,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,2,3,8,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,2,3,8,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,2,3,8,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,2,3,8,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+negacyclic,2,3,8,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,2,3,8,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,2,3,8,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,2,3,8,3,5,Winograd (1977),5,Winograd (1977)
+cyclic,2,3,8,3,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+negacyclic,2,3,8,3,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+truncated,2,3,8,3,5,Alder-Strassen (1981),5,Winograd (1977)
+extfield,2,3,8,3,5,Winograd (1977),5,Ballet et al. (2021)
+full,2,3,8,4,7,Winograd (1977),7,Winograd (1977)
+cyclic,2,3,8,4,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+negacyclic,2,3,8,4,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+truncated,2,3,8,4,7,Alder-Strassen (1981),7,Winograd (1977)
+extfield,2,3,8,4,7,Winograd (1977),7,Ballet et al. (2021)
+full,2,3,8,5,9,Winograd (1977),9,Winograd (1977)
+cyclic,2,3,8,5,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+negacyclic,2,3,8,5,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+truncated,2,3,8,5,9,Alder-Strassen (1981),9,Winograd (1977)
+extfield,2,3,8,5,9,Winograd (1977),9,Ballet et al. (2021)
+full,2,3,8,6,12,Kaminski & Bshouty (1989),12,Kaminski & Bshouty (1989)
+cyclic,2,3,8,6,10,Alder-Strassen (1981),10,Lempel-Winograd (1983)
+negacyclic,2,3,8,6,10,Alder-Strassen (1981),10,Lempel-Winograd (1983)
+truncated,2,3,8,6,11,Alder-Strassen (1981),12,Kaminski & Bshouty (1989)
+extfield,2,3,8,6,11,Winograd (1977),12,Kaminski & Bshouty (1989)
+full,2,3,8,7,15,Kaminski & Bshouty (1989),15,Kaminski & Bshouty (1989)
+cyclic,2,3,8,7,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+negacyclic,2,3,8,7,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+truncated,2,3,8,7,13,Alder-Strassen (1981),15,Kaminski & Bshouty (1989)
+extfield,2,3,8,7,13,Winograd (1977),15,Kaminski & Bshouty (1989)
+full,2,3,8,8,18,Kaminski & Bshouty (1989),18,Kaminski & Bshouty (1989)
+cyclic,2,3,8,8,15,Alder-Strassen (1981),18,Kaminski & Bshouty (1989)
+negacyclic,2,3,8,8,15,Alder-Strassen (1981),18,Kaminski & Bshouty (1989)
+truncated,2,3,8,8,15,Alder-Strassen (1981),18,Kaminski & Bshouty (1989)
+extfield,2,3,8,8,15,Winograd (1977),18,Kaminski & Bshouty (1989)
+full,2,3,8,9,21,Kaminski & Bshouty (1989),21,Kaminski & Bshouty (1989)
+cyclic,2,3,8,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+negacyclic,2,3,8,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+truncated,2,3,8,9,17,Alder-Strassen (1981),21,Kaminski & Bshouty (1989)
+extfield,2,3,8,9,17,Winograd (1977),21,Kaminski & Bshouty (1989)
+full,2,3,8,10,24,Kaminski & Bshouty (1989),24,Kaminski & Bshouty (1989)
+cyclic,2,3,8,10,18,Alder-Strassen (1981),24,Kaminski & Bshouty (1989)
+negacyclic,2,3,8,10,18,Alder-Strassen (1981),24,Kaminski & Bshouty (1989)
+truncated,2,3,8,10,19,Alder-Strassen (1981),24,Kaminski & Bshouty (1989)
+extfield,2,3,8,10,19,Winograd (1977),24,Kaminski & Bshouty (1989)
+full,2,3,8,11,21,Winograd (1977),,
+cyclic,2,3,8,11,20,Alder-Strassen (1981),,
+negacyclic,2,3,8,11,20,Alder-Strassen (1981),,
+truncated,2,3,8,11,21,Alder-Strassen (1981),,
+extfield,2,3,8,11,21,Winograd (1977),,
+full,2,4,16,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,2,4,16,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,2,4,16,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,2,4,16,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,2,4,16,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,2,4,16,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,2,4,16,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+negacyclic,2,4,16,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,2,4,16,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,2,4,16,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,2,4,16,3,5,Winograd (1977),5,Winograd (1977)
+cyclic,2,4,16,3,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+negacyclic,2,4,16,3,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,2,4,16,3,5,Alder-Strassen (1981),5,Winograd (1977)
+extfield,2,4,16,3,5,Winograd (1977),5,Ballet et al. (2021)
+full,2,4,16,4,7,Winograd (1977),7,Winograd (1977)
+cyclic,2,4,16,4,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+negacyclic,2,4,16,4,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+truncated,2,4,16,4,7,Alder-Strassen (1981),7,Winograd (1977)
+extfield,2,4,16,4,7,Winograd (1977),7,Ballet et al. (2021)
+full,2,4,16,5,9,Winograd (1977),9,Winograd (1977)
+cyclic,2,4,16,5,5,Alder-Strassen (1981),5,Lempel-Winograd (1983)
+negacyclic,2,4,16,5,5,Alder-Strassen (1981),5,Lempel-Winograd (1983)
+truncated,2,4,16,5,9,Alder-Strassen (1981),9,Winograd (1977)
+extfield,2,4,16,5,9,Winograd (1977),9,Ballet et al. (2021)
+full,2,4,16,6,11,Winograd (1977),11,Winograd (1977)
+cyclic,2,4,16,6,9,Alder-Strassen (1981),9,Lempel-Winograd (1983)
+negacyclic,2,4,16,6,9,Alder-Strassen (1981),9,Lempel-Winograd (1983)
+truncated,2,4,16,6,11,Alder-Strassen (1981),11,Winograd (1977)
+extfield,2,4,16,6,11,Winograd (1977),11,Ballet et al. (2021)
+full,2,4,16,7,13,Winograd (1977),13,Winograd (1977)
+cyclic,2,4,16,7,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+negacyclic,2,4,16,7,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+truncated,2,4,16,7,13,Alder-Strassen (1981),13,Winograd (1977)
+extfield,2,4,16,7,13,Winograd (1977),13,Ballet et al. (2021)
+full,2,4,16,8,15,Winograd (1977),15,Winograd (1977)
+cyclic,2,4,16,8,15,Alder-Strassen (1981),15,Lempel-Winograd (1983)
+negacyclic,2,4,16,8,15,Alder-Strassen (1981),15,Lempel-Winograd (1983)
+truncated,2,4,16,8,15,Alder-Strassen (1981),15,Winograd (1977)
+extfield,2,4,16,8,15,Winograd (1977),15,Ballet et al. (2021)
+full,2,4,16,9,17,Winograd (1977),17,Winograd (1977)
+cyclic,2,4,16,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+negacyclic,2,4,16,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+truncated,2,4,16,9,17,Alder-Strassen (1981),17,Winograd (1977)
+extfield,2,4,16,9,17,Winograd (1977),17,Ballet et al. (2021)
+full,2,4,16,10,20,Kaminski & Bshouty (1989),20,Kaminski & Bshouty (1989)
+cyclic,2,4,16,10,15,Alder-Strassen (1981),15,Lempel-Winograd (1983)
+negacyclic,2,4,16,10,15,Alder-Strassen (1981),15,Lempel-Winograd (1983)
+truncated,2,4,16,10,19,Alder-Strassen (1981),20,Kaminski & Bshouty (1989)
+extfield,2,4,16,10,19,Winograd (1977),20,Kaminski & Bshouty (1989)
+full,2,4,16,11,23,Kaminski & Bshouty (1989),23,Kaminski & Bshouty (1989)
+cyclic,2,4,16,11,19,Alder-Strassen (1981),19,Lempel-Winograd (1983)
+negacyclic,2,4,16,11,19,Alder-Strassen (1981),19,Lempel-Winograd (1983)
+truncated,2,4,16,11,21,Alder-Strassen (1981),23,Kaminski & Bshouty (1989)
+extfield,2,4,16,11,21,Winograd (1977),23,Kaminski & Bshouty (1989)
+full,3,1,3,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,3,1,3,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,3,1,3,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,3,1,3,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,3,1,3,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,3,1,3,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,3,1,3,2,2,Alder-Strassen (1981),2,Lempel-Winograd (1983)
+negacyclic,3,1,3,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,3,1,3,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,3,1,3,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,3,1,3,3,6,Kaminski & Bshouty (1989),6,Kaminski & Bshouty (1989)
+cyclic,3,1,3,3,5,Alder-Strassen (1981),6,Kaminski & Bshouty (1989)
+negacyclic,3,1,3,3,5,Alder-Strassen (1981),6,Kaminski & Bshouty (1989)
+truncated,3,1,3,3,5,Alder-Strassen (1981),6,Kaminski & Bshouty (1989)
+extfield,3,1,3,3,5,Winograd (1977),6,Kaminski & Bshouty (1989)
+full,3,1,3,4,9,Kaminski & Bshouty (1989),9,Kaminski & Bshouty (1989)
+cyclic,3,1,3,4,5,Alder-Strassen (1981),5,Lempel-Winograd (1983)
+negacyclic,3,1,3,4,6,Alder-Strassen (1981),6,Lempel-Winograd (1983)
+truncated,3,1,3,4,7,Alder-Strassen (1981),9,Kaminski & Bshouty (1989)
+extfield,3,1,3,4,7,Winograd (1977),9,Kaminski & Bshouty (1989)
+full,3,1,3,5,12,Kaminski & Bshouty (1989),12,Kaminski & Bshouty (1989)
+cyclic,3,1,3,5,8,Alder-Strassen (1981),12,Kaminski & Bshouty (1989)
+negacyclic,3,1,3,5,8,Alder-Strassen (1981),12,Kaminski & Bshouty (1989)
+truncated,3,1,3,5,9,Alder-Strassen (1981),12,Kaminski & Bshouty (1989)
+extfield,3,1,3,5,9,Winograd (1977),12,Kaminski & Bshouty (1989)
+full,3,1,3,6,11,Winograd (1977),,
+cyclic,3,1,3,6,10,Alder-Strassen (1981),,
+negacyclic,3,1,3,6,11,Alder-Strassen (1981),,
+truncated,3,1,3,6,11,Alder-Strassen (1981),,
+extfield,3,1,3,6,11,Winograd (1977),,
+full,3,1,3,7,13,Winograd (1977),,
+cyclic,3,1,3,7,12,Alder-Strassen (1981),,
+negacyclic,3,1,3,7,12,Alder-Strassen (1981),,
+truncated,3,1,3,7,13,Alder-Strassen (1981),,
+extfield,3,1,3,7,13,Winograd (1977),,
+full,3,1,3,8,15,Winograd (1977),,
+cyclic,3,1,3,8,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+negacyclic,3,1,3,8,14,Alder-Strassen (1981),,
+truncated,3,1,3,8,15,Alder-Strassen (1981),,
+extfield,3,1,3,8,15,Winograd (1977),,
+full,3,1,3,9,17,Winograd (1977),,
+cyclic,3,1,3,9,17,Alder-Strassen (1981),,
+negacyclic,3,1,3,9,17,Alder-Strassen (1981),,
+truncated,3,1,3,9,17,Alder-Strassen (1981),,
+extfield,3,1,3,9,17,Winograd (1977),,
+full,3,1,3,10,19,Winograd (1977),,
+cyclic,3,1,3,10,16,Alder-Strassen (1981),,
+negacyclic,3,1,3,10,17,Alder-Strassen (1981),,
+truncated,3,1,3,10,19,Alder-Strassen (1981),,
+extfield,3,1,3,10,19,Winograd (1977),,
+full,3,1,3,11,21,Winograd (1977),,
+cyclic,3,1,3,11,19,Alder-Strassen (1981),,
+negacyclic,3,1,3,11,19,Alder-Strassen (1981),,
+truncated,3,1,3,11,21,Alder-Strassen (1981),,
+extfield,3,1,3,11,21,Winograd (1977),,
+full,3,2,9,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,3,2,9,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,3,2,9,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,3,2,9,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,3,2,9,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,3,2,9,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,3,2,9,2,2,Alder-Strassen (1981),2,Lempel-Winograd (1983)
+negacyclic,3,2,9,2,2,Alder-Strassen (1981),2,Lempel-Winograd (1983)
+truncated,3,2,9,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,3,2,9,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,3,2,9,3,5,Winograd (1977),5,Winograd (1977)
+cyclic,3,2,9,3,5,Alder-Strassen (1981),5,Lempel-Winograd (1983)
+negacyclic,3,2,9,3,5,Alder-Strassen (1981),5,Lempel-Winograd (1983)
+truncated,3,2,9,3,5,Alder-Strassen (1981),5,Winograd (1977)
+extfield,3,2,9,3,5,Winograd (1977),5,Ballet et al. (2021)
+full,3,2,9,4,7,Winograd (1977),7,Winograd (1977)
+cyclic,3,2,9,4,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+negacyclic,3,2,9,4,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+truncated,3,2,9,4,7,Alder-Strassen (1981),7,Winograd (1977)
+extfield,3,2,9,4,7,Winograd (1977),7,Ballet et al. (2021)
+full,3,2,9,5,9,Winograd (1977),9,Winograd (1977)
+cyclic,3,2,9,5,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+negacyclic,3,2,9,5,7,Alder-Strassen (1981),7,Lempel-Winograd (1983)
+truncated,3,2,9,5,9,Alder-Strassen (1981),9,Winograd (1977)
+extfield,3,2,9,5,9,Winograd (1977),9,Ballet et al. (2021)
+full,3,2,9,6,12,Kaminski & Bshouty (1989),12,Kaminski & Bshouty (1989)
+cyclic,3,2,9,6,10,Alder-Strassen (1981),10,Lempel-Winograd (1983)
+negacyclic,3,2,9,6,10,Alder-Strassen (1981),10,Lempel-Winograd (1983)
+truncated,3,2,9,6,11,Alder-Strassen (1981),12,Kaminski & Bshouty (1989)
+extfield,3,2,9,6,11,Winograd (1977),12,Kaminski & Bshouty (1989)
+full,3,2,9,7,15,Kaminski & Bshouty (1989),15,Kaminski & Bshouty (1989)
+cyclic,3,2,9,7,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+negacyclic,3,2,9,7,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+truncated,3,2,9,7,13,Alder-Strassen (1981),15,Kaminski & Bshouty (1989)
+extfield,3,2,9,7,13,Winograd (1977),15,Kaminski & Bshouty (1989)
+full,3,2,9,8,18,Kaminski & Bshouty (1989),18,Kaminski & Bshouty (1989)
+cyclic,3,2,9,8,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+negacyclic,3,2,9,8,12,Alder-Strassen (1981),12,Lempel-Winograd (1983)
+truncated,3,2,9,8,15,Alder-Strassen (1981),18,Kaminski & Bshouty (1989)
+extfield,3,2,9,8,15,Winograd (1977),18,Kaminski & Bshouty (1989)
+full,3,2,9,9,21,Kaminski & Bshouty (1989),21,Kaminski & Bshouty (1989)
+cyclic,3,2,9,9,17,Alder-Strassen (1981),21,Kaminski & Bshouty (1989)
+negacyclic,3,2,9,9,17,Alder-Strassen (1981),21,Kaminski & Bshouty (1989)
+truncated,3,2,9,9,17,Alder-Strassen (1981),21,Kaminski & Bshouty (1989)
+extfield,3,2,9,9,17,Winograd (1977),21,Kaminski & Bshouty (1989)
+full,3,2,9,10,24,Kaminski & Bshouty (1989),24,Kaminski & Bshouty (1989)
+cyclic,3,2,9,10,14,Alder-Strassen (1981),14,Lempel-Winograd (1983)
+negacyclic,3,2,9,10,14,Alder-Strassen (1981),14,Lempel-Winograd (1983)
+truncated,3,2,9,10,19,Alder-Strassen (1981),24,Kaminski & Bshouty (1989)
+extfield,3,2,9,10,19,Winograd (1977),24,Kaminski & Bshouty (1989)
+full,3,2,9,11,27,Kaminski & Bshouty (1989),27,Kaminski & Bshouty (1989)
+cyclic,3,2,9,11,19,Alder-Strassen (1981),19,Lempel-Winograd (1983)
+negacyclic,3,2,9,11,19,Alder-Strassen (1981),19,Lempel-Winograd (1983)
+truncated,3,2,9,11,21,Alder-Strassen (1981),27,Kaminski & Bshouty (1989)
+extfield,3,2,9,11,21,Winograd (1977),27,Kaminski & Bshouty (1989)
+full,5,1,5,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,5,1,5,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,5,1,5,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,5,1,5,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,5,1,5,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,5,1,5,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,5,1,5,2,2,Alder-Strassen (1981),2,Lempel-Winograd (1983)
+negacyclic,5,1,5,2,2,Alder-Strassen (1981),2,Lempel-Winograd (1983)
+truncated,5,1,5,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,5,1,5,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,5,1,5,3,5,Winograd (1977),5,Winograd (1977)
+cyclic,5,1,5,3,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+negacyclic,5,1,5,3,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+truncated,5,1,5,3,5,Alder-Strassen (1981),5,Winograd (1977)
+extfield,5,1,5,3,5,Winograd (1977),5,Ballet et al. (2021)
+full,5,1,5,4,8,Kaminski & Bshouty (1989),8,Kaminski & Bshouty (1989)
+cyclic,5,1,5,4,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+negacyclic,5,1,5,4,6,Alder-Strassen (1981),6,Lempel-Winograd (1983)
+truncated,5,1,5,4,7,Alder-Strassen (1981),8,Kaminski & Bshouty (1989)
+extfield,5,1,5,4,7,Winograd (1977),8,Kaminski & Bshouty (1989)
+full,5,1,5,5,11,Kaminski & Bshouty (1989),11,Kaminski & Bshouty (1989)
+cyclic,5,1,5,5,9,Alder-Strassen (1981),11,Kaminski & Bshouty (1989)
+negacyclic,5,1,5,5,9,Alder-Strassen (1981),11,Kaminski & Bshouty (1989)
+truncated,5,1,5,5,9,Alder-Strassen (1981),11,Kaminski & Bshouty (1989)
+extfield,5,1,5,5,9,Winograd (1977),11,Kaminski & Bshouty (1989)
+full,5,1,5,6,14,Kaminski & Bshouty (1989),14,Kaminski & Bshouty (1989)
+cyclic,5,1,5,6,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+negacyclic,5,1,5,6,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+truncated,5,1,5,6,11,Alder-Strassen (1981),14,Kaminski & Bshouty (1989)
+extfield,5,1,5,6,11,Winograd (1977),14,Kaminski & Bshouty (1989)
+full,5,1,5,7,17,Kaminski & Bshouty (1989),17,Kaminski & Bshouty (1989)
+cyclic,5,1,5,7,12,Alder-Strassen (1981),17,Kaminski & Bshouty (1989)
+negacyclic,5,1,5,7,12,Alder-Strassen (1981),17,Kaminski & Bshouty (1989)
+truncated,5,1,5,7,13,Alder-Strassen (1981),17,Kaminski & Bshouty (1989)
+extfield,5,1,5,7,13,Winograd (1977),17,Kaminski & Bshouty (1989)
+full,5,1,5,8,15,Winograd (1977),,
+cyclic,5,1,5,8,10,Alder-Strassen (1981),10,Lempel-Winograd (1983)
+negacyclic,5,1,5,8,14,Alder-Strassen (1981),,
+truncated,5,1,5,8,15,Alder-Strassen (1981),,
+extfield,5,1,5,8,15,Winograd (1977),,
+full,5,1,5,9,17,Winograd (1977),,
+cyclic,5,1,5,9,15,Alder-Strassen (1981),,
+negacyclic,5,1,5,9,15,Alder-Strassen (1981),,
+truncated,5,1,5,9,17,Alder-Strassen (1981),,
+extfield,5,1,5,9,17,Winograd (1977),,
+full,5,1,5,10,19,Winograd (1977),,
+cyclic,5,1,5,10,18,Alder-Strassen (1981),,
+negacyclic,5,1,5,10,18,Alder-Strassen (1981),,
+truncated,5,1,5,10,19,Alder-Strassen (1981),,
+extfield,5,1,5,10,19,Winograd (1977),,
+full,5,1,5,11,21,Winograd (1977),,
+cyclic,5,1,5,11,19,Alder-Strassen (1981),,
+negacyclic,5,1,5,11,19,Alder-Strassen (1981),,
+truncated,5,1,5,11,21,Alder-Strassen (1981),,
+extfield,5,1,5,11,21,Winograd (1977),,
+full,7,1,7,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,7,1,7,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,7,1,7,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,7,1,7,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,7,1,7,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,7,1,7,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,7,1,7,2,2,Alder-Strassen (1981),2,Lempel-Winograd (1983)
+negacyclic,7,1,7,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,7,1,7,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,7,1,7,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,7,1,7,3,5,Winograd (1977),5,Winograd (1977)
+cyclic,7,1,7,3,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+negacyclic,7,1,7,3,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,7,1,7,3,5,Alder-Strassen (1981),5,Winograd (1977)
+extfield,7,1,7,3,5,Winograd (1977),5,Ballet et al. (2021)
+full,7,1,7,4,7,Winograd (1977),7,Winograd (1977)
+cyclic,7,1,7,4,5,Alder-Strassen (1981),5,Lempel-Winograd (1983)
+negacyclic,7,1,7,4,6,Alder-Strassen (1981),6,Lempel-Winograd (1983)
+truncated,7,1,7,4,7,Alder-Strassen (1981),7,Winograd (1977)
+extfield,7,1,7,4,7,Winograd (1977),7,Ballet et al. (2021)
+full,7,1,7,5,10,Kaminski & Bshouty (1989),10,Kaminski & Bshouty (1989)
+cyclic,7,1,7,5,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+negacyclic,7,1,7,5,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+truncated,7,1,7,5,9,Alder-Strassen (1981),10,Kaminski & Bshouty (1989)
+extfield,7,1,7,5,9,Winograd (1977),10,Kaminski & Bshouty (1989)
+full,7,1,7,6,13,Kaminski & Bshouty (1989),13,Kaminski & Bshouty (1989)
+cyclic,7,1,7,6,6,Alder-Strassen (1981),6,Lempel-Winograd (1983)
+negacyclic,7,1,7,6,9,Alder-Strassen (1981),9,Lempel-Winograd (1983)
+truncated,7,1,7,6,11,Alder-Strassen (1981),13,Kaminski & Bshouty (1989)
+extfield,7,1,7,6,11,Winograd (1977),13,Kaminski & Bshouty (1989)
+full,7,1,7,7,16,Kaminski & Bshouty (1989),16,Kaminski & Bshouty (1989)
+cyclic,7,1,7,7,13,Alder-Strassen (1981),16,Kaminski & Bshouty (1989)
+negacyclic,7,1,7,7,13,Alder-Strassen (1981),16,Kaminski & Bshouty (1989)
+truncated,7,1,7,7,13,Alder-Strassen (1981),16,Kaminski & Bshouty (1989)
+extfield,7,1,7,7,13,Winograd (1977),16,Kaminski & Bshouty (1989)
+full,7,1,7,8,19,Kaminski & Bshouty (1989),19,Kaminski & Bshouty (1989)
+cyclic,7,1,7,8,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+negacyclic,7,1,7,8,12,Alder-Strassen (1981),12,Lempel-Winograd (1983)
+truncated,7,1,7,8,15,Alder-Strassen (1981),19,Kaminski & Bshouty (1989)
+extfield,7,1,7,8,15,Winograd (1977),19,Kaminski & Bshouty (1989)
+full,7,1,7,9,22,Kaminski & Bshouty (1989),22,Kaminski & Bshouty (1989)
+cyclic,7,1,7,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+negacyclic,7,1,7,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+truncated,7,1,7,9,17,Alder-Strassen (1981),22,Kaminski & Bshouty (1989)
+extfield,7,1,7,9,17,Winograd (1977),22,Kaminski & Bshouty (1989)
+full,7,1,7,10,19,Winograd (1977),,
+cyclic,7,1,7,10,16,Alder-Strassen (1981),16,Lempel-Winograd (1983)
+negacyclic,7,1,7,10,17,Alder-Strassen (1981),17,Lempel-Winograd (1983)
+truncated,7,1,7,10,19,Alder-Strassen (1981),,
+extfield,7,1,7,10,19,Winograd (1977),,
+full,7,1,7,11,21,Winograd (1977),,
+cyclic,7,1,7,11,20,Alder-Strassen (1981),,
+negacyclic,7,1,7,11,20,Alder-Strassen (1981),,
+truncated,7,1,7,11,21,Alder-Strassen (1981),,
+extfield,7,1,7,11,21,Winograd (1977),,
+full,11,1,11,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,11,1,11,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,11,1,11,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,11,1,11,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,11,1,11,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,11,1,11,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,11,1,11,2,2,Alder-Strassen (1981),2,Lempel-Winograd (1983)
+negacyclic,11,1,11,2,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,11,1,11,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,11,1,11,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,11,1,11,3,5,Winograd (1977),5,Winograd (1977)
+cyclic,11,1,11,3,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+negacyclic,11,1,11,3,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+truncated,11,1,11,3,5,Alder-Strassen (1981),5,Winograd (1977)
+extfield,11,1,11,3,5,Winograd (1977),5,Ballet et al. (2021)
+full,11,1,11,4,7,Winograd (1977),7,Winograd (1977)
+cyclic,11,1,11,4,5,Alder-Strassen (1981),5,Lempel-Winograd (1983)
+negacyclic,11,1,11,4,6,Alder-Strassen (1981),6,Lempel-Winograd (1983)
+truncated,11,1,11,4,7,Alder-Strassen (1981),7,Winograd (1977)
+extfield,11,1,11,4,7,Winograd (1977),7,Ballet et al. (2021)
+full,11,1,11,5,9,Winograd (1977),9,Winograd (1977)
+cyclic,11,1,11,5,5,Alder-Strassen (1981),5,Lempel-Winograd (1983)
+negacyclic,11,1,11,5,5,Alder-Strassen (1981),5,Lempel-Winograd (1983)
+truncated,11,1,11,5,9,Alder-Strassen (1981),9,Winograd (1977)
+extfield,11,1,11,5,9,Winograd (1977),9,Ballet et al. (2021)
+full,11,1,11,6,11,Winograd (1977),11,Winograd (1977)
+cyclic,11,1,11,6,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+negacyclic,11,1,11,6,9,Alder-Strassen (1981),9,Lempel-Winograd (1983)
+truncated,11,1,11,6,11,Alder-Strassen (1981),11,Winograd (1977)
+extfield,11,1,11,6,11,Winograd (1977),11,Ballet et al. (2021)
+full,11,1,11,7,14,Kaminski & Bshouty (1989),14,Kaminski & Bshouty (1989)
+cyclic,11,1,11,7,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+negacyclic,11,1,11,7,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+truncated,11,1,11,7,13,Alder-Strassen (1981),14,Kaminski & Bshouty (1989)
+extfield,11,1,11,7,13,Winograd (1977),14,Kaminski & Bshouty (1989)
+full,11,1,11,8,17,Kaminski & Bshouty (1989),17,Kaminski & Bshouty (1989)
+cyclic,11,1,11,8,11,Alder-Strassen (1981),11,Lempel-Winograd (1983)
+negacyclic,11,1,11,8,14,Alder-Strassen (1981),14,Lempel-Winograd (1983)
+truncated,11,1,11,8,15,Alder-Strassen (1981),17,Kaminski & Bshouty (1989)
+extfield,11,1,11,8,15,Winograd (1977),17,Kaminski & Bshouty (1989)
+full,11,1,11,9,20,Kaminski & Bshouty (1989),20,Kaminski & Bshouty (1989)
+cyclic,11,1,11,9,15,Alder-Strassen (1981),15,Lempel-Winograd (1983)
+negacyclic,11,1,11,9,15,Alder-Strassen (1981),15,Lempel-Winograd (1983)
+truncated,11,1,11,9,17,Alder-Strassen (1981),20,Kaminski & Bshouty (1989)
+extfield,11,1,11,9,17,Winograd (1977),20,Kaminski & Bshouty (1989)
+full,11,1,11,10,23,Kaminski & Bshouty (1989),23,Kaminski & Bshouty (1989)
+cyclic,11,1,11,10,10,Alder-Strassen (1981),10,Lempel-Winograd (1983)
+negacyclic,11,1,11,10,15,Alder-Strassen (1981),15,Lempel-Winograd (1983)
+truncated,11,1,11,10,19,Alder-Strassen (1981),23,Kaminski & Bshouty (1989)
+extfield,11,1,11,10,19,Winograd (1977),23,Kaminski & Bshouty (1989)
+full,11,1,11,11,26,Kaminski & Bshouty (1989),26,Kaminski & Bshouty (1989)
+cyclic,11,1,11,11,21,Alder-Strassen (1981),26,Kaminski & Bshouty (1989)
+negacyclic,11,1,11,11,21,Alder-Strassen (1981),26,Kaminski & Bshouty (1989)
+truncated,11,1,11,11,21,Alder-Strassen (1981),26,Kaminski & Bshouty (1989)
+extfield,11,1,11,11,21,Winograd (1977),26,Kaminski & Bshouty (1989)
+full,13,1,13,1,1,Winograd (1977),1,Winograd (1977)
+cyclic,13,1,13,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+negacyclic,13,1,13,1,1,Alder-Strassen (1981),1,Lempel-Winograd (1983)
+truncated,13,1,13,1,1,Alder-Strassen (1981),1,Winograd (1977)
+extfield,13,1,13,1,1,Winograd (1977),1,Ballet et al. (2021)
+full,13,1,13,2,3,Winograd (1977),3,Winograd (1977)
+cyclic,13,1,13,2,2,Alder-Strassen (1981),2,Lempel-Winograd (1983)
+negacyclic,13,1,13,2,2,Alder-Strassen (1981),2,Lempel-Winograd (1983)
+truncated,13,1,13,2,3,Alder-Strassen (1981),3,Winograd (1977)
+extfield,13,1,13,2,3,Winograd (1977),3,Ballet et al. (2021)
+full,13,1,13,3,5,Winograd (1977),5,Winograd (1977)
+cyclic,13,1,13,3,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+negacyclic,13,1,13,3,3,Alder-Strassen (1981),3,Lempel-Winograd (1983)
+truncated,13,1,13,3,5,Alder-Strassen (1981),5,Winograd (1977)
+extfield,13,1,13,3,5,Winograd (1977),5,Ballet et al. (2021)
+full,13,1,13,4,7,Winograd (1977),7,Winograd (1977)
+cyclic,13,1,13,4,4,Alder-Strassen (1981),4,Lempel-Winograd (1983)
+negacyclic,13,1,13,4,6,Alder-Strassen (1981),6,Lempel-Winograd (1983)
+truncated,13,1,13,4,7,Alder-Strassen (1981),7,Winograd (1977)
+extfield,13,1,13,4,7,Winograd (1977),7,Ballet et al. (2021)
+full,13,1,13,5,9,Winograd (1977),9,Winograd (1977)
+cyclic,13,1,13,5,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+negacyclic,13,1,13,5,8,Alder-Strassen (1981),8,Lempel-Winograd (1983)
+truncated,13,1,13,5,9,Alder-Strassen (1981),9,Winograd (1977)
+extfield,13,1,13,5,9,Winograd (1977),9,Ballet et al. (2021)
+full,13,1,13,6,11,Winograd (1977),11,Winograd (1977)
+cyclic,13,1,13,6,6,Alder-Strassen (1981),6,Lempel-Winograd (1983)
+negacyclic,13,1,13,6,6,Alder-Strassen (1981),6,Lempel-Winograd (1983)
+truncated,13,1,13,6,11,Alder-Strassen (1981),11,Winograd (1977)
+extfield,13,1,13,6,11,Winograd (1977),11,Ballet et al. (2021)
+full,13,1,13,7,13,Winograd (1977),13,Winograd (1977)
+cyclic,13,1,13,7,10,Alder-Strassen (1981),10,Lempel-Winograd (1983)
+negacyclic,13,1,13,7,10,Alder-Strassen (1981),10,Lempel-Winograd (1983)
+truncated,13,1,13,7,13,Alder-Strassen (1981),13,Winograd (1977)
+extfield,13,1,13,7,13,Winograd (1977),13,Ballet et al. (2021)
+full,13,1,13,8,16,Kaminski & Bshouty (1989),16,Kaminski & Bshouty (1989)
+cyclic,13,1,13,8,10,Alder-Strassen (1981),10,Lempel-Winograd (1983)
+negacyclic,13,1,13,8,14,Alder-Strassen (1981),14,Lempel-Winograd (1983)
+truncated,13,1,13,8,15,Alder-Strassen (1981),16,Kaminski & Bshouty (1989)
+extfield,13,1,13,8,15,Winograd (1977),16,Kaminski & Bshouty (1989)
+full,13,1,13,9,19,Kaminski & Bshouty (1989),19,Kaminski & Bshouty (1989)
+cyclic,13,1,13,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+negacyclic,13,1,13,9,13,Alder-Strassen (1981),13,Lempel-Winograd (1983)
+truncated,13,1,13,9,17,Alder-Strassen (1981),19,Kaminski & Bshouty (1989)
+extfield,13,1,13,9,17,Winograd (1977),19,Kaminski & Bshouty (1989)
+full,13,1,13,10,22,Kaminski & Bshouty (1989),22,Kaminski & Bshouty (1989)
+cyclic,13,1,13,10,16,Alder-Strassen (1981),16,Lempel-Winograd (1983)
+negacyclic,13,1,13,10,16,Alder-Strassen (1981),16,Lempel-Winograd (1983)
+truncated,13,1,13,10,19,Alder-Strassen (1981),22,Kaminski & Bshouty (1989)
+extfield,13,1,13,10,19,Winograd (1977),22,Kaminski & Bshouty (1989)
+full,13,1,13,11,25,Kaminski & Bshouty (1989),25,Kaminski & Bshouty (1989)
+cyclic,13,1,13,11,20,Alder-Strassen (1981),25,Kaminski & Bshouty (1989)
+negacyclic,13,1,13,11,20,Alder-Strassen (1981),25,Kaminski & Bshouty (1989)
+truncated,13,1,13,11,21,Alder-Strassen (1981),25,Kaminski & Bshouty (1989)
+extfield,13,1,13,11,21,Winograd (1977),25,Kaminski & Bshouty (1989)

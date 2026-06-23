@@ -31,6 +31,7 @@ cc_test(
         "//core:tensor",
         "//core:tensor_utils",
         "//problems/cyclic:tensor",
+        "//problems/truncated:tensor",
         "@googletest//:gtest_main",
     ],
 )
@@ -41,9 +42,9 @@ cc_library(
     deps = [
         ":irreducibles",
         "//core:bit_vec",
-        "//core:constraints",
         "//core:gf",
         "//core:gf_vec",
+        "//core:constraints",
     ],
 )
 
@@ -71,8 +72,8 @@ cc_library(
         ":symmetry",
         ":tensor",
         "//core:bit_vec",
-        "//core:constraints",
         "//core:gf_vec",
+        "//core:constraints",
         "//core:tensor",
     ],
 )

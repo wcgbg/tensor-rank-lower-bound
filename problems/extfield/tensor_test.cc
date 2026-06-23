@@ -13,6 +13,7 @@
 #include "core/tensor_utils.h"
 #include "problems/cyclic/tensor.h"
 #include "problems/extfield/irreducibles.h"
+#include "problems/truncated/tensor.h"
 
 namespace extfield {
 
@@ -78,6 +79,15 @@ TEST(BuildMulTensorTest, GF256) {
   EXPECT_EQ(actual_c, c);
 }
 
+// With p = x^n (all low-degree coefficients zero), x^n reduces to 0, so terms
+// with i+j >= n vanish: ExtensionField equals Truncated multiplication.
+TEST(BuildMulTensorTest, EqualsTruncatedWhenPIsXn) {
+  const std::bitset<3> p3; // x^3
+  EXPECT_EQ(BuildMulTensor<3>(p3), (truncated::BuildMulTensor<2, 1, 3>()));
+  const std::bitset<5> p5; // x^5
+  EXPECT_EQ(BuildMulTensor<5>(p5), (truncated::BuildMulTensor<2, 1, 5>()));
+}
+
 // With p = x^n - 1 = x^n + 1 (in F2), x^n reduces to 1, so degrees wrap around
 // modulo n: ExtensionField equals Cyclic multiplication.
 TEST(BuildMulTensorTest, EqualsCyclicWhenPIsXnMinus1) {
@@ -96,9 +106,10 @@ namespace {
 // Apply the tensor as a bilinear product: c_k = Σ_{i,j} T[i][j][k] · a_i · b_j,
 // all arithmetic in 𝔽_q.
 template <int P, int M, std::size_t N>
-std::array<GF<P, M>, N> MulViaTensor(const Tensor<P, M, N, N, N> &t,
-                                     const std::array<GF<P, M>, N> &a,
-                                     const std::array<GF<P, M>, N> &b) {
+std::array<GF<P, M>, N>
+MulViaTensor(const Tensor<P, M, N, N, N> &t,
+             const std::array<GF<P, M>, N> &a,
+             const std::array<GF<P, M>, N> &b) {
   using F = GF<P, M>;
   std::array<F, N> c{};
   for (std::size_t i = 0; i < N; ++i) {
@@ -189,7 +200,8 @@ template <std::size_t N> void CheckMatchesBitsetPath() {
   for (std::size_t i = 0; i < N; ++i) {
     p_gf[i] = GF<2, 1>{static_cast<uint8_t>(bits[i] ? 1 : 0)};
   }
-  EXPECT_EQ((BuildMulTensor<N>(bits)), (BuildMulTensor<2, 1, N>(p_gf)))
+  EXPECT_EQ((BuildMulTensor<N>(bits)),
+            (BuildMulTensor<2, 1, N>(p_gf)))
       << "N=" << N;
 }
 

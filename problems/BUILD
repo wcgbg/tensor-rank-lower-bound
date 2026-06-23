@@ -14,5 +14,7 @@ cc_library(
         "//problems/extfield:problem",
         "//problems/full:problem",
         "//problems/matrix:problem",
+        "//problems/negacyclic:problem",
+        "//problems/truncated:problem",
     ],
 )

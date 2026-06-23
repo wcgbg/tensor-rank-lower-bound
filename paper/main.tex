@@ -21,6 +21,8 @@
 \newcommand{\Rk}[2]{\mathbf{R}_{#1}(#2)}
 \newcommand{\Cyct}[1]{\mathrm{C}_{#1}}
 \newcommand{\Fullt}[1]{\mathrm{P}_{#1}}
+\newcommand{\Trunct}[1]{\mathrm{T}_{#1}}
+\newcommand{\Negat}[1]{\mathrm{C}^{-}_{#1}}
 \newcommand{\GL}{\mathrm{GL}}
 \newcommand{\PGL}{\mathrm{PGL}}
 \newcommand{\Gal}{\mathrm{Gal}}
@@ -39,7 +41,7 @@
 
 \bibliographystyle{plain}
 
-\title{Automated Lower Bounds for Bilinear Complexity over Finite Fields}
+\title{Automated Lower Bounds for Bilinear Complexity\\ over Finite Fields}
 \author{Chengu Wang\\ \texttt{wangchengu@gmail.com}}
 \date{}
 
@@ -56,13 +58,13 @@
   that a verifier rechecks, typically faster than the search.
 
   Instantiating the framework for matrix multiplication, we improve the lower bounds
-  for several small formats over $\mathbb{F}_2$, most notably showing that
+  for four small formats over $\mathbb{F}_2$, most notably showing that
   the bilinear complexity of multiplying two $3 \times 3$ matrices over $\mathbb{F}_2$ is at
-  least $20$ --- raising the bound of $19$ that had stood since Bl\"aser (2003).
-  The search algorithm finds this proof in under an hour on a laptop, and the certificate verifies
-  in seconds. Instantiating it for polynomial multiplication, we obtain eight new
-  lower bounds for full and cyclic multiplication over $\mathbb{F}_2$ and $\mathbb{F}_3$. Every
-  bound in this paper is backed by a machine-checkable certificate.
+  least $20$, raising the bound of $19$ that had stood since Bl\"aser (2003).
+  Instantiating it for polynomial multiplication --- full products,
+  cyclic convolution, and the truncated (modulo $x^N$) and negacyclic (modulo
+  $x^N+1$) products --- we obtain eighteen new lower bounds over $\mathbb{F}_2$ and $\mathbb{F}_3$.
+  Every bound is backed by a machine-checkable certificate.
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
@@ -77,8 +79,7 @@ maps have driven the subject: matrix multiplication and polynomial
 multiplication. For matrix multiplication the central quantity is
 $\R(\mmt{l}{m}{n})$, the rank of the tensor for multiplying an $l\times m$ by an
 $m\times n$ matrix; for polynomial multiplication it is the rank of the tensor
-for multiplying two polynomials, either as a full product or modulo $x^N-1$
-(cyclic convolution).
+for multiplying two polynomials.
 
 Over small finite fields these ranks are notoriously hard to pin down, and even
 for tiny formats the best known lower and upper bounds often disagree. This paper
@@ -92,8 +93,8 @@ Winograd~\cite{winograd1971multiplication} proved the matching lower bound over 
 Then, Hopcroft and Kerr~\cite{hopcroft1971minimizing} established several lower
 bounds over $\F_2$, including $\Rk{\F_2}{\mmt{2}{3}{3}}\ge 15$, and stated
 $\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19$ without a full proof.
-Bshouty~\cite{bshouty1989lower} proved $\Rk{\F_2}{\mmt{n}{n}{n}}\ge \tfrac{5}{2}n^2-o(n^2)$
-over $\F_2$. Bl\"aser established the influential bounds
+Bshouty~\cite{bshouty1989lower} proved $\Rk{\F_2}{\mmt{n}{n}{n}}\ge \tfrac{5}{2}n^2-o(n^2)$.
+Bl\"aser established the influential bounds
 $\R(\mmt{l}{m}{n})\ge lm+mn+l-m+n-3$ over algebraically closed
 fields~\cite{blaser1999lower}, $\R(\mmt{n}{n}{n})\ge \tfrac{5}{2}n^2-3n$ over
 arbitrary fields~\cite{blaser1999fivehalf}, and finally
@@ -127,18 +128,27 @@ Chudnovsky--Chudnovsky~\cite{chudnovsky1988algebraic}; small cases were settled 
 the exhaustive search of Barbulescu, Detrey, Estibals, and
 Zimmermann~\cite{barbulescu2012finding}.
 
-\emph{Cyclic} convolution, or polynomial multiplication modulo $x^N-1$, is multiplication in the group algebra of
-a cyclic group, and underlies the discrete Fourier transform, digital signal
-processing, and cyclic error-correcting codes. Winograd~\cite{winograd1977some}
-proved that multiplication modulo a polynomial with $k$ distinct irreducible
-factors needs at least $2N-k$ products; here $k$ is the number of $q$-cyclotomic
-cosets modulo $N$. Bl\"aser's characterization of algebras of minimal bilinear
-complexity~\cite{blaser2005complete}, combined with the minimal-rank theory of
-Averbuch, Galil, and Winograd~\cite{averbuch1988classification,averbuch1991classification},
-yields stronger lower bounds for the local-algebra factors. Upper bounds come from
-the cyclic-convolution constructions of Wagh and Morgera~\cite{wagh1983structured}
-and Morgera~\cite{morgera1990multiplicative}, refined by Cenk and
-\"Ozbudak~\cite{cenk2010multiplication,cenk2011multiplication}.
+A second strand is multiplication in a polynomial quotient ring
+$\F_q[x]/(x^N-\gamma)$, which specializes to three classical families:
+\emph{cyclic} convolution ($\gamma=1$, modulo $x^N-1$), multiplication in the group
+algebra of a cyclic group, underlying the discrete Fourier transform, digital signal
+processing, and cyclic codes; the \emph{truncated} (or short) product ($\gamma=0$,
+modulo $x^N$), multiplication in the local algebra $\F_q[x]/x^N$ that is the
+recurring base case of Karatsuba- and Toom-style schemes; and the \emph{negacyclic}
+product ($\gamma=-1$, modulo $x^N+1$), a twisted group algebra underlying skew-cyclic
+codes and lattice-based cryptography. The lower bounds for all three are governed by
+the factorization of $x^N-\gamma$: Winograd~\cite{winograd1977some} proved that
+multiplication modulo a polynomial with $k$ distinct irreducible factors needs at
+least $2N-k$ products, and Bl\"aser's characterization of algebras of minimal
+bilinear complexity~\cite{blaser2005complete}, combined with the minimal-rank theory
+of Averbuch, Galil, and
+Winograd~\cite{averbuch1988classification,averbuch1991classification} (whose Part~II
+treats exactly the truncated algebra $\F_q[x]/x^N$), strengthens these on the
+local-algebra factors. Upper bounds come from the convolution constructions of Wagh
+and Morgera~\cite{wagh1983structured} and Morgera~\cite{morgera1990multiplicative},
+refined by Cenk and \"Ozbudak~\cite{cenk2010multiplication,cenk2011multiplication}.
+Over characteristic $2$ the negacyclic product coincides with the cyclic one, since
+$x^N+1=x^N-1$.
 
 \subsection{Our contributions}
 
@@ -165,7 +175,10 @@ best known lower bound for four small formats over $\F_2$.
 
 The headline is $\Rk{\F_2}{\mmt{3}{3}{3}}\ge 20$, which raises the value $19$ that had
 stood since Bl\"aser (2003)~\cite{blaser2003complexity}; the search finds this proof
-in about $40$ minutes on a laptop and the certificate verifies in seconds. The bound
+in about $40$ minutes on a laptop and the certificate verifies in seconds. The same
+certificate has since been re-verified independently by
+Beuchert~\cite{beuchert_2026_20752782}, using a checker written from scratch in a
+different programming language. The bound
 $\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19$ completes a bound stated without proof by Hopcroft and
 Kerr~\cite{hopcroft1971minimizing}. Table~\ref{tab:matrix} places all four in
 context.
@@ -175,57 +188,51 @@ context.
   \setlength{\tabcolsep}{14pt}
   \begin{tabular}{llll}
     \toprule
-    format          & prev LB                                                          & our LB       & prev UB                                \\
+    format          & prev LB                                                          & our LB       & prev UB                                                      \\
     \midrule
-    $\mmt{2}{2}{2}$ & $7$~\cite{winograd1971multiplication}                            & $7$          & $7$~\cite{strassen1969gaussian}        \\
-    $\mmt{2}{2}{3}$ & $11$~\cite{hopcroft1971minimizing}                               & $11$         & $11$                                   \\
-    $\mmt{2}{2}{4}$ & $14$~\cite{hopcroft1971minimizing}                               & $14$         & $14$                                   \\
-    $\mmt{2}{3}{3}$ & $15$~\cite{hopcroft1971minimizing}                               & $15$         & $15$~\cite{hopcroft1971minimizing}     \\
-    $\mmt{2}{3}{4}$ & $18$~\cite{blaser1999lower}, $19$?~\cite{hopcroft1971minimizing} & $\boxed{19}$ & $20$~\cite{hopcroft1971minimizing}     \\
-    $\mmt{3}{3}{3}$ & $19$~\cite{blaser2003complexity}                                 & $\boxed{20}$ & $23$~\cite{laderman1976noncommutative} \\
-    $\mmt{3}{3}{4}$ & $24$~\cite{blaser2003complexity}                                 & $\boxed{25}$ & $29$~\cite{smirnov2013bilinear}        \\
-    $\mmt{3}{4}{4}$ & $28$~\cite{blaser1999lower}                                      & $\boxed{29}$ & $38$~\cite{smirnov2013bilinear}        \\
+    $\mmt{2}{2}{2}$ & $7$~\cite{winograd1971multiplication}                            & $7$          & $7$~\cite{strassen1969gaussian}                              \\
+    $\mmt{2}{2}{3}$ & $11$~\cite{hopcroft1971minimizing}                               & $11$         & $11$ ($\langle 2, 2, 2:7\rangle + \langle 2, 2, 1:4\rangle$) \\
+    $\mmt{2}{2}{4}$ & $14$~\cite{hopcroft1971minimizing}                               & $14$         & $14$ ($\langle 2, 2, 2:7\rangle + \langle 2, 2, 2:7\rangle$) \\
+    $\mmt{2}{3}{3}$ & $15$~\cite{hopcroft1971minimizing}                               & $15$         & $15$~\cite{hopcroft1971minimizing}                           \\
+    $\mmt{2}{3}{4}$ & $18$~\cite{blaser1999lower}, $19$?~\cite{hopcroft1971minimizing} & $\boxed{19}$ & $20$~\cite{hopcroft1971minimizing}                           \\
+    $\mmt{3}{3}{3}$ & $19$~\cite{blaser2003complexity}                                 & $\boxed{20}$ & $23$~\cite{laderman1976noncommutative}                       \\
+    $\mmt{3}{3}{4}$ & $24$~\cite{blaser2003complexity}                                 & $\boxed{25}$ & $29$~\cite{smirnov2013bilinear}                              \\
+    $\mmt{3}{4}{4}$ & $28$~\cite{blaser1999lower}                                      & $\boxed{29}$ & $38$~\cite{smirnov2013bilinear}                              \\
     \bottomrule
   \end{tabular}
   \caption{Matrix multiplication tensor rank over $\F_2$; boxed entries are new.}
   \label{tab:matrix}
 \end{table}
 
-For polynomial multiplication the same framework yields eight new lower bounds over
-$\F_2$ and $\F_3$.
+For polynomial multiplication the same framework yields eighteen new lower bounds,
+over $\F_2$ and $\F_3$ --- for the full product and for the
+three quotient families $\F_q[x]/(x^N-\gamma)$.
 
 \begin{theorem}[Polynomial multiplication]\label{thm:poly}
-  Write $\Rk{\F_q}{\Fullt{N}}$ for the bilinear complexity over $\F_q$ of the full
-  product of two degree-$(N-1)$ polynomials, and $\Rk{\F_q}{\Cyct{N}}$ for that of
-  cyclic convolution of length $N$. Then
+  Write $\Rk{\F_q}{\Fullt{N}}$, $\Rk{\F_q}{\Cyct{N}}$, $\Rk{\F_q}{\Trunct{N}}$, and
+  $\Rk{\F_q}{\Negat{N}}$ for the bilinear complexity over $\F_q$ of, respectively, the
+  full product of two degree-$(N-1)$ polynomials, cyclic convolution (modulo $x^N-1$),
+  the truncated product (modulo $x^N$), and the negacyclic product (modulo $x^N+1$),
+  each of length $N$. Then
   \[
     \begin{aligned}
-       & \Rk{\F_2}{\Fullt{6}}\ge 16, & \quad
-       & \Rk{\F_2}{\Fullt{7}}\ge 19, & \quad
-       & \Rk{\F_2}{\Fullt{8}}\ge 21, & \quad
-       & \Rk{\F_3}{\Fullt{6}}\ge 14,         \\
-       & \Rk{\F_2}{\Cyct{7}}\ge 13,  & \quad
-       & \Rk{\F_2}{\Cyct{8}}\ge 19,  & \quad
-       & \Rk{\F_2}{\Cyct{10}}\ge 22, & \quad
-       & \Rk{\F_3}{\Cyct{9}}\ge 19.
+      \text{full:}       & \quad \Rk{\F_2}{\Fullt{6}}\ge 16,\ \ \Rk{\F_2}{\Fullt{7}}\ge 19,\ \ \Rk{\F_2}{\Fullt{8}}\ge 21,\ \ \Rk{\F_3}{\Fullt{6}}\ge 14;                                      \\
+      \text{cyclic:}     & \quad \Rk{\F_2}{\Cyct{7}}\ge 13,\ \ \Rk{\F_2}{\Cyct{8}}\ge 19,\ \ \Rk{\F_2}{\Cyct{10}}\ge 22,\ \ \Rk{\F_3}{\Cyct{9}}\ge 19;                                         \\
+      \text{truncated:}  & \quad \Rk{\F_2}{\Trunct{6}}\ge 13,\ \ \Rk{\F_2}{\Trunct{7}}\ge 16,\ \ \Rk{\F_2}{\Trunct{8}}\ge 19,\ \ \Rk{\F_2}{\Trunct{9}}\ge 21,\ \ \Rk{\F_2}{\Trunct{10}}\ge 24, \\
+                         & \quad \Rk{\F_2}{\Trunct{11}}\ge 27,\ \ \Rk{\F_3}{\Trunct{8}}\ge 17,\ \ \Rk{\F_3}{\Trunct{9}}\ge 19,\ \ \Rk{\F_3}{\Trunct{10}}\ge 21;                                \\
+      \text{negacyclic:} & \quad \Rk{\F_3}{\Negat{9}}\ge 19.
     \end{aligned}
   \]
 \end{theorem}
 
-In one case the new lower bound meets the best known upper bound:
-
-\begin{corollary}\label{cor:cyc7}
-  $\Rk{\F_2}{\Cyct{7}}=13$; that is, the bilinear complexity of cyclic convolution
-  of length $7$ over $\F_2$ is exactly $13$.
-\end{corollary}
-
-Tables~\ref{tab:full} and~\ref{tab:cyc} place every new bound against the previous
-best lower bound and the best known upper bound; the eight boxed entries are the
-improvements of Theorem~\ref{thm:poly}. The largest relative gain is cyclic length
-$8$ over $\F_2$, raised from $16$ to $19$. In a handful of cells (for instance
-cyclic length $5$, and cyclic length $9$ over $\F_2$) the automated search falls a
-little short of bounds obtained by exhaustive or algebra-specific methods; we report
-those honestly rather than suppress them.
+Tables~\ref{tab:full},~\ref{tab:cyc},~\ref{tab:trunc}, and~\ref{tab:nega} place these
+against the previous best lower bound and the best known upper bound; the boxed
+entries are the improvements. In one case (cyclic length $7$ over $\F_2$) the
+new lower bound meets the best known upper bound, settling
+$\Rk{\F_2}{\Cyct{7}}=13$. Over $\F_2$ the truncated product also yields a new upper
+bound, $\Rk{\F_2}{\Trunct{9}}\le 26$, found by the flip-graph search~\cite{kauers2023flip}.
+Over characteristic $2$ the negacyclic product coincides with the
+cyclic one ($x^N+1=x^N-1$), so we skip $\F_2$ in Table~\ref{tab:nega}.
 
 \begin{table}[h]
   \centering
@@ -275,14 +282,73 @@ those honestly rather than suppress them.
   \label{tab:cyc}
 \end{table}
 
+\begin{table}[h]
+  \centering
+  \setlength{\tabcolsep}{6pt}
+  \begin{tabular}{lllllll}
+    \toprule
+         & \multicolumn{3}{c}{over $\F_2$}                           & \multicolumn{3}{c}{over $\F_3$}                                                                                                                                                             \\
+    \cmidrule(lr){2-4}\cmidrule(lr){5-7}
+    $N$  & prev LB                                                   & our LB                          & prev UB                                   & prev LB                                                   & our LB       & prev UB                            \\
+    \midrule
+    $1$  & $1$                                                       & $1$                             & $1$                                       & $1$                                                       & $1$          & $1$                                \\
+    $2$  & $3$~\cite{averbuch1991classification,blaser2005complete}  & $3$                             & $3$~\cite{toom1963complexity}             & $3$~\cite{averbuch1991classification,blaser2005complete}  & $3$          & $3$~\cite{toom1963complexity}      \\
+    $3$  & $5$~\cite{averbuch1991classification,blaser2005complete}  & $5$                             & $5$~\cite{cenk2011multiplication}         & $5$~\cite{averbuch1991classification,blaser2005complete}  & $5$          & $5$~\cite{cenk2011multiplication}  \\
+    $4$  & $8$~\cite{averbuch1991classification,blaser2005complete}  & $8$                             & $8$~\cite{cenk2011multiplication}         & $8$~\cite{averbuch1991classification,blaser2005complete}  & $7$          & $8$~\cite{cenk2011multiplication}  \\
+    $5$  & $10$~\cite{averbuch1991classification,blaser2005complete} & $10$                            & $11$~\cite{cenk2011multiplication}        & $10$~\cite{averbuch1991classification,blaser2005complete} & $10$         & $10$~\cite{barbulescu2012finding}  \\
+    $6$  & $12$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{13}$                    & $14$~\cite{cenk2011multiplication}        & $12$~\cite{averbuch1991classification,blaser2005complete} & $12$         & $14$~\cite{cenk2011multiplication} \\
+    $7$  & $14$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{16}$                    & $18$~\cite{cenk2011multiplication}        & $14$~\cite{averbuch1991classification,blaser2005complete} & $14$         & $18$~\cite{cenk2011multiplication} \\
+    $8$  & $16$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{19}$                    & $22$~\cite{cenk2011multiplication}        & $16$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{17}$ & $22$~\cite{cenk2011multiplication} \\
+    $9$  & $18$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{21}$                    & $27$~\cite{cenk2011multiplication}$^\ast$ & $18$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{19}$ & $27$~\cite{winograd1977some}       \\
+    $10$ & $20$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{24}$                    & $31$~\cite{cenk2011multiplication}        & $20$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{21}$ & $31$~\cite{winograd1977some}       \\
+    $11$ & $22$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{27}$                    & $36$~\cite{cenk2011multiplication}        &                                                           &              &                                    \\
+    \bottomrule
+  \end{tabular}
+
+  \smallskip
+  {\footnotesize\raggedright
+    $^\ast$ We obtain a new upper bound of $26$ by flip-graph search~\cite{kauers2023flip}.
+    \scriptsize
+    $a0\otimes (b0+b2+b4+b6+b8)\otimes c8 + a1\otimes (b1+b3+b4+b5+b6+b7)\otimes (c7+c8) + (a0+a1)\otimes (b0+b1)\otimes (c1+c2+c4) + (a0+a1)\otimes (b0+b1+b3+b7)\otimes c7 + a3\otimes (b0+b4)\otimes (c4+c7) + (a0+a1+a4)\otimes (b1+b4)\otimes (c4+c5+c7) + (a0+a1+a4)\otimes (b0+b3+b4)\otimes (c5+c7+c8) + (a2+a4)\otimes (b2+b3)\otimes (c5+c6) + (a3+a4)\otimes (b0+b1+b2+b4)\otimes (c4+c6) + (a2+a3+a4)\otimes (b0+b2+b3+b4)\otimes (c4+c5+c6+c7) + (a1+a2+a3+a4)\otimes (b0+b3+b4)\otimes (c4+c5+c7) + (a4+a5)\otimes (b0+b1+b3+b5)\otimes (c3+c5) + (a0+a4+a5)\otimes (b1+b3+b5)\otimes (c3+c5+c8) + (a0+a3+a4+a5)\otimes (b0+b1+b5)\otimes (c3+c6) + (a0+a1+a3+a4+a5)\otimes (b0+b5)\otimes (c3+c6+c7+c8) + (a0+a2+a3+a4+a5)\otimes (b0+b1+b2+b5)\otimes (c3+c7) + (a1+a2+a3+a4+a5)\otimes (b2+b5)\otimes c3 + a6\otimes (b0+b2+b6)\otimes (c2+c3+c7) + (a0+a6)\otimes (b2+b6)\otimes (c2+c3+c7+c8) + (a1+a2+a6)\otimes (b1+b6)\otimes (c2+c3+c6+c7+c8) + (a0+a1+a2+a6)\otimes (b0+b1+b6)\otimes (c2+c3+c6+c7) + (a0+a1+a3+a4+a7)\otimes (b0+b1)\otimes c7 + (a0+a2+a4+a5+a6+a7)\otimes b1\otimes (c1+c5+c7+c8) + (a0+a1+a2+a4+a5+a6+a7)\otimes b1\otimes (c1+c5) + (a3+a5+a8)\otimes b0\otimes (c0+c1+c4+c5+c6) + (a0+a3+a5+a8)\otimes b0\otimes (c0+c1+c4+c5+c6+c8)$
+    \par}
+  \caption{Truncated product modulo $x^N$; boxed entries are new lower bounds.}
+  \label{tab:trunc}
+\end{table}
+
+\begin{table}[h]
+  \centering
+  \setlength{\tabcolsep}{12pt}
+  \begin{tabular}{llll}
+    \toprule
+        & \multicolumn{3}{c}{over $\F_3$}                                                          \\
+    \cmidrule(lr){2-4}
+    $N$ & prev LB                         & our LB       & prev UB                                 \\
+    \midrule
+    $1$ & $1$                             & $1$          & $1$                                     \\
+    $2$ & $3$~\cite{winograd1977some}     & $3$          & $3$~\cite{toom1963complexity}           \\
+    $3$ & $5$~\cite{winograd1977some}     & $5$          & $5$~\cite{morgera1990multiplicative}    \\
+    $4$ & $6$~\cite{winograd1977some}     & $6$          & $6$~\cite{degroote1983characterization} \\
+    $5$ & $10$~\cite{blaser2005complete}  & $9$          & $10$~\cite{cenk2010multiplication}      \\
+    $6$ & $12$~\cite{blaser2005complete}  & $12$         & $15$~\cite{morgera1990multiplicative}   \\
+    $7$ & $13$~\cite{blaser2005complete}  & $13$         & $16$~\cite{cenk2010multiplication}      \\
+    $8$ & $16$~\cite{blaser2005complete}  & $16$         & $18$~\cite{cenk2010multiplication}      \\
+    $9$ & $18$~\cite{blaser2005complete}  & $\boxed{19}$ & $27$~\cite{cenk2011multiplication}      \\
+    \bottomrule
+  \end{tabular}
+  \caption{Negacyclic convolution modulo $x^N+1$; the boxed entry is
+    new. Over $\F_2$, $x^N+1=x^N-1$, so the negacyclic product coincides with cyclic
+    convolution (Table~\ref{tab:cyc}).}
+  \label{tab:nega}
+\end{table}
+
 The rest of the paper is organized as follows.
 Section~\ref{sec:framework} sets up tensors, constraints, and symmetries. Section~\ref{sec:symmetries} instantiates the symmetries for
 matrix and polynomial multiplication. Section~\ref{sec:orbits} describes orbit
 enumeration.
 Section~\ref{sec:techniques} formalizes the four lower-bound techniques.
-Section~\ref{sec:certificates} details the certificates and the verifier.
-Section~\ref{sec:results} presents the results, and
-Section~\ref{sec:conclusion} concludes.
+Section~\ref{sec:certificates} details the certificates and the verifier, and
+Section~\ref{sec:conclusion} concludes. Appendix~\ref{app:results} reports the
+search and verification details for each new bound.
 
 \section{The framework}\label{sec:framework}
 
@@ -299,7 +365,8 @@ the structure constants $t_{ijk}\in\F_q$ encode the bilinear map. The
 \emph{rank} $\R(T)$ is the least $r$ such that
 $T=\sum_{\lambda=1}^{r} u_\lambda\otimes v_\lambda\otimes w_\lambda$ with
 $u_\lambda\in A$, $v_\lambda\in B$, $w_\lambda\in C$; this is exactly the bilinear
-complexity of the underlying map. We write $\Rk{\F_q}{T}$ when emphasizing the field $\F_q$, and $R(T)$ when it is clear from context.
+complexity of the underlying map. We write $\Rk{\F_q}{T}$ when emphasizing the field $\F_q$,
+and $\R(T)$ when it is clear from context.
 
 The one universal lower bound is \emph{flattening}: grouping two of the three
 tensor factors into one turns $T$ into a matrix whose rank lower-bounds $\R(T)$.
@@ -335,7 +402,7 @@ dynamic program needs only one representative per orbit.
 
 The implementation never materializes $G$ as a list. Instead it factors the group $G$
 into two subsets of $G$, a \emph{query} set $\Kappa$ and a \emph{store} set
-$\Sigma$, s.t. the product set
+$\Sigma$, such that the product set
 $\Kappa^{-1}\cdot\Sigma$ covers $G$ so that every orbit member is reached.
 Neither $\Kappa$ nor $\Sigma$ needs to be a subgroup or be closed under inversion.
 This is the meet-in-the-middle, or
@@ -355,7 +422,7 @@ probes, with $|\Kappa|\cdot|\Sigma|\gtrsim |G|$; choosing
 $|\Kappa|\approx|\Sigma|\approx\sqrt{|G|}$ trades square-root space for
 square-root time.
 
-\section{Symmetries of the two problem families}\label{sec:symmetries}
+\section{Symmetries of the problem families}\label{sec:symmetries}
 
 The framework is fixed once we name, for each problem, the tensor $T$ and the
 factorization $(\Kappa,\Sigma)$ of its first-argument symmetry group.
@@ -372,14 +439,19 @@ substitution $X\mapsto PXQ^{-1}$, $Y\mapsto QYR^{-1}$, $Z\mapsto RZP^{-1}$ prese
 the tensor (the \emph{sandwich} symmetry). The rank is also invariant under
 cyclically permuting the three factors, $\R(\mmt{l}{m}{n})=\R(\mmt{m}{n}{l})$ (the
 \emph{cyclic} symmetry); for a square format $l=m=n$ this combines with matrix
-transposition into an order-two symmetry is
+transposition into an order-two symmetry
 $X\mapsto X^{\!\top}$, $Y\mapsto Z^{\!\top}$, $Z\mapsto Y^{\!\top}$ (the \emph{transpose} symmetry). Projected onto the
 first factor, the symmetry group acting on the matrix space $A=\F_q^{l\times m}$ is
 \[
   G \;=\; (\GL_l(\F_q)\times \GL_m(\F_q)) \rtimes C_2,
 \]
 with $(P,Q)$ acting by $X\mapsto PXQ^{-1}$ and the $C_2$ by transposition $X\mapsto X^{\!\top}$ (present
-only when $l=m=n$). The meet-in-the-middle splits $G$ by side: the store set is the right multiplications $\Sigma=\{X\mapsto XR^{-1}:R\in\GL_m(\F_q)\}$ and the query set is the left multiplications $\Kappa=\{X\mapsto LX:L\in\GL_l(\F_q)\}$, extended by the transpose when $l=m=n$. Scalar matrices act trivially on subspaces, so each side is taken modulo the centre, and both then have order about $\sqrt{|G|}$. Equivalence of constraint subspaces under the subgroup without
+only when $l=m=n$). The meet-in-the-middle splits $G$ by side:
+the store set is the right multiplications $\Sigma=\{X\mapsto XR^{-1}:R\in\GL_m(\F_q)\}$ and
+the query set is the left multiplications $\Kappa=\{X\mapsto LX:L\in\GL_l(\F_q)\}$,
+extended by the transpose when $l=m=n$. Scalar matrices act trivially on subspaces,
+so each side is taken modulo the center, and both then have order about $\sqrt{|G|}$.
+Equivalence of constraint subspaces under the subgroup without
 transpose is exactly the tensor-isomorphism problem on $l\times m\times d$ tensors,
 which sits above graph and code equivalence in the isomorphism
 hierarchy~\cite{grochow2023complexity,grochow2025complexity}.
@@ -403,47 +475,63 @@ Frobenius $a\mapsto a^p$. We factor it as
 $\Sigma=\PGL_2(\F_q)$ (the store side, of size $q(q^2-1)$) and
 $\Kappa=\Gal(\F_q/\F_p)$ (the query side, of size $m$).
 
-\subsection{Cyclic polynomial multiplication}
+\subsection{Polynomial multiplication modulo $x^N-\gamma$}
 
-Multiplication in $R=\F_q[x]/(x^N-1)$ is cyclic convolution,
+Fix a scalar $\gamma\in\F_q$ and let $R=\F_q[x]/(x^N-\gamma)$. Multiplication in $R$
+reduces the convolution of $a$ and $b$ by the rule $x^N\equiv\gamma$,
 \[
-  \Cyct{N} = \sum_{i,j=0}^{N-1} a_i\otimes b_j\otimes c_{(i+j)\bmod N},
+  \sum_{i,j=0}^{N-1} a_i\otimes b_j\otimes w_{ij},\qquad
+  w_{ij}=\begin{cases} c_{i+j},           & i+j<N,    \\[2pt]
+                \gamma\,c_{i+j-N}, & i+j\ge N,\end{cases}
   \qquad N_A=N_B=N_C=N.
 \]
-Three kinds of symmetry act on $A=R$: multiplication by a unit $p\in R^*$
-(of which the cyclic shifts $x^r$ are the special case $p=x^r$), the
-$\F_q$-algebra automorphisms $\Aut(R)$, and the Galois group of $\F_q/\F_p$. The
-base-field scalars $\F_q^*$ act trivially on subspaces, so the group acting on
-constraint subspaces is
+Three families specialize this tensor: \emph{cyclic} convolution $\Cyct{N}$ for
+$\gamma=1$, the \emph{truncated} (or short) product $\Trunct{N}$ for $\gamma=0$ ---
+the local algebra $\F_q[x]/(x^N)$, in which the overflow terms vanish and $x$ is
+nilpotent --- and the \emph{negacyclic} product $\Negat{N}$ for $\gamma=-1$. Over
+characteristic $2$, $-1=1$, so $\Negat{N}=\Cyct{N}$.
+
+The same three kinds of symmetry act on $A=R$ for every $\gamma$: multiplication by a
+unit $p\in R^*$ (the shifts $x^r$ are the special case $p=x^r$, valid for
+$\gamma\ne 0$), the $\F_q$-algebra automorphisms $\Aut(R)$, and the Galois group of
+$\F_q/\F_p$. The base-field scalars $\F_q^*$ act trivially on subspaces, so the group
+acting on constraint subspaces is
 \[
-  G_{\mathrm{cyc}} = \bigl(R^*\rtimes \Aut(R) \rtimes \Gal(\F_q/\F_p)\bigr)/\F_q^*.
+  G = \bigl(R^*\rtimes \Aut(R) \rtimes \Gal(\F_q/\F_p)\bigr)/\F_q^*,
 \]
-We take the store side to be the unit group modulo scalars,
-$\Sigma=R^*/\F_q^*$, and the query side to be
-$\Kappa=\Aut(R)\rtimes\Gal(\F_q/\F_p)$. By the Chinese remainder theorem $R$
-splits into field factors indexed by the $q$-cyclotomic cosets of $\mathbb{Z}/N$,
-so $R^*$ is typically far larger than the $N$ cyclic shifts, which is precisely the
-extra symmetry the framework exploits.
+with store side $\Sigma=R^*/\F_q^*$ and query side
+$\Kappa=\Aut(R)\rtimes\Gal(\F_q/\F_p)$ --- the identical factorization in all three
+cases. Only the ring structure, and hence the sizes of the two sides, depends on
+$\gamma$. For $\gamma=\pm1$ the Chinese remainder theorem splits $R$ into field
+factors --- for $\gamma=1$ indexed by the $q$-cyclotomic cosets of $\mathbb{Z}/N$,
+for $\gamma=-1$ by the cosets of the odd residues modulo $2N$ --- so $R^*$ is
+typically far larger than the $N$ shifts, which is precisely the extra symmetry the
+framework exploits. For $\gamma=0$ the algebra is local: a polynomial is a unit iff
+its constant term is nonzero, so $|\Sigma|=q^{N-1}$, and an automorphism sends $x$ to
+any nilpotent generator $y_1x+\dots+y_{N-1}x^{N-1}$ with $y_1\ne 0$, giving
+$|\Aut(R)|=(q-1)q^{N-2}$.
 
 \medskip
 
-Table~\ref{tab:symmetry} contrasts the three symmetry structures.
+Table~\ref{tab:symmetry} contrasts the symmetry structures; the three quotient
+families share one row, differing only in the constant $\gamma$.
 
 \begin{table}[h]
   \centering
   \setlength{\tabcolsep}{10pt}
   \begin{tabular}{lll}
     \toprule
-    problem                     & store $\Sigma$        & query $\Kappa$                                \\
+    problem                            & store $\Sigma$        & query $\Kappa$                                \\
     \midrule
-    matrix-mult $\mmt{l}{m}{n}$ & $\GL_m$ (right mult.) & $\GL_l$ (left mult.), and transpose ($l=m=n$) \\
-    full-poly-mult              & $\PGL_2(\F_q)$        & $\Gal(\F_q/\F_p)$                             \\
-    cyclic-conv                 & $R^*/\F_q^*$          & $\Aut(R)\rtimes\Gal(\F_q/\F_p)$               \\
+    matrix-mult $\mmt{l}{m}{n}$        & $\GL_m$ (right mult.) & $\GL_l$ (left mult.), and transpose ($l=m=n$) \\
+    full-poly-mult                     & $\PGL_2(\F_q)$        & $\Gal(\F_q/\F_p)$                             \\
+    poly-mult $\F_q[x]/(x^N{-}\gamma)$ & $R^*/\F_q^*$          & $\Aut(R)\rtimes\Gal(\F_q/\F_p)$               \\
     \bottomrule
   \end{tabular}
-  \caption{First-argument symmetry factorizations. In all three families the query
-    elements are indexed so that the $i$-th element is $i$, which is why a certificate
-    can name a symmetry by a single integer.}
+  \caption{First-argument symmetry factorizations; the last row covers the cyclic
+    ($\gamma=1$), truncated ($\gamma=0$), and negacyclic ($\gamma=-1$) products. In every family the
+    query elements are indexed so that the $i$-th element is $i$, which is why a
+    certificate can name a symmetry by a single integer.}
   \label{tab:symmetry}
 \end{table}
 
@@ -530,7 +618,7 @@ $\Rk{\F_2}{\mmt{2}{2}{2}}\ge 7$.
 \section{Proof certificates and verification}\label{sec:certificates}
 
 Every bound is emitted as a certificate that a verifier rechecks.
-The verifier is simpler than the search program, and it runs faster and uses smaller memory.
+The verifier is simpler than the search program, and it runs faster and uses less memory.
 
 For each orbit, the certificate records
 its canonical constraint subspace, the certified lower bound, and a proof that is
@@ -560,72 +648,34 @@ miscounted trace aborts verification. Soundness follows by induction on decreasi
 dimension: at dimension $N_A$ only flatten and forced product apply, and every
 smaller-dimension step reduces to an orbit verified earlier.
 
-\section{Computational results}\label{sec:results}
-
-Table~\ref{tab:results} reports the search and verification details for each new bound.
-The bounds themselves and their comparison to prior work appear in Tables~\ref{tab:matrix},
-\ref{tab:full}, and~\ref{tab:cyc}.
-
-\begin{table}[h]
-  \centering
-  \setlength{\tabcolsep}{4pt}
-  \begin{tabular}{lllcllc}
-    \toprule
-    result                                    & machine$^\dagger$        & \shortstack{search\\time} & \shortstack{search\\cost} & \shortstack{cert.\\size} & \shortstack{verify\\time} & \shortstack{verify\\cost} \\
-    \midrule
-    \multicolumn{7}{l}{\emph{Matrix multiplication}}                                                                                                                                                                \\
-    $\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19^\ddagger$ & MacBook Air              & $2$ hrs                   & --                        & --                       & $2$ hrs                   & --                        \\
-    $\Rk{\F_2}{\mmt{3}{3}{3}}\ge 20$          & MacBook Air              & $40$ min                  & --                        & $32$ MiB                 & $3$ sec                   & --                        \\
-    $\Rk{\F_2}{\mmt{3}{3}{4}}\ge 25$          & c8g.\{16,48\}xlarge$^\S$ & $4.6$ days                & $52$ USD                  & $600$ MiB                & $70$ min                  & $1$ USD                   \\
-    $\Rk{\F_2}{\mmt{3}{4}{4}}\ge 29$          & c8g.48xlarge             & $4.9$ hrs                 & $5$ USD                   & $500$ MiB                & $3.4$ hrs                 & $3$ USD                   \\
-    \midrule
-    \multicolumn{7}{l}{\emph{Polynomial multiplication}}                                                                                                                                                            \\
-    $\Rk{\F_2}{\Fullt{6}}\ge 16$              & c8g.48xlarge             & $11$ min                  & --                        & --                       & $10$ min                  & --                        \\
-    $\Rk{\F_2}{\Fullt{7}}\ge 19$              & c8g.48xlarge             & $3$ hrs                   & $3$ USD                   & $9$ MiB                  & $2.6$ hrs                 & $3$ USD                   \\
-    $\Rk{\F_2}{\Fullt{8}}\ge 21$              & c8g.48xlarge             & $6$ hrs                   & $6$ USD                   & $224$ MiB                & $3$ hrs                   & $3$ USD                   \\
-    $\Rk{\F_3}{\Fullt{6}}\ge 14$              & c8g.48xlarge             & $35$ min                  & --                        & $6$ MiB                  & $31$ min                  & --                        \\
-    $\Rk{\F_2}{\Cyct{7}}\ge 13$               & c8g.48xlarge             & --                        & --                        & --                       & --                        & --                        \\
-    $\Rk{\F_2}{\Cyct{8}}\ge 19$               & c8g.48xlarge             & --                        & --                        & --                       & --                        & --                        \\
-    $\Rk{\F_2}{\Cyct{10}}\ge 22$              & c8g.48xlarge             & --                        & --                        & $8$ MiB                  & --                        & --                        \\
-    $\Rk{\F_3}{\Cyct{9}}\ge 19$               & c8g.48xlarge             & $3$ min                   & --                        & $3$ MiB                  & --                        & --                        \\
-    \bottomrule
-  \end{tabular}
-
-  \smallskip
-  {\footnotesize\raggedright
-    -- Very small number.\\
-    $^\dagger$ Apple MacBook Air M4 with 16 GB RAM.\\
-    $^\dagger$ AWS c8g.16xlarge Spot Instance. Graviton4 processors. 64 vCPUs. 128 GiB memory.\\
-    $^\dagger$ AWS c8g.48xlarge Spot Instance. Graviton4 processors. 192 vCPUs. 384 GiB memory.\\
-    $^\ddagger$ Run on the equivalent $\mmt{3}{2}{4}$ format. The proof is
-    forced-product-heavy, so CPU verification takes about as long as the search.
-    The verification can be accelerated by an NVIDIA L20 GPU to approximately 1 minute.\\
-    $^\S$ Search on c8g.16xlarge. Verification on c8g.48xlarge.\\
-    \par
-  }
-  \caption{Search and verification details for each new lower bound.}
-  \label{tab:results}
-\end{table}
-
-The source code for the search and the verifier, together with all certificates,
-is available at \\
-\url{https://github.com/wcgbg/tensor-rank-lower-bound}.
-
+As a global sanity check, every lower bound our framework proves is consistent with the
+prior literature: in no case (Tables~\ref{tab:matrix}, \ref{tab:full}, \ref{tab:cyc},
+\ref{tab:trunc}, and~\ref{tab:nega}) does a proved bound exceed the best previously known
+upper bound, and in many small cases it coincides with the exact rank that is already
+known. A soundness bug that inflated a bound would, across the dozens of tabulated cases,
+is likely to produce a lower bound exceeding the known upper bound or
+much smaller than the known lower bound.
 \section{Conclusion and open problems}\label{sec:conclusion}
 
 We have given a single automated framework for bilinear-complexity lower bounds
 over finite fields, parameterized only by a tensor and a symmetry
 group, and used it to improve the long-standing bound on $\mmt{3}{3}{3}$ over
-$\F_2$ to $20$, to settle three more matrix formats, and to obtain eight new
-polynomial-multiplication bounds.
+$\F_2$ to $20$, to settle three more matrix formats, and to obtain eighteen new
+lower bounds for polynomial multiplication --- across the
+full, cyclic, truncated, and negacyclic products.
 Every bound comes with a certificate that an auditable verifier
 rechecks, typically faster than the search.
+
+The source code for the search and the verifier, together with all certificates, is
+available at \\
+\url{https://github.com/wcgbg/tensor-rank-lower-bound}.
 
 Several questions remain. The exact rank of $\mmt{3}{3}{3}$ over $\F_2$ is still
 open in $[20,23]$. Scaling to $\mmt{4}{4}{4}$ is blocked by the sheer number of
 constraint orbits and will need stronger symmetry reduction. For polynomial
-multiplication, the cyclic and full bounds should extend to larger $N$ with more
-compute. A natural next family is the multiplication in the extension-field $\F_{q^n}$ over $\F_q$,
+multiplication, the full, cyclic, truncated, and negacyclic bounds should extend to
+larger $N$ with more compute. A natural next family is the multiplication in the
+extension-field $\F_{q^n}$ over $\F_q$,
 computing $f\cdot g \bmod p(x)$ for an irreducible $p$ of degree $n$ over $\F_q$.
 Finally, the framework applies verbatim to other finite fields; finding genuinely
 new bounds over fields beyond $\F_2$ and $\F_3$ is left for future work.
@@ -636,6 +686,65 @@ Thanks to Youming Qiao for helpful discussions on the tensor isomorphism problem
 \bibliography{refs}
 
 \appendix
+
+\section{Computational results}\label{app:results}
+
+Table~\ref{tab:results} reports the search and verification details for each new bound.
+The bounds themselves and their comparison to prior work appear in
+Tables~\ref{tab:matrix}, \ref{tab:full}, \ref{tab:cyc}, \ref{tab:trunc},
+and~\ref{tab:nega}.
+
+\begin{table}[h]
+  \centering
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{lllcllc}
+    \toprule
+    result                                    & machine$^\dagger$        & \shortstack{search\\time} & \shortstack{search\\cost} & \shortstack{cert.\\size} & \shortstack{verify\\time} & \shortstack{verify\\cost} \\
+    \midrule
+    $\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19^\ddagger$ & MacBook Air              & $2$ hrs                   & --                        & --                       & $2$ hrs                   & --                        \\
+    $\Rk{\F_2}{\mmt{3}{3}{3}}\ge 20$          & MacBook Air              & $40$ min                  & --                        & $32$ MiB                 & $3$ sec                   & --                        \\
+    $\Rk{\F_2}{\mmt{3}{3}{4}}\ge 25$          & c8g.\{16,48\}xlarge$^\S$ & $4.6$ days                & $52$ USD                  & $600$ MiB                & $70$ min                  & $1$ USD                   \\
+    $\Rk{\F_2}{\mmt{3}{4}{4}}\ge 29$          & c8g.48xlarge             & $4.9$ hrs                 & $5$ USD                   & $500$ MiB                & $3.4$ hrs                 & $3$ USD                   \\
+    \midrule
+    $\Rk{\F_2}{\Fullt{6}}\ge 16$              & c8g.48xlarge             & $11$ min                  & --                        & --                       & $10$ min                  & --                        \\
+    $\Rk{\F_2}{\Fullt{7}}\ge 19$              & c8g.48xlarge             & $3$ hrs                   & $3$ USD                   & $9$ MiB                  & $2.6$ hrs                 & $3$ USD                   \\
+    $\Rk{\F_2}{\Fullt{8}}\ge 21$              & c8g.48xlarge             & $6$ hrs                   & $6$ USD                   & $224$ MiB                & $3$ hrs                   & $3$ USD                   \\
+    $\Rk{\F_3}{\Fullt{6}}\ge 14$              & c8g.48xlarge             & $35$ min                  & --                        & $6$ MiB                  & $31$ min                  & --                        \\
+    \midrule
+    $\Rk{\F_2}{\Cyct{7}}\ge 13$               & c8g.48xlarge             & --                        & --                        & --                       & --                        & --                        \\
+    $\Rk{\F_2}{\Cyct{8}}\ge 19$               & c8g.48xlarge             & --                        & --                        & --                       & --                        & --                        \\
+    $\Rk{\F_2}{\Cyct{10}}\ge 22$              & c8g.48xlarge             & --                        & --                        & $8$ MiB                  & --                        & --                        \\
+    $\Rk{\F_3}{\Cyct{9}}\ge 19$               & c8g.48xlarge             & $3$ min                   & --                        & $3$ MiB                  & --                        & --                        \\
+    \midrule
+    $\Rk{\F_2}{\Trunct{6}}\ge 13$             & c8g.48xlarge             & --                        & --                        & --                       & --                        & --                        \\
+    $\Rk{\F_2}{\Trunct{7}}\ge 16$             & c8g.48xlarge             & --                        & --                        & --                       & --                        & --                        \\
+    $\Rk{\F_2}{\Trunct{8}}\ge 19$             & c8g.48xlarge             & --                        & --                        & --                       & --                        & --                        \\
+    $\Rk{\F_2}{\Trunct{9}}\ge 21$             & c8g.48xlarge             & --                        & --                        & --                       & --                        & --                        \\
+    $\Rk{\F_2}{\Trunct{10}}\ge 24$            & c8g.48xlarge             & $1$ min                   & --                        & $3$ MiB                  & --                        & --                        \\
+    $\Rk{\F_2}{\Trunct{11}}\ge 27$            & c8g.48xlarge             & $7$ min                   & --                        & $22$ MiB                 & --                        & --                        \\
+    $\Rk{\F_3}{\Trunct{8}}\ge 17$             & c8g.48xlarge             & --                        & --                        & --                       & --                        & --                        \\
+    $\Rk{\F_3}{\Trunct{9}}\ge 19$             & c8g.48xlarge             & $2$ min                   & --                        & $2$ MiB                  & --                        & --                        \\
+    $\Rk{\F_3}{\Trunct{10}}\ge 21$            & c8g.48xlarge             & $3.4$ hrs                 & $3$ USD                   & $20$ MiB                 & --                        & --                        \\
+    \midrule
+    $\Rk{\F_3}{\Negat{9}}\ge 19$              & c8g.48xlarge             & $3$ min                   & --                        & $2$ MiB                  & --                        & --                        \\
+    \bottomrule
+  \end{tabular}
+
+  \smallskip
+  {\footnotesize\raggedright
+    -- Very small number.\\
+    $^\dagger$ Machines: Apple MacBook Air M4 with 16 GB RAM; AWS c8g.16xlarge Spot
+    Instance, Graviton4 processors, 64 vCPUs, 128 GiB memory; AWS c8g.48xlarge Spot
+    Instance, Graviton4 processors, 192 vCPUs, 384 GiB memory.\\
+    $^\ddagger$ Run on the equivalent $\mmt{3}{2}{4}$ format. The proof is
+    forced-product-heavy, so CPU verification takes about as long as the search.
+    The verification can be accelerated by an NVIDIA L20 GPU to approximately 1 minute.\\
+    $^\S$ Search on c8g.16xlarge. Verification on c8g.48xlarge.\\
+    \par
+  }
+  \caption{Search and verification details for each new lower bound.}
+  \label{tab:results}
+\end{table}
 
 \section{Orbit-enumeration algorithm}\label{app:enum}
 
@@ -705,7 +814,7 @@ the polynomial families are swept by the same procedure.
     bound.\par}
   \caption{Number of constraint-subspace orbits for matrix multiplication,
     $A=\F_q^{l\times m}$. ``transpose?'' marks whether the order-two transpose
-    symmetry is included; it applies only to square formats $l=m=n$. Parenthesized
+    symmetry is included; it applies only to square formats $l=m=n$. The ${>}$
     entries are the counting estimate of Equation~\eqref{eq:orbit-count}.}
   \label{tab:orbits}
 \end{table}

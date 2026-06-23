@@ -3,7 +3,8 @@
 
 The first positional argument selects which stages run:
   search-all             orbit_enumerator_main, rank_upper_bound_main,
-                         rank_lower_bound_main for every problem listed in this file.
+                         rank_lower_bound_main for every problem listed in this file
+                         (please uncomment the problems you want to run).
   search-and-verify-all  search-all then verify, for every problem listed in this file.
   verify <cert.pb.txt>   verifier_main on the single certificate <cert.pb.txt>; the
                          problem and its parameters are derived from the filename
@@ -103,10 +104,7 @@ def search_pipeline(problem, defines, q, lb_args_list, ub_args, cert=None):
             assert ub_args is None
 
         for i, lb_args in enumerate(lb_args_list):
-            lower_cmd = [
-                "bazel-bin/search/rank_lower_bound_main",
-                cert,
-            ]
+            lower_cmd = ["bazel-bin/search/rank_lower_bound_main", cert]
             assert lb_args is not None
             lower_cmd.extend([f"--{k}={v}" for k, v in lb_args.items()])
             if i == 0:
@@ -161,7 +159,7 @@ def search_matrix(p, m, n0, n1, n2, lb_args_pass0, lb_args_pass1, ub_args):
 def factor_prime_power(q):
     # Return (p, m) with q == p**m. The smallest divisor >= 2 of q is always
     # prime, and a prime power has a unique prime base, so (p, m) is uniquely
-    # determined (see summary/gen_prev_results.py:prime_powers).
+    # determined (see summary/prev_results_polynomial/gen_prev_results.py:prime_powers).
     p = next(d for d in range(2, q + 1) if q % d == 0)
     t, m = q, 0
     while t % p == 0:
@@ -222,16 +220,25 @@ def search_full_all():
     # search_polynomial("full", 2, 1, 4, {}, {})
     # lb_args = {"backtracking_step_limit": 1_000_000}
     # search_polynomial("full", 2, 1, 5, lb_args, {})
-    # lb_args = {"backtracking_step_limit": 1_000_000, "forced_product_max_iterations_log2": 32}
+    # lb_args = {
+    #     "backtracking_step_limit": 1_000_000,
+    #     "forced_product_max_iterations_log2": 32,
+    # }
     # search_polynomial("full", 2, 1, 6, lb_args, {})
-    # lb_args = {"backtracking_step_limit": 1_000_000, "forced_product_max_iterations_log2": 32}
+    # lb_args = {
+    #     "backtracking_step_limit": 1_000_000,
+    #     "forced_product_max_iterations_log2": 32,
+    # }
     # ub_args = {
     #     "last_only": "true",
     #     "path_limit": 1_000_000,
     #     "max_steps_at_a_rank": 1_000,
     # }
     # search_polynomial("full", 2, 1, 7, lb_args, ub_args)
-    # lb_args = {"backtracking_step_limit": 1_000_000, "forced_product_max_iterations_log2": 32}
+    # lb_args = {
+    #     "backtracking_step_limit": 1_000_000,
+    #     "forced_product_max_iterations_log2": 32,
+    # }
     # ub_args = {
     #     "last_only": "true",
     #     "path_limit": 10_000_000,
@@ -243,9 +250,15 @@ def search_full_all():
     # search_polynomial("full", 3, 1, 2, {}, None)
     # search_polynomial("full", 3, 1, 3, {}, None)
     # search_polynomial("full", 3, 1, 4, {}, None)
-    # lb_args = {"backtracking_step_limit": 1_000_000, "forced_product_max_iterations_log2": 32}
+    # lb_args = {
+    #     "backtracking_step_limit": 1_000_000,
+    #     "forced_product_max_iterations_log2": 32,
+    # }
     # search_polynomial("full", 3, 1, 5, lb_args, None)
-    # lb_args = {"backtracking_step_limit": 1_000_000, "forced_product_max_iterations_log2": 32}
+    # lb_args = {
+    #     "backtracking_step_limit": 1_000_000,
+    #     "forced_product_max_iterations_log2": 32,
+    # }
     # search_polynomial("full", 3, 1, 6, lb_args, None)
     # # q=4
     # search_polynomial("full", 2, 2, 1, {}, None)
@@ -581,6 +594,119 @@ def search_matrix_all():
     # search_matrix(2, 1, 3, 4, 4, lb_args, None, None)
 
 
+def search_truncated_all():
+    # truncated = short product, F_q[x]/(x^n)
+    pass
+    # # q=2
+    # search_polynomial("truncated", 2, 1, 1, {}, {})
+    # search_polynomial("truncated", 2, 1, 2, {}, {})
+    # search_polynomial("truncated", 2, 1, 3, {}, {})
+    # search_polynomial("truncated", 2, 1, 4, {}, {})
+    # search_polynomial("truncated", 2, 1, 5, {}, {})
+    # search_polynomial("truncated", 2, 1, 6, {}, {})
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 2, 1, 7, lb_args, {})
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # ub_args = {
+    #     "last_only": "true",
+    #     "path_limit": 1_000_000,
+    #     "max_steps_at_a_rank": 1_000,
+    # }
+    # search_polynomial("truncated", 2, 1, 8, lb_args, ub_args)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # ub_args = {
+    #     "last_only": "true",
+    #     "path_limit": 1_000_000,
+    #     "max_steps_at_a_rank": 1_000,
+    # }
+    # search_polynomial("truncated", 2, 1, 9, lb_args, ub_args)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # ub_args = {
+    #     "last_only": "true",
+    #     "path_limit": 10_000_000,
+    #     "max_steps_at_a_rank": 10_000,
+    # }
+    # search_polynomial("truncated", 2, 1, 10, lb_args, ub_args)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # ub_args = {
+    #     "last_only": "true",
+    #     "path_limit": 10_000_000,
+    #     "max_steps_at_a_rank": 10_000,
+    #     "num_paths": 192,
+    # }
+    # search_polynomial("truncated", 2, 1, 11, lb_args, ub_args)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # ub_args = {
+    #     "last_only": "true",
+    #     "path_limit": 10_000_000,
+    #     "max_steps_at_a_rank": 10_000,
+    #     "num_paths": 192,
+    # }
+    # search_polynomial("truncated", 2, 1, 12, lb_args, ub_args)
+    # # q=3
+    # search_polynomial("truncated", 3, 1, 1, {}, None)
+    # search_polynomial("truncated", 3, 1, 2, {}, None)
+    # search_polynomial("truncated", 3, 1, 3, {}, None)
+    # search_polynomial("truncated", 3, 1, 4, {}, None)
+    # search_polynomial("truncated", 3, 1, 5, {}, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 3, 1, 6, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 3, 1, 7, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 3, 1, 8, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 3, 1, 9, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 3, 1, 10, lb_args, None)
+    # # q=4
+    # search_polynomial("truncated", 2, 2, 1, {}, None)
+    # search_polynomial("truncated", 2, 2, 2, {}, None)
+    # search_polynomial("truncated", 2, 2, 3, {}, None)
+    # search_polynomial("truncated", 2, 2, 4, {}, None)
+    # search_polynomial("truncated", 2, 2, 5, {}, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 2, 2, 6, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 2, 2, 7, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 2, 2, 8, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 2, 2, 9, lb_args, None)
+    # # q=5
+    # search_polynomial("truncated", 5, 1, 1, {}, None)
+    # search_polynomial("truncated", 5, 1, 2, {}, None)
+    # search_polynomial("truncated", 5, 1, 3, {}, None)
+    # search_polynomial("truncated", 5, 1, 4, {}, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 5, 1, 5, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 5, 1, 6, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 5, 1, 7, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("truncated", 5, 1, 8, lb_args, None)
+
+
+def search_negacyclic_all():
+    # negacyclic, F_q[x]/(x^n+1); over char 2 it equals cyclic
+    pass
+    # # q=3
+    # search_polynomial("negacyclic", 3, 1, 1, {}, None)
+    # search_polynomial("negacyclic", 3, 1, 2, {}, None)
+    # search_polynomial("negacyclic", 3, 1, 3, {}, None)
+    # search_polynomial("negacyclic", 3, 1, 4, {}, None)
+    # search_polynomial("negacyclic", 3, 1, 5, {}, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("negacyclic", 3, 1, 6, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("negacyclic", 3, 1, 7, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("negacyclic", 3, 1, 8, lb_args, None)
+    # lb_args = {"backtracking_step_limit": 100_000}
+    # search_polynomial("negacyclic", 3, 1, 9, lb_args, None)
+
+
 def main():
     global dry_run, command
 
@@ -620,6 +746,8 @@ def main():
     search_cyclic_all()
     search_extfield_all()
     search_matrix_all()
+    search_truncated_all()
+    search_negacyclic_all()
 
 
 if __name__ == "__main__":

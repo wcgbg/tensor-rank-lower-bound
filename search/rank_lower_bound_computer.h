@@ -209,10 +209,11 @@ bool ProcessOrbitsAtDim(int dim, const ProcessOptions &options,
     int local_progress = progress.fetch_add(1, std::memory_order_relaxed) + 1;
     double progress_percentage = local_progress * 100.0 / rts.size();
     LOG_EVERY_T(INFO, 10) << std::format(
-        "ProcessOrbitsAtDim Phase 1: {} / {} = {:.2f}%", local_progress,
-        rts.size(), progress_percentage);
+        "ProcessOrbitsAtDim P1: {} / {} = {:.2f}%", local_progress, rts.size(),
+        progress_percentage);
   });
 
+  LOG(INFO) << "ProcessOrbitsAtDim P2...";
   // Phase 2: insert every orbit's (final) bound into the map so smaller
   // dimensions can look it up. Done after phase 1 so no Set races a Get.
   tbb::parallel_for(
@@ -224,6 +225,7 @@ bool ProcessOrbitsAtDim(int dim, const ProcessOptions &options,
         }
       });
 
+  LOG(INFO) << "ProcessOrbitsAtDim P3...";
   // Phase 3: write the improved bounds and proofs back into the certificate,
   // and update the in-memory archive (serial; the archive is never touched in a
   // parallel_for).
@@ -251,7 +253,8 @@ bool ProcessOrbitsAtDim(int dim, const ProcessOptions &options,
 
   const auto iteration_end = std::chrono::steady_clock::now();
   LOG(INFO)
-      << "  duration=" << std::fixed << std::setprecision(1)
+      << "ProcessOrbitsAtDim done. duration=" << std::fixed
+      << std::setprecision(1)
       << std::chrono::duration<double>(iteration_end - iteration_start).count();
   return has_update;
 }
