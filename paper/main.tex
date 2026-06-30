@@ -6,6 +6,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{booktabs}
+\usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
@@ -37,7 +38,7 @@
 {\algorithmicparallelfor\ #1\ \algorithmicdo}{\algorithmicend\ \algorithmicparallelfor}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.6\baselineskip}
+\setlength{\parskip}{0.4\baselineskip}
 
 \bibliographystyle{plain}
 
@@ -90,39 +91,35 @@ several of these small cases.
 
 Strassen~\cite{strassen1969gaussian} showed $\R(\mmt{2}{2}{2})\le 7$ over $\mathbb{Z}$, and
 Winograd~\cite{winograd1971multiplication} proved the matching lower bound over $\mathbb{Q}$.
-Then, Hopcroft and Kerr~\cite{hopcroft1971minimizing} established several lower
+Hopcroft and Kerr~\cite{hopcroft1971minimizing} then established several lower
 bounds over $\F_2$, including $\Rk{\F_2}{\mmt{2}{3}{3}}\ge 15$, and stated
-$\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19$ without a full proof.
+$\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19$ without a full proof, while
 Bshouty~\cite{bshouty1989lower} proved $\Rk{\F_2}{\mmt{n}{n}{n}}\ge \tfrac{5}{2}n^2-o(n^2)$.
 Bl\"aser established the influential bounds
 $\R(\mmt{l}{m}{n})\ge lm+mn+l-m+n-3$ over algebraically closed
 fields~\cite{blaser1999lower}, $\R(\mmt{n}{n}{n})\ge \tfrac{5}{2}n^2-3n$ over
 arbitrary fields~\cite{blaser1999fivehalf}, and finally
-$\R(\mmt{n}{m}{n})\ge 2mn+2n-m-2$ for $m\ge n\ge 3$~\cite{blaser2003complexity} over arbitrary fields,
+$\R(\mmt{n}{m}{n})\ge 2mn+2n-m-2$ for $m\ge n\ge 3$~\cite{blaser2003complexity},
 which implies $\R(\mmt{3}{3}{3})\ge 19$. On the upper side
 Laderman~\cite{laderman1976noncommutative} multiplied $3\times 3$ matrices with
-$23$ products over $\mathbb{Z}$. Thus the rank of $\mmt{3}{3}{3}$ has remained trapped in $[19,23]$,
-making it the prototypical open small format.
+$23$ products over $\mathbb{Z}$, so the rank of $\mmt{3}{3}{3}$ has remained trapped in $[19,23]$,
+the prototypical open small format.
 
 \subsection{Lower bounds for polynomial multiplication}
 
-The bilinear complexity of polynomial multiplication over finite fields has an
-equally long history, and unlike matrix multiplication it is governed by the
-arithmetic of $\F_q$. The \emph{full} product is the kernel of fast integer and
-polynomial multiplication, where recursive schemes reduce a large product to many
-small base cases whose cost compounds. For two degree-$(N-1)$ polynomials, Fiduccia
-and Zalcstein~\cite{fiduccia1977algebras} gave the lower
-bound $2N-1$, met by Toom--Cook evaluation--interpolation whenever the field has
-enough points ($2N-1\le q+1$)~\cite{toom1963complexity}. When the field is too small for plain
-interpolation the best known upper bounds come instead from Karatsuba-like
-formulae, notably those of Montgomery~\cite{montgomery2005five}, and from
-CRT/evaluation--interpolation over higher-degree places~\cite{winograd1977some}.
-Outside that range the
-exact value climbs: Kaminski and Bshouty~\cite{kaminski1989multiplicative}
-determined it precisely in the next range, and for still larger $N$ the strongest
-lower bounds come from embedding a bilinear algorithm into a linear code and
-invoking the Griesmer bound~\cite{griesmer1960bound} or the tables of
-Grassl~\cite{grassl2007codetables}, via the code constructions of
+The bilinear complexity of polynomial multiplication has an equally long history
+and, unlike matrix multiplication, is governed by the arithmetic of $\F_q$. The
+\emph{full} product is the base case of fast integer and polynomial multiplication.
+For two degree-$(N-1)$ polynomials, Fiduccia and Zalcstein~\cite{fiduccia1977algebras}
+gave the lower bound $2N-1$, met by Toom--Cook evaluation--interpolation whenever
+$2N-1\le q+1$~\cite{toom1963complexity}. When the field is too small for plain
+interpolation, the best upper bounds come from Karatsuba-like formulae, notably
+Montgomery's~\cite{montgomery2005five}, and from CRT/evaluation--interpolation over
+higher-degree places~\cite{winograd1977some}. The exact value then climbs: Kaminski
+and Bshouty~\cite{kaminski1989multiplicative} settled the next range, and for larger
+$N$ the strongest lower bounds embed a bilinear algorithm into a linear code and
+invoke the Griesmer bound~\cite{griesmer1960bound} or Grassl's
+tables~\cite{grassl2007codetables}, via the code constructions of
 Lempel--Seroussi--Winograd~\cite{lempel1983complexity} and
 Chudnovsky--Chudnovsky~\cite{chudnovsky1988algebraic}; small cases were settled by
 the exhaustive search of Barbulescu, Detrey, Estibals, and
@@ -130,22 +127,22 @@ Zimmermann~\cite{barbulescu2012finding}.
 
 A second strand is multiplication in a polynomial quotient ring
 $\F_q[x]/(x^N-\gamma)$, which specializes to three classical families:
-\emph{cyclic} convolution ($\gamma=1$, modulo $x^N-1$), multiplication in the group
-algebra of a cyclic group, underlying the discrete Fourier transform, digital signal
-processing, and cyclic codes; the \emph{truncated} (or short) product ($\gamma=0$,
-modulo $x^N$), multiplication in the local algebra $\F_q[x]/x^N$ that is the
-recurring base case of Karatsuba- and Toom-style schemes; and the \emph{negacyclic}
-product ($\gamma=-1$, modulo $x^N+1$), a twisted group algebra underlying skew-cyclic
-codes and lattice-based cryptography. The lower bounds for all three are governed by
-the factorization of $x^N-\gamma$: Winograd~\cite{winograd1977some} proved that
-multiplication modulo a polynomial with $k$ distinct irreducible factors needs at
-least $2N-k$ products, and Bl\"aser's characterization of algebras of minimal
-bilinear complexity~\cite{blaser2005complete}, combined with the minimal-rank theory
-of Averbuch, Galil, and
+\emph{cyclic} convolution ($\gamma=1$, modulo $x^N-1$), the group algebra of a
+cyclic group, underlying the discrete Fourier transform and cyclic codes; the
+\emph{truncated} (or short) product ($\gamma=0$, modulo $x^N$), the local algebra
+$\F_q[x]/x^N$ that is the recurring base case of Karatsuba- and Toom-style schemes;
+and the \emph{negacyclic} product ($\gamma=-1$, modulo $x^N+1$), a twisted group
+algebra underlying skew-cyclic codes and lattice-based cryptography. The lower bounds
+for all three are governed by the factorization of $x^N-\gamma$:
+Winograd~\cite{winograd1977some} proved that multiplication modulo a polynomial with
+$k$ distinct irreducible factors needs at least $2N-k$ products, and Bl\"aser's
+characterization of algebras of minimal bilinear
+complexity~\cite{blaser2005complete}, combined with the minimal-rank theory of
+Averbuch, Galil, and
 Winograd~\cite{averbuch1988classification,averbuch1991classification} (whose Part~II
-treats exactly the truncated algebra $\F_q[x]/x^N$), strengthens these on the
-local-algebra factors. Upper bounds come from the convolution constructions of Wagh
-and Morgera~\cite{wagh1983structured} and Morgera~\cite{morgera1990multiplicative},
+treats exactly $\F_q[x]/x^N$), strengthens these on the local-algebra factors. Upper
+bounds come from the convolution constructions of Wagh and
+Morgera~\cite{wagh1983structured} and Morgera~\cite{morgera1990multiplicative},
 refined by Cenk and \"Ozbudak~\cite{cenk2010multiplication,cenk2011multiplication}.
 Over characteristic $2$ the negacyclic product coincides with the cyclic one, since
 $x^N+1=x^N-1$.
@@ -180,29 +177,7 @@ certificate has since been re-verified independently by
 Beuchert~\cite{beuchert_2026_20752782}, using a checker written from scratch in a
 different programming language. The bound
 $\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19$ completes a bound stated without proof by Hopcroft and
-Kerr~\cite{hopcroft1971minimizing}. Table~\ref{tab:matrix} places all four in
-context.
-
-\begin{table}[h]
-  \centering
-  \setlength{\tabcolsep}{14pt}
-  \begin{tabular}{llll}
-    \toprule
-    format          & prev LB                                                          & our LB       & prev UB                                                      \\
-    \midrule
-    $\mmt{2}{2}{2}$ & $7$~\cite{winograd1971multiplication}                            & $7$          & $7$~\cite{strassen1969gaussian}                              \\
-    $\mmt{2}{2}{3}$ & $11$~\cite{hopcroft1971minimizing}                               & $11$         & $11$ ($\langle 2, 2, 2:7\rangle + \langle 2, 2, 1:4\rangle$) \\
-    $\mmt{2}{2}{4}$ & $14$~\cite{hopcroft1971minimizing}                               & $14$         & $14$ ($\langle 2, 2, 2:7\rangle + \langle 2, 2, 2:7\rangle$) \\
-    $\mmt{2}{3}{3}$ & $15$~\cite{hopcroft1971minimizing}                               & $15$         & $15$~\cite{hopcroft1971minimizing}                           \\
-    $\mmt{2}{3}{4}$ & $18$~\cite{blaser1999lower}, $19$?~\cite{hopcroft1971minimizing} & $\boxed{19}$ & $20$~\cite{hopcroft1971minimizing}                           \\
-    $\mmt{3}{3}{3}$ & $19$~\cite{blaser2003complexity}                                 & $\boxed{20}$ & $23$~\cite{laderman1976noncommutative}                       \\
-    $\mmt{3}{3}{4}$ & $24$~\cite{blaser2003complexity}                                 & $\boxed{25}$ & $29$~\cite{smirnov2013bilinear}                              \\
-    $\mmt{3}{4}{4}$ & $28$~\cite{blaser1999lower}                                      & $\boxed{29}$ & $38$~\cite{smirnov2013bilinear}                              \\
-    \bottomrule
-  \end{tabular}
-  \caption{Matrix multiplication tensor rank over $\F_2$; boxed entries are new.}
-  \label{tab:matrix}
-\end{table}
+Kerr~\cite{hopcroft1971minimizing}.
 
 For polynomial multiplication the same framework yields eighteen new lower bounds,
 over $\F_2$ and $\F_3$ --- for the full product and for the
@@ -225,14 +200,523 @@ three quotient families $\F_q[x]/(x^N-\gamma)$.
   \]
 \end{theorem}
 
-Tables~\ref{tab:full},~\ref{tab:cyc},~\ref{tab:trunc}, and~\ref{tab:nega} place these
-against the previous best lower bound and the best known upper bound; the boxed
-entries are the improvements. In one case (cyclic length $7$ over $\F_2$) the
-new lower bound meets the best known upper bound, settling
-$\Rk{\F_2}{\Cyct{7}}=13$. Over $\F_2$ the truncated product also yields a new upper
-bound, $\Rk{\F_2}{\Trunct{9}}\le 26$, found by the flip-graph search~\cite{kauers2023flip}.
-Over characteristic $2$ the negacyclic product coincides with the
-cyclic one ($x^N+1=x^N-1$), so we skip $\F_2$ in Table~\ref{tab:nega}.
+\begin{table}[!ht]
+  \centering
+  \small
+  \setlength{\tabcolsep}{10pt}
+  \begin{tabular}{lllll}
+    \toprule
+    family & problem                    & prev LB                                                          & our LB & prev UB                                                      \\
+    \midrule
+    \multirow{4}{*}{Matrix}
+           & $\Rk{\F_2}{\mmt{2}{3}{4}}$ & $18$~\cite{blaser1999lower}, $19$?~\cite{hopcroft1971minimizing} & $19$   & $20$~\cite{hopcroft1971minimizing}                           \\
+           & $\Rk{\F_2}{\mmt{3}{3}{3}}$ & $19$~\cite{blaser2003complexity}                                 & $20$   & $23$~\cite{laderman1976noncommutative}                       \\
+           & $\Rk{\F_2}{\mmt{3}{3}{4}}$ & $24$~\cite{blaser2003complexity}                                 & $25$   & $29$~\cite{smirnov2013bilinear}                              \\
+           & $\Rk{\F_2}{\mmt{3}{4}{4}}$ & $28$~\cite{blaser1999lower}                                      & $29$   & $38$~\cite{smirnov2013bilinear}                              \\
+    \midrule
+    \multirow{4}{*}{Full}
+           & $\Rk{\F_2}{\Fullt{6}}$     & $15$~\cite{lempel1983complexity,grassl2007codetables}            & $16$   & $17$~\cite{montgomery2005five}                               \\
+           & $\Rk{\F_2}{\Fullt{7}}$     & $18$~\cite{lempel1983complexity,grassl2007codetables}            & $19$   & $22$~\cite{montgomery2005five}                               \\
+           & $\Rk{\F_2}{\Fullt{8}}$     & $20$~\cite{lempel1983complexity,grassl2007codetables}            & $21$   & $26$~\cite{winograd1977some,fanhasan2015survey}              \\
+           & $\Rk{\F_3}{\Fullt{6}}$     & $12$~\cite{lempel1983complexity,griesmer1960bound}               & $14$   & $15$~\cite{winograd1977some}                                 \\
+    \midrule
+    \multirow{4}{*}{Cyclic}
+           & $\Rk{\F_2}{\Cyct{7}}$      & $12$~\cite{blaser2005complete}                                   & $13$   & $13$~\cite{wagh1983structured}                               \\
+           & $\Rk{\F_2}{\Cyct{8}}$      & $16$~\cite{blaser2005complete}                                   & $19$   & $22$~\cite{morgera1990multiplicative,cenk2011multiplication} \\
+           & $\Rk{\F_2}{\Cyct{10}}$     & $19$~\cite{blaser2005complete}                                   & $22$   & $29$~\cite{morgera1990multiplicative}                        \\
+           & $\Rk{\F_3}{\Cyct{9}}$      & $18$~\cite{blaser2005complete}                                   & $19$   & $27$~\cite{morgera1990multiplicative,cenk2011multiplication} \\
+    \midrule
+    \multirow{9}{*}{Truncated}
+           & $\Rk{\F_2}{\Trunct{6}}$    & $12$~\cite{averbuch1991classification,blaser2005complete}        & $13$   & $14$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_2}{\Trunct{7}}$    & $14$~\cite{averbuch1991classification,blaser2005complete}        & $16$   & $18$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_2}{\Trunct{8}}$    & $16$~\cite{averbuch1991classification,blaser2005complete}        & $19$   & $22$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_2}{\Trunct{9}}$    & $18$~\cite{averbuch1991classification,blaser2005complete}        & $21$   & $27$~\cite{cenk2011multiplication}$^\ast$                    \\
+           & $\Rk{\F_2}{\Trunct{10}}$   & $20$~\cite{averbuch1991classification,blaser2005complete}        & $24$   & $31$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_2}{\Trunct{11}}$   & $22$~\cite{averbuch1991classification,blaser2005complete}        & $27$   & $36$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_3}{\Trunct{8}}$    & $16$~\cite{averbuch1991classification,blaser2005complete}        & $17$   & $22$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_3}{\Trunct{9}}$    & $18$~\cite{averbuch1991classification,blaser2005complete}        & $19$   & $27$~\cite{winograd1977some}                                 \\
+           & $\Rk{\F_3}{\Trunct{10}}$   & $20$~\cite{averbuch1991classification,blaser2005complete}        & $21$   & $31$~\cite{winograd1977some}                                 \\
+    \midrule
+    Negacyclic
+           & $\Rk{\F_3}{\Negat{9}}$     & $18$~\cite{blaser2005complete}                                   & $19$   & $27$~\cite{cenk2011multiplication}                           \\
+    \bottomrule
+  \end{tabular}
+
+  \smallskip
+  {\footnotesize\raggedright
+    $^\ast$ We obtain a new upper bound of $26$ by flip-graph search~\cite{kauers2023flip}. See Table~\ref{tab:trunc} for the decomposition.
+    \par}
+  \caption{The twenty-two new lower bounds proved in this paper.}
+  \label{tab:summary}
+\end{table}
+
+Table~\ref{tab:summary} collects all twenty-two new
+lower bounds against the previous best lower bound and the best known upper bound.
+Over $\F_2$ the negacyclic product coincides
+with the cyclic one ($x^N+1=x^N-1$).
+Tables~\ref{tab:matrix}--\ref{tab:nega} in Appendix~\ref{app:bound-tables} set these
+in the full context of each family, including the many small cases where our
+framework reproduces the exact rank already known.
+
+The rest of the paper is organized as follows.
+Section~\ref{sec:toy} sketches the whole framework on a single toy example.
+Section~\ref{sec:framework} sets up tensors, constraints, and symmetries;
+Section~\ref{sec:symmetries} instantiates the symmetries for
+matrix and polynomial multiplication; Section~\ref{sec:orbits} describes orbit
+enumeration; Section~\ref{sec:techniques} formalizes the four lower-bound techniques;
+Section~\ref{sec:certificates} details the certificates and the verifier; and
+Section~\ref{sec:conclusion} concludes.
+
+\section{A toy example: $\Rk{\F_2}{\mmt{2}{2}{2}}\ge 7$}\label{sec:toy}
+
+Before the formal development, we sketch how the framework proves an easy case: that
+$2\times 2$ matrix multiplication over $\F_2$ needs at least $7$ multiplications.
+The aim is to convey the shape of the argument, not its details; everything below is
+made precise in Sections~\ref{sec:framework}--\ref{sec:certificates}.
+
+Write the tensor as $\mmt{2}{2}{2}=\sum_{i,j,k} a_{ij}\otimes b_{jk}\otimes c_{ki}$,
+where the $a_{ij}$ are the four entries of the first matrix factor $A$. The method
+works with \emph{constrained} versions of the tensor, obtained by forcing some linear
+combinations of the $a_{ij}$ to vanish --- that is, by restricting $A$ to a subspace,
+and keeping only the terms with a surviving $a_{ij}$. The matrix symmetries
+$A\mapsto PAQ^{-1}$ and $A\mapsto A^{\top}$ permute these subspaces, and for $2\times
+  2$ matrices over $\F_2$ there are only ten orbits up to symmetry,
+from the fully constrained $A=0$ (orbit 0) up to the
+unconstrained tensor (orbit 9), which is $\mmt{2}{2}{2}$ itself.
+
+The algorithm assigns each orbit a rank lower bound, working from the most constrained
+to the least so that each step may rely on the bounds already settled for smaller
+subspaces. We walk through all ten below, grouped by technique.
+
+\paragraph{Orbits 0, 1, 2, 3, 5 (flatten).} The base technique reads a bound off a
+\emph{flattening}: regroup the tensor's three factors as two, view the result as a
+matrix, and take its rank. Orbit~0, $A=\left(\begin{smallmatrix}0&0\\0&0\end{smallmatrix}\right)$,
+has constrained tensor $0$, so $\R=0$; orbit~1, $A=\left(\begin{smallmatrix}0&0\\0&a_{11}\end{smallmatrix}\right)$,
+flattens to rank $2$, so $\R\ge2$; and orbits~2, 3, and 5 ---
+$\left(\begin{smallmatrix}0&a_{01}\\a_{01}&0\end{smallmatrix}\right)$,
+$\left(\begin{smallmatrix}0&0\\a_{10}&a_{11}\end{smallmatrix}\right)$,
+$\left(\begin{smallmatrix}0&a_{01}\\a_{10}&0\end{smallmatrix}\right)$ --- each flatten
+to rank $4$, so $\R\ge4$.
+
+\paragraph{Orbit 4, $A=\left(\begin{smallmatrix}0&a_{01}\\a_{01}&a_{11}\end{smallmatrix}\right)$ (forced product).}
+Flattening yields only $4$. The forced-product technique automates a substitution of
+Hopcroft and Kerr~\cite{hopcroft1971minimizing}: two of the tensor's slices are single
+products that any optimal decomposition may be assumed to compute literally, which uses
+up $2$ of its terms; stripping those two terms leaves a residual whose every
+$\F_2$-completion flattens to rank at least $4$. Hence $\R\ge 2+4=6$.
+
+\paragraph{Orbit 6, $A=\left(\begin{smallmatrix}a_{00}&a_{01}\\a_{01}&a_{00}+a_{01}\end{smallmatrix}\right)$ (substitution).}
+Flattening again gives only $4$, so we substitute. Fix an optimal decomposition; its
+$A$-components are nonzero linear forms in $a_{00},a_{01}$, of which there are just
+three ($a_{00}$, $a_{01}$, $a_{00}+a_{01}$). With at least $4$ terms, by pigeonhole one
+form repeats, and setting it to zero kills at least $2$ terms and lands in Orbit~2
+(bound $4$). Hence $\R\ge 2+4=6$.
+
+\paragraph{Orbits 7, 8 (degenerate reduction).} Adding one more constraint shrinks a
+subspace to one already settled, whose bound is then inherited. For orbit~7,
+$A=\left(\begin{smallmatrix}0&a_{01}\\a_{10}&a_{11}\end{smallmatrix}\right)$, adding
+$a_{01}+a_{10}=0$ lands in orbit~4; for orbit~8,
+$A=\left(\begin{smallmatrix}a_{00}&a_{01}\\a_{01}&a_{11}\end{smallmatrix}\right)$,
+adding $a_{00}=0$ lands in orbit~4. Either way $\R\ge6$.
+
+\paragraph{Orbit 9, $A=\left(\begin{smallmatrix}a_{00}&a_{01}\\a_{10}&a_{11}\end{smallmatrix}\right)$ (substitution).}
+This is the unconstrained tensor, $\mmt{2}{2}{2}$ itself. Fix an optimal decomposition
+and take any of its $A$-components --- a nonzero linear form in the four $a_{ij}$.
+Setting it to zero kills at least one term and lands in Orbit~7 or Orbit~8, each of
+bound $6$. Since this holds for \emph{every} nonzero form, $\R\ge 1+6$, that is,
+$ \Rk{\F_2}{\mmt{2}{2}{2}}\ge 7$.
+
+Appendix~\ref{sec:toy-in-detail} works this example in full.
+
+\section{The framework}\label{sec:framework}
+
+\subsection{Tensors rank}
+
+Fix a finite field $\F_q$ with $q=p^m$. A multiplication problem is given by an
+order-$3$ tensor
+\[
+  T = \sum_{i,j,k} t_{ijk}\, a_i \otimes b_j \otimes c_k
+  \;\in\; A \otimes B \otimes C,
+\]
+where $A=\F_q^{N_A}$, $B=\F_q^{N_B}$, $C=\F_q^{N_C}$ have bases $a_i,b_j,c_k$ and
+the structure constants $t_{ijk}\in\F_q$ encode the bilinear map. The
+\emph{rank} $\R(T)$ is the least $r$ such that
+$T=\sum_{\lambda=1}^{r} u_\lambda\otimes v_\lambda\otimes w_\lambda$ with
+$u_\lambda\in A$, $v_\lambda\in B$, $w_\lambda\in C$; this is exactly the bilinear
+complexity of the underlying map. We write $\Rk{\F_q}{T}$ when emphasizing the field $\F_q$,
+and $\R(T)$ when it is clear from context.
+
+\subsection{Constraints}
+
+We attack $\R(T)$ by constraining the first argument $A$ to a subspace. A
+\emph{constraint} is a linear functional on $A$, i.e.\ a vector in the dual
+$A^* = \F_q^{N_A}$; a set of constraints cuts $A$ down to the subspace on which
+all of them vanish, and substituting that subspace into $T$ yields a smaller
+tensor $T_S$ with $\R(T)\ge \R(T_S)$ for any subspace $S$ obtained by adding
+constraints. A set of $d$ independent constraints spans a $d$-dimensional
+subspace of $A^*$, and two constraint sets that span the same subspace define the
+same $T_S$. We therefore represent a constraint subspace by its
+\emph{reduced row echelon form} (RREF), which is a unique key for the subspace.
+
+\subsection{Symmetries and the query/store factorization}
+
+The leverage in our method comes from symmetries that act on $A$ and preserve
+$\R(T)$. Abstractly, let $G$ be a group acting on $A^*$ by semilinear
+bijections: each $g$ is additive with $g(\lambda u)=\phi_g(\lambda)\,g(u)$ for
+some field automorphism $\phi_g\in\Gal(\F_q/\F_p)$, so both the $\F_q$-linear
+sandwich and multiplication maps ($\phi_g=\mathrm{id}$) and the Galois symmetries
+($\phi_g$ a Frobenius $a\mapsto a^p$) are allowed. We require that for every
+$g\in G$ there is a rank-preserving symmetry of $T$ whose action on the first
+factor is $g$. Since a semilinear bijection sends $\F_q$-subspaces to
+$\F_q$-subspaces, $G$ permutes constraint subspaces and maps each $T_S$ to an
+isomorphic tensor, so $\R(T_S)$ is constant on each $G$-orbit of subspaces. Our
+dynamic program needs only one representative per orbit.
+
+The two facts the dynamic program rests on are the following.
+
+\begin{lemma}[Monotonicity and orbit invariance]\label{lem:foundation}
+  If $T_{S'}$ is obtained from $T_{S}$ by imposing additional constraints on the first
+  argument, then $\R(T_{S})\ge\R(T_{S'})$. Moreover, for any rank-preserving
+  first-argument symmetry $g\in G$ we have $\R(T_{S})=\R(T_{g(S)})$, so $\R(T_S)$
+  depends only on the $G$-orbit of the constraint subspace.
+\end{lemma}
+
+\begin{proof}
+  A bilinear algorithm with $r$ products that computes the map of $T_S$ also computes
+  its restriction to any smaller first-argument subspace with the same $r$ products, so
+  imposing further constraints cannot raise the rank; this is monotonicity. For
+  invariance, the rank-preserving symmetry whose first-factor action is $g$ carries
+  $T_S$ to $T_{g(S)}$ by an invertible change of variables, which leaves the rank
+  unchanged.
+\end{proof}
+
+The implementation never materializes $G$ as a list. Instead it factors $G$ into two
+subsets, a \emph{query} set $\Kappa$ and a \emph{store} set $\Sigma$, whose product
+set $\Kappa^{-1}\cdot\Sigma$ covers $G$ so that every orbit member is reached; neither
+need be a subgroup or be closed under inversion. This is the meet-in-the-middle, or
+square-root, trick. To test whether a query subspace $g$ lies in the orbit of a
+stored representative $g'$, we precompute and hash the RREF of $\sigma(g')$ for every
+$\sigma\in\Sigma$ (the \emph{store images}), and at query time probe the hash with the
+RREF of $\kappa(g)$ for every $\kappa\in\Kappa$. A hit $\kappa(g)\equiv \sigma(g')$
+certifies $g$ and $g'$ as $G$-equivalent and yields the witness pair
+$(\kappa,\sigma)$, from which the canonical form is recovered as
+\begin{equation}\label{eq:witness}
+  g' \;\equiv\; \sigma^{-1}\bigl(\kappa(g)\bigr).
+\end{equation}
+Storage grows by a factor $|\Sigma|$ and a query costs $|\Kappa|$
+probes, with $|\Kappa|\cdot|\Sigma|\gtrsim |G|$; choosing
+$|\Kappa|\approx|\Sigma|\approx\sqrt{|G|}$ trades square-root space for
+square-root time.
+
+\section{Symmetries of the problem families}\label{sec:symmetries}
+
+The framework is fixed once we name, for each problem, the tensor $T$ and the
+factorization $(\Kappa,\Sigma)$ of its first-argument symmetry group.
+
+\subsection{Matrix multiplication}
+
+The tensor for multiplying an $l\times m$ matrix $X$ by an $m\times n$ matrix $Y$, with product $Z^{\!\top}$, is
+\[
+  \mmt{l}{m}{n} = \sum_{i=0}^{l-1}\sum_{j=0}^{m-1}\sum_{k=0}^{n-1}
+  x_{ij}\otimes y_{jk}\otimes z_{ki},
+\]
+so $A=\F_q^{l\times m}$. For invertible $P\in\GL_l$, $Q\in\GL_m$, $R\in\GL_n$ the
+substitution $X\mapsto PXQ^{-1}$, $Y\mapsto QYR^{-1}$, $Z\mapsto RZP^{-1}$ preserves
+the tensor (the \emph{sandwich} symmetry). The rank is also invariant under
+cyclically permuting the three factors, $\R(\mmt{l}{m}{n})=\R(\mmt{m}{n}{l})$ (the
+\emph{cyclic} symmetry); for a square format $l=m=n$ this combines with matrix
+transposition into an order-two symmetry
+$X\mapsto X^{\!\top}$, $Y\mapsto Z^{\!\top}$, $Z\mapsto Y^{\!\top}$ (the \emph{transpose} symmetry). Projected onto the
+first factor, the symmetry group acting on the matrix space $A=\F_q^{l\times m}$ is
+\[
+  G \;=\; (\GL_l(\F_q)\times \GL_m(\F_q)) \rtimes C_2,
+\]
+with $(P,Q)$ acting by $X\mapsto PXQ^{-1}$ and the $C_2$ by transposition $X\mapsto X^{\!\top}$ (present
+only when $l=m=n$). The meet-in-the-middle splits $G$ by side:
+the store set is the right multiplications $\Sigma=\{X\mapsto XR^{-1}:R\in\GL_m(\F_q)\}$ and
+the query set is the left multiplications $\Kappa=\{X\mapsto LX:L\in\GL_l(\F_q)\}$,
+extended by the transpose when $l=m=n$. Scalar matrices act trivially on subspaces,
+so each side is taken modulo the center, and both then have order about $\sqrt{|G|}$.
+Equivalence of constraint subspaces under the subgroup without transpose is exactly
+the tensor-isomorphism problem on $l\times m\times d$ tensors, which sits above graph
+and code equivalence in the isomorphism hierarchy~\cite{grochow2023complexity,grochow2025complexity}.
+
+\subsection{Full polynomial multiplication}
+
+Multiplying two polynomials of degree $<N$ in $\F_q[x]$ gives
+\[
+  \Fullt{N} = \sum_{i,j=0}^{N-1} a_i\otimes b_j\otimes c_{i+j},
+  \qquad N_A=N_B=N,\ N_C=2N-1,
+\]
+the ordinary convolution. Its first-argument symmetries are the action on
+degree-$(N-1)$ binary forms of the projective semilinear group
+\[
+  G_{\mathrm{full}} = \mathrm{P\Gamma L}_2(\F_q)
+  = \PGL_2(\F_q)\rtimes \Gal(\F_q/\F_p),
+\]
+generated by the substitutions $x\mapsto x+c$, the reversal $x\mapsto 1/x$ (which
+swaps $a_i\leftrightarrow a_{N-1-i}$), the scalings $x\mapsto gx$, and the
+Frobenius $a\mapsto a^p$. We factor it as
+$\Sigma=\PGL_2(\F_q)$ (the store side, of size $q(q^2-1)$) and
+$\Kappa=\Gal(\F_q/\F_p)$ (the query side, of size $m$).
+
+\subsection{Polynomial multiplication modulo $x^N-\gamma$}
+
+Fix a scalar $\gamma\in\F_q$ and let $R=\F_q[x]/(x^N-\gamma)$. Multiplication in $R$
+reduces the convolution of $a$ and $b$ by the rule $x^N\equiv\gamma$,
+\[
+  \sum_{i,j=0}^{N-1} a_i\otimes b_j\otimes w_{ij},\qquad
+  w_{ij}=\begin{cases} c_{i+j},           & i+j<N,    \\[2pt]
+                \gamma\,c_{i+j-N}, & i+j\ge N,\end{cases}
+  \qquad N_A=N_B=N_C=N.
+\]
+Three families specialize this tensor: \emph{cyclic} convolution $\Cyct{N}$ for
+$\gamma=1$, the \emph{truncated} (or short) product $\Trunct{N}$ for $\gamma=0$ ---
+the local algebra $\F_q[x]/(x^N)$, in which the overflow terms vanish and $x$ is
+nilpotent --- and the \emph{negacyclic} product $\Negat{N}$ for $\gamma=-1$. Over
+characteristic $2$, $-1=1$, so $\Negat{N}=\Cyct{N}$.
+
+The same three kinds of symmetry act on $A=R$ for every $\gamma$: multiplication by a
+unit $p\in R^*$ (the shifts $x^r$ are the special case $p=x^r$, valid for
+$\gamma\ne 0$), the $\F_q$-algebra automorphisms $\Aut(R)$, and the Galois group of
+$\F_q/\F_p$. The base-field scalars $\F_q^*$ act trivially on subspaces, so the group
+acting on constraint subspaces is
+\[
+  G = \bigl(R^*\rtimes \Aut(R) \rtimes \Gal(\F_q/\F_p)\bigr)/\F_q^*,
+\]
+with store side $\Sigma=R^*/\F_q^*$ and query side
+$\Kappa=\Aut(R)\rtimes\Gal(\F_q/\F_p)$ --- the identical factorization in all three
+cases. Only the ring structure, and hence the sizes of the two sides, depends on
+$\gamma$. For $\gamma=\pm1$ the Chinese remainder theorem splits $R$ into field
+factors --- for $\gamma=1$ indexed by the $q$-cyclotomic cosets of $\mathbb{Z}/N$,
+for $\gamma=-1$ by the cosets of the odd residues modulo $2N$ --- so $R^*$ is
+typically far larger than the $N$ shifts, which is precisely the extra symmetry the
+framework exploits. For $\gamma=0$ the algebra is local: a polynomial is a unit iff
+its constant term is nonzero, so $|\Sigma|=q^{N-1}$, and an automorphism sends $x$ to
+any nilpotent generator $y_1x+\dots+y_{N-1}x^{N-1}$ with $y_1\ne 0$, giving
+$|\Aut(R)|=(q-1)q^{N-2}$. Table~\ref{tab:symmetry} contrasts the symmetry
+structures; the three quotient families share one row, differing only in $\gamma$.
+
+\begin{table}[h]
+  \centering
+  \setlength{\tabcolsep}{10pt}
+  \begin{tabular}{lll}
+    \toprule
+    problem                            & store $\Sigma$        & query $\Kappa$                                \\
+    \midrule
+    matrix-mult $\mmt{l}{m}{n}$        & $\GL_m$ (right mult.) & $\GL_l$ (left mult.), and transpose ($l=m=n$) \\
+    full-poly-mult                     & $\PGL_2(\F_q)$        & $\Gal(\F_q/\F_p)$                             \\
+    poly-mult $\F_q[x]/(x^N{-}\gamma)$ & $R^*/\F_q^*$          & $\Aut(R)\rtimes\Gal(\F_q/\F_p)$               \\
+    \bottomrule
+  \end{tabular}
+  \caption{First-argument symmetry factorizations; the last row covers the cyclic
+    ($\gamma=1$), truncated ($\gamma=0$), and negacyclic ($\gamma=-1$) products. In every family the
+    query elements are indexed so that the $i$-th element is $i$, which is why a
+    certificate can name a symmetry by a single integer.}
+  \label{tab:symmetry}
+\end{table}
+
+\section{Orbit enumeration}\label{sec:orbits}
+
+The first stage enumerates exactly one canonical representative per orbit of
+constraint subspaces, for every dimension $d=0,1,\dots,N_A$. Subspaces are built
+up one constraint at a time and deduplicated with the same meet-in-the-middle trick.
+
+Representatives are generated dimension by dimension, in lexicographic
+order of their RREF. A dimension-$d$ subspace is formed by
+appending to a dimension-$(d-1)$ representative one new constraint whose leading
+pivot lies strictly above the existing pivots; candidates with a nonzero
+entry at an existing pivot are skipped because Gauss--Jordan elimination would
+reduce them against the current basis. Because candidates are visited in global
+lexicographic order, the first time an orbit is seen its representative is
+automatically the lexicographically least, so no separate minimality test is
+needed.
+
+Deduplication uses a hash set of RREF keys.
+For each kept representative $c$ we insert the RREF of every store image
+$\sigma(c)$, $\sigma\in\Sigma$; for each new candidate $q$ we probe with
+the RREF of every query image $\kappa(q)$, $\kappa\in\Kappa$, and
+discard $q$ if any probe hits, since a hit means $q\equiv (\kappa^{-1}\sigma)(c)$
+lies in $c$'s orbit. Algorithm~\ref{alg:enum}, in Appendix~\ref{app:enum}, states the procedure.
+
+\section{Rank lower-bound techniques}\label{sec:techniques}
+
+The dynamic program sweeps subspace dimension from $N_A$ down to $0$, processing all
+orbits of each dimension in parallel and inserting their freshly computed bounds into
+the orbit map before moving to the next (smaller) dimension. This ordering is sound
+because the only techniques that look anything up --- degenerate reduction and
+backtracking --- query \emph{strictly larger} dimensions, already settled. Each orbit
+tries four techniques in order --- flatten, degenerate reduction, forced product,
+backtracking --- stopping once one meets the goal.
+
+\paragraph{Flatten.} Compute the three flattening matrix ranks of the constrained
+tensor and take the maximum. This is
+the base case and needs no other orbit.
+
+\paragraph{Degenerate reduction.} Add one more independent constraint to the
+current subspace, producing a strictly smaller subspace whose orbit was processed
+at the previous (larger) dimension; by Lemma~\ref{lem:foundation} its bound is a
+valid bound for the current orbit. We scan candidate constraints, look up each
+enlarged subspace in the orbit map, and keep the best. The proof
+records the extra constraint together with the witness pair from
+Equation~\eqref{eq:witness}.
+
+\paragraph{Forced product.} This automates the Hopcroft--Kerr substitution~\cite{hopcroft1971minimizing},
+which rests on the following lemma.
+
+\begin{lemma}[Hopcroft and Kerr~{\cite[Lemma~2]{hopcroft1971minimizing}}]\label{lem:forced-product}
+  Let $f_0,\dots,f_{t-1}$ be bilinear forms of which $f_0,\dots,f_{s-1}$ are linearly
+  independent and each is a single product (a form of rank $1$). If the whole set can
+  be computed with $r$ multiplications, then it can be computed with $r$
+  multiplications $s$ of which are exactly $f_0,\dots,f_{s-1}$.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+  Take any bilinear algorithm with $r$ products computing the $f_i$, each of which is a
+  fixed $\F_q$-linear combination of the products. Since $f_0$ has rank $1$ and is
+  independent of $f_1,\dots,f_{s-1}$, some product appearing in $f_0$ can be replaced by
+  $f_0$ itself without shrinking the span of the products, so $f_0$ is then computed by
+  one multiplication. Repeating for $f_1,\dots,f_{s-1}$ --- whose independence
+  guarantees a fresh product to trade at each step --- yields an $r$-product algorithm
+  that computes $f_0,\dots,f_{s-1}$ literally.
+\end{proof}
+
+Grouping the tensor along the $C$ factor into $t$ slices, those whose $A\otimes B$
+part has matrix rank $1$ are single products; we greedily take a maximal independent
+set of $s$ of them and, by Lemma~\ref{lem:forced-product}, assume an optimal
+decomposition computes them literally. Stripping these $s$ terms leaves $s(t-s)$
+unknown field coefficients in the residual; we enumerate all $q^{s(t-s)}$
+assignments, flatten each, and take the minimum, so the bound is $s+\min$. We repeat
+for all three cyclic orientations and keep the best. Since the minimum must range
+over \emph{every} assignment for soundness, we skip the technique when $q^{s(t-s)}$ is
+too large to enumerate. The proof records only which orientation won.
+
+\paragraph{Substitution with backtracking.} Substitution is a powerful inductive technique, used extensively by Pan, Hopcroft, Kerr, and Bl{\"a}ser.
+
+\begin{lemma}[Substitution]\label{lem:substitution}
+  Fix an optimal decomposition $T_S=\sum_{\lambda}u_\lambda\otimes v_\lambda\otimes
+    w_\lambda$ with $\R(T_S)$ terms, each $A$-component $u_\lambda$ a nonzero linear form
+  in the surviving $A$-variables. Suppose that repeatedly setting a linear form to zero
+  --- each step imposing that form as a new constraint and discarding the terms it
+  annihilates --- removes $\delta$ terms in total and reaches the more-constrained
+  tensor $T_{S'}$. Then $\R(T_S)\ge\delta+\R(T_{S'})$.
+\end{lemma}
+
+\begin{proof}
+  Setting a linear form to zero constrains the first argument to the hyperplane it
+  defines; the terms whose $A$-component that constraint annihilates drop out, and the
+  surviving terms remain a valid decomposition of the constrained tensor. So a single
+  step that discards $d$ terms gives $\R(T_S)\ge d+\R(T_{S''})$ for the one-larger
+  subspace $S''$. Iterating along the chain and summing the discarded terms yields the
+  claim.
+\end{proof}
+
+So if a chain of substitutions removing $\delta$ terms lands in an orbit of
+already-certified bound $b$ with $\delta+b\ge$ target, then $\R(T_S)\ge$ target. The
+technique searches for such a chain by DFS over canonical $A$-components --- the
+nonzero linear forms supported away from the current pivots, one per coset.
+The DFS depth is capped at the known lower bound given by the previous techniques.
+Several optimizations make it scale: the DFS branches are run in parallel;
+a thread-local cache memoizes the bound of each enlarged subspace, halving
+itself stochastically when it grows too large; the target bound is raised one unit
+at a time so that easy branches prune early; and a step limit aborts large
+branches. Each branch that reaches the target contributes one record to the proof:
+the depth, the subset mask of substituted forms, and the witness pair identifying
+the orbit it reduced to.
+
+
+\section{Proof certificates and verification}\label{sec:certificates}
+
+Every bound is emitted as a certificate that a verifier rechecks; the verifier is
+simpler than the search, and runs faster with less memory. For each orbit the
+certificate records its canonical constraint subspace, the certified lower bound, and
+a proof that is exactly one of the four techniques (the unconstrained orbit's bound is
+``the'' bound for the problem). Each proof stores only what the verifier cannot
+cheaply recompute:
+\begin{itemize}
+  \item \textbf{Flatten:} nothing; the verifier recomputes the flattening rank.
+  \item \textbf{Forced product:} the winning cyclic orientation, an integer in
+        $\{0,1,2\}$.
+  \item \textbf{Degenerate:} the extra constraint, together with the witness pair
+        $(\kappa,\sigma)$ of Equation~\eqref{eq:witness} that identifies the enlarged
+        subspace's orbit.
+  \item \textbf{Backtracking:} for each DFS leaf that reached the target, its depth,
+        the subset of substituted forms, and the witness pair of the orbit it reduced
+        to.
+\end{itemize}
+
+The verifier replays the same sweep from dimension $N_A$ down to $0$, so each orbit
+is checked only against strictly larger orbits already confirmed. It rechecks
+flatten and forced product by recomputation, and degenerate and backtracking by
+reconstructing the canonical form of every claimed reduction from its witness via
+Equation~\eqref{eq:witness} and confirming the looked-up bound supports the claim. A
+witness that misses a known orbit, a recomputed bound that falls short, or a
+miscounted trace aborts verification. Soundness follows by induction on decreasing
+dimension: at dimension $N_A$ only flatten and forced product apply, and every
+smaller-dimension step reduces to an orbit verified earlier.
+
+As a global sanity check, every bound we prove is consistent with the literature: in
+no case (Tables~\ref{tab:matrix}--\ref{tab:nega}) does a proved bound exceed the best
+known upper bound, and in many small cases it matches the exact rank already known. A
+soundness bug inflating a bound would, across the dozens of tabulated cases, likely
+have produced a lower bound exceeding some known upper bound.
+
+\section{Conclusion and open problems}\label{sec:conclusion}
+
+We have given a single automated framework for bilinear-complexity lower bounds
+over finite fields, parameterized only by a tensor and a symmetry group, and used it
+to improve the long-standing bound on $\mmt{3}{3}{3}$ over $\F_2$ to $20$, to settle
+three more matrix formats, and to obtain eighteen new lower bounds for polynomial
+multiplication across the full, cyclic, truncated, and negacyclic products. Every
+bound comes with a certificate that an auditable verifier rechecks, typically faster
+than the search. The source code, verifier, and all certificates are available at \\
+\url{https://github.com/wcgbg/tensor-rank-lower-bound}.
+
+Several questions remain. The exact rank of $\mmt{3}{3}{3}$ over $\F_2$ is still
+open in $[20,23]$, and scaling to $\mmt{4}{4}{4}$ is blocked by the sheer number of
+constraint orbits, needing stronger symmetry reduction. The polynomial bounds should
+extend to larger $N$ with more compute. A natural next family is extension-field
+multiplication in $\F_{q^n}$ over $\F_q$, computing $f\cdot g \bmod p(x)$ for an
+irreducible $p$ of degree $n$. Finally, the framework applies verbatim to other
+finite fields; finding genuinely new bounds beyond $\F_2$ and $\F_3$ is left for
+future work.
+
+\section*{Acknowledgements}
+Thanks to Youming Qiao for helpful discussions on the tensor isomorphism problem.
+
+\bibliography{refs}
+
+\appendix
+
+\section{Complete bound tables by family}\label{app:bound-tables}
+
+Tables~\ref{tab:matrix}--\ref{tab:nega} give the full lower- and upper-bound picture
+for each problem family. The boxed entries are the new lower bounds proved in this
+paper and collected in Table~\ref{tab:summary}; the remaining rows, where our
+framework reproduces a value already known exactly, are a consistency check on the
+method. Over characteristic $2$ the negacyclic product coincides with cyclic
+convolution ($x^N+1=x^N-1$), so Table~\ref{tab:nega} lists only $\F_3$.
+
+\begin{table}[h]
+  \centering
+  \setlength{\tabcolsep}{14pt}
+  \begin{tabular}{llll}
+    \toprule
+    format          & prev LB                                                          & our LB       & prev UB                                                      \\
+    \midrule
+    $\mmt{2}{2}{2}$ & $7$~\cite{winograd1971multiplication}                            & $7$          & $7$~\cite{strassen1969gaussian}                              \\
+    $\mmt{2}{2}{3}$ & $11$~\cite{hopcroft1971minimizing}                               & $11$         & $11$ ($\langle 2, 2, 2:7\rangle + \langle 2, 2, 1:4\rangle$) \\
+    $\mmt{2}{2}{4}$ & $14$~\cite{hopcroft1971minimizing}                               & $14$         & $14$ ($\langle 2, 2, 2:7\rangle + \langle 2, 2, 2:7\rangle$) \\
+    $\mmt{2}{3}{3}$ & $15$~\cite{hopcroft1971minimizing}                               & $15$         & $15$~\cite{hopcroft1971minimizing}                           \\
+    $\mmt{2}{3}{4}$ & $18$~\cite{blaser1999lower}, $19$?~\cite{hopcroft1971minimizing} & $\boxed{19}$ & $20$~\cite{hopcroft1971minimizing}                           \\
+    $\mmt{3}{3}{3}$ & $19$~\cite{blaser2003complexity}                                 & $\boxed{20}$ & $23$~\cite{laderman1976noncommutative}                       \\
+    $\mmt{3}{3}{4}$ & $24$~\cite{blaser2003complexity}                                 & $\boxed{25}$ & $29$~\cite{smirnov2013bilinear}                              \\
+    $\mmt{3}{4}{4}$ & $28$~\cite{blaser1999lower}                                      & $\boxed{29}$ & $38$~\cite{smirnov2013bilinear}                              \\
+    \bottomrule
+  \end{tabular}
+  \caption{Matrix multiplication tensor rank over $\F_2$; boxed entries are new.}
+  \label{tab:matrix}
+\end{table}
 
 \begin{table}[h]
   \centering
@@ -341,358 +825,11 @@ cyclic one ($x^N+1=x^N-1$), so we skip $\F_2$ in Table~\ref{tab:nega}.
   \label{tab:nega}
 \end{table}
 
-The rest of the paper is organized as follows.
-Section~\ref{sec:framework} sets up tensors, constraints, and symmetries. Section~\ref{sec:symmetries} instantiates the symmetries for
-matrix and polynomial multiplication. Section~\ref{sec:orbits} describes orbit
-enumeration.
-Section~\ref{sec:techniques} formalizes the four lower-bound techniques.
-Section~\ref{sec:certificates} details the certificates and the verifier, and
-Section~\ref{sec:conclusion} concludes. Appendix~\ref{app:results} reports the
-search and verification details for each new bound.
-
-\section{The framework}\label{sec:framework}
-
-\subsection{Tensors, rank, and flattening}
-
-Fix a finite field $\F_q$ with $q=p^m$. A multiplication problem is given by an
-order-$3$ tensor
-\[
-  T = \sum_{i,j,k} t_{ijk}\, a_i \otimes b_j \otimes c_k
-  \;\in\; A \otimes B \otimes C,
-\]
-where $A=\F_q^{N_A}$, $B=\F_q^{N_B}$, $C=\F_q^{N_C}$ have bases $a_i,b_j,c_k$ and
-the structure constants $t_{ijk}\in\F_q$ encode the bilinear map. The
-\emph{rank} $\R(T)$ is the least $r$ such that
-$T=\sum_{\lambda=1}^{r} u_\lambda\otimes v_\lambda\otimes w_\lambda$ with
-$u_\lambda\in A$, $v_\lambda\in B$, $w_\lambda\in C$; this is exactly the bilinear
-complexity of the underlying map. We write $\Rk{\F_q}{T}$ when emphasizing the field $\F_q$,
-and $\R(T)$ when it is clear from context.
-
-The one universal lower bound is \emph{flattening}: grouping two of the three
-tensor factors into one turns $T$ into a matrix whose rank lower-bounds $\R(T)$.
-Concretely, $\R(T)\ge \rank M_A(T)$ where $M_A(T)$ is the $N_A\times (N_B N_C)$
-matrix with rows indexed by $A$ and columns by $B\otimes C$; symmetrically for the
-other two groupings, and we take the maximum.
-
-\subsection{Constraints}
-
-We attack $\R(T)$ by constraining the first argument $A$ to a subspace. A
-\emph{constraint} is a linear functional on $A$, i.e.\ a vector in the dual
-$A^* = \F_q^{N_A}$; a set of constraints cuts $A$ down to the subspace on which
-all of them vanish, and substituting that subspace into $T$ yields a smaller
-tensor $T_S$ with $\R(T)\ge \R(T_S)$ for any subspace $S$ obtained by adding
-constraints. A set of $d$ independent constraints spans a $d$-dimensional
-subspace of $A^*$, and two constraint sets that span the same subspace define the
-same $T_S$. We therefore represent a constraint subspace by its
-\emph{reduced row echelon form} (RREF), which is a unique key for the subspace.
-
-\subsection{Symmetries and the query/store factorization}
-
-The leverage in our method comes from symmetries that act on $A$ and preserve
-$\R(T)$. Abstractly, let $G$ be a group acting on $A^*$ by semilinear
-bijections: each $g$ is additive with $g(\lambda u)=\phi_g(\lambda)\,g(u)$ for
-some field automorphism $\phi_g\in\Gal(\F_q/\F_p)$, so both the $\F_q$-linear
-sandwich and multiplication maps ($\phi_g=\mathrm{id}$) and the Galois symmetries
-($\phi_g$ a Frobenius $a\mapsto a^p$) are allowed. We require that for every
-$g\in G$ there is a rank-preserving symmetry of $T$ whose action on the first
-factor is $g$. Since a semilinear bijection sends $\F_q$-subspaces to
-$\F_q$-subspaces, $G$ permutes constraint subspaces and maps each $T_S$ to an
-isomorphic tensor, so $\R(T_S)$ is constant on each $G$-orbit of subspaces. Our
-dynamic program needs only one representative per orbit.
-
-The implementation never materializes $G$ as a list. Instead it factors the group $G$
-into two subsets of $G$, a \emph{query} set $\Kappa$ and a \emph{store} set
-$\Sigma$, such that the product set
-$\Kappa^{-1}\cdot\Sigma$ covers $G$ so that every orbit member is reached.
-Neither $\Kappa$ nor $\Sigma$ needs to be a subgroup or be closed under inversion.
-This is the meet-in-the-middle, or
-square-root, trick. To test whether a query subspace $g$ lies in the orbit of a
-stored representative $g'$, we precompute and hash the RREF of
-$\sigma(g')$ for every $\sigma\in\Sigma$ (the \emph{store images}), and
-at query time probe the hash with the RREF of $\kappa(g)$ for every
-$\kappa\in\Kappa$. A hit
-$\kappa(g)\equiv \sigma(g')$ certifies $g$ and $g'$ as
-$G$-equivalent and yields the witness pair $(\kappa,\sigma)$, from which the canonical form
-is recovered as
-\begin{equation}\label{eq:witness}
-  g' \;\equiv\; \sigma^{-1}\bigl(\kappa(g)\bigr).
-\end{equation}
-Storage grows by a factor $|\Sigma|$ and a query costs $|\Kappa|$
-probes, with $|\Kappa|\cdot|\Sigma|\gtrsim |G|$; choosing
-$|\Kappa|\approx|\Sigma|\approx\sqrt{|G|}$ trades square-root space for
-square-root time.
-
-\section{Symmetries of the problem families}\label{sec:symmetries}
-
-The framework is fixed once we name, for each problem, the tensor $T$ and the
-factorization $(\Kappa,\Sigma)$ of its first-argument symmetry group.
-
-\subsection{Matrix multiplication}
-
-The tensor for multiplying an $l\times m$ matrix $X$ by an $m\times n$ matrix $Y$, with product $Z^{\!\top}$, is
-\[
-  \mmt{l}{m}{n} = \sum_{i=0}^{l-1}\sum_{j=0}^{m-1}\sum_{k=0}^{n-1}
-  x_{ij}\otimes y_{jk}\otimes z_{ki},
-\]
-so $A=\F_q^{l\times m}$. For invertible $P\in\GL_l$, $Q\in\GL_m$, $R\in\GL_n$ the
-substitution $X\mapsto PXQ^{-1}$, $Y\mapsto QYR^{-1}$, $Z\mapsto RZP^{-1}$ preserves
-the tensor (the \emph{sandwich} symmetry). The rank is also invariant under
-cyclically permuting the three factors, $\R(\mmt{l}{m}{n})=\R(\mmt{m}{n}{l})$ (the
-\emph{cyclic} symmetry); for a square format $l=m=n$ this combines with matrix
-transposition into an order-two symmetry
-$X\mapsto X^{\!\top}$, $Y\mapsto Z^{\!\top}$, $Z\mapsto Y^{\!\top}$ (the \emph{transpose} symmetry). Projected onto the
-first factor, the symmetry group acting on the matrix space $A=\F_q^{l\times m}$ is
-\[
-  G \;=\; (\GL_l(\F_q)\times \GL_m(\F_q)) \rtimes C_2,
-\]
-with $(P,Q)$ acting by $X\mapsto PXQ^{-1}$ and the $C_2$ by transposition $X\mapsto X^{\!\top}$ (present
-only when $l=m=n$). The meet-in-the-middle splits $G$ by side:
-the store set is the right multiplications $\Sigma=\{X\mapsto XR^{-1}:R\in\GL_m(\F_q)\}$ and
-the query set is the left multiplications $\Kappa=\{X\mapsto LX:L\in\GL_l(\F_q)\}$,
-extended by the transpose when $l=m=n$. Scalar matrices act trivially on subspaces,
-so each side is taken modulo the center, and both then have order about $\sqrt{|G|}$.
-Equivalence of constraint subspaces under the subgroup without
-transpose is exactly the tensor-isomorphism problem on $l\times m\times d$ tensors,
-which sits above graph and code equivalence in the isomorphism
-hierarchy~\cite{grochow2023complexity,grochow2025complexity}.
-
-\subsection{Full polynomial multiplication}
-
-Multiplying two polynomials of degree $<N$ in $\F_q[x]$ gives
-\[
-  \Fullt{N} = \sum_{i,j=0}^{N-1} a_i\otimes b_j\otimes c_{i+j},
-  \qquad N_A=N_B=N,\ N_C=2N-1,
-\]
-the ordinary convolution. Its first-argument symmetries are the action on
-degree-$(N-1)$ binary forms of the projective semilinear group
-\[
-  G_{\mathrm{full}} = \mathrm{P\Gamma L}_2(\F_q)
-  = \PGL_2(\F_q)\rtimes \Gal(\F_q/\F_p),
-\]
-generated by the substitutions $x\mapsto x+c$, the reversal $x\mapsto 1/x$ (which
-swaps $a_i\leftrightarrow a_{N-1-i}$), the scalings $x\mapsto gx$, and the
-Frobenius $a\mapsto a^p$. We factor it as
-$\Sigma=\PGL_2(\F_q)$ (the store side, of size $q(q^2-1)$) and
-$\Kappa=\Gal(\F_q/\F_p)$ (the query side, of size $m$).
-
-\subsection{Polynomial multiplication modulo $x^N-\gamma$}
-
-Fix a scalar $\gamma\in\F_q$ and let $R=\F_q[x]/(x^N-\gamma)$. Multiplication in $R$
-reduces the convolution of $a$ and $b$ by the rule $x^N\equiv\gamma$,
-\[
-  \sum_{i,j=0}^{N-1} a_i\otimes b_j\otimes w_{ij},\qquad
-  w_{ij}=\begin{cases} c_{i+j},           & i+j<N,    \\[2pt]
-                \gamma\,c_{i+j-N}, & i+j\ge N,\end{cases}
-  \qquad N_A=N_B=N_C=N.
-\]
-Three families specialize this tensor: \emph{cyclic} convolution $\Cyct{N}$ for
-$\gamma=1$, the \emph{truncated} (or short) product $\Trunct{N}$ for $\gamma=0$ ---
-the local algebra $\F_q[x]/(x^N)$, in which the overflow terms vanish and $x$ is
-nilpotent --- and the \emph{negacyclic} product $\Negat{N}$ for $\gamma=-1$. Over
-characteristic $2$, $-1=1$, so $\Negat{N}=\Cyct{N}$.
-
-The same three kinds of symmetry act on $A=R$ for every $\gamma$: multiplication by a
-unit $p\in R^*$ (the shifts $x^r$ are the special case $p=x^r$, valid for
-$\gamma\ne 0$), the $\F_q$-algebra automorphisms $\Aut(R)$, and the Galois group of
-$\F_q/\F_p$. The base-field scalars $\F_q^*$ act trivially on subspaces, so the group
-acting on constraint subspaces is
-\[
-  G = \bigl(R^*\rtimes \Aut(R) \rtimes \Gal(\F_q/\F_p)\bigr)/\F_q^*,
-\]
-with store side $\Sigma=R^*/\F_q^*$ and query side
-$\Kappa=\Aut(R)\rtimes\Gal(\F_q/\F_p)$ --- the identical factorization in all three
-cases. Only the ring structure, and hence the sizes of the two sides, depends on
-$\gamma$. For $\gamma=\pm1$ the Chinese remainder theorem splits $R$ into field
-factors --- for $\gamma=1$ indexed by the $q$-cyclotomic cosets of $\mathbb{Z}/N$,
-for $\gamma=-1$ by the cosets of the odd residues modulo $2N$ --- so $R^*$ is
-typically far larger than the $N$ shifts, which is precisely the extra symmetry the
-framework exploits. For $\gamma=0$ the algebra is local: a polynomial is a unit iff
-its constant term is nonzero, so $|\Sigma|=q^{N-1}$, and an automorphism sends $x$ to
-any nilpotent generator $y_1x+\dots+y_{N-1}x^{N-1}$ with $y_1\ne 0$, giving
-$|\Aut(R)|=(q-1)q^{N-2}$.
-
-\medskip
-
-Table~\ref{tab:symmetry} contrasts the symmetry structures; the three quotient
-families share one row, differing only in the constant $\gamma$.
-
-\begin{table}[h]
-  \centering
-  \setlength{\tabcolsep}{10pt}
-  \begin{tabular}{lll}
-    \toprule
-    problem                            & store $\Sigma$        & query $\Kappa$                                \\
-    \midrule
-    matrix-mult $\mmt{l}{m}{n}$        & $\GL_m$ (right mult.) & $\GL_l$ (left mult.), and transpose ($l=m=n$) \\
-    full-poly-mult                     & $\PGL_2(\F_q)$        & $\Gal(\F_q/\F_p)$                             \\
-    poly-mult $\F_q[x]/(x^N{-}\gamma)$ & $R^*/\F_q^*$          & $\Aut(R)\rtimes\Gal(\F_q/\F_p)$               \\
-    \bottomrule
-  \end{tabular}
-  \caption{First-argument symmetry factorizations; the last row covers the cyclic
-    ($\gamma=1$), truncated ($\gamma=0$), and negacyclic ($\gamma=-1$) products. In every family the
-    query elements are indexed so that the $i$-th element is $i$, which is why a
-    certificate can name a symmetry by a single integer.}
-  \label{tab:symmetry}
-\end{table}
-
-\section{Orbit enumeration}\label{sec:orbits}
-
-The first stage enumerates exactly one canonical representative per orbit of
-constraint subspaces, for every dimension $d=0,1,\dots,N_A$. Subspaces are built
-up one constraint at a time and deduplicated with the same meet-in-the-middle trick.
-
-Representatives are generated dimension by dimension, in lexicographic
-order of their RREF. A dimension-$d$ subspace is formed by
-appending to a dimension-$(d-1)$ representative one new constraint whose leading
-pivot lies strictly above the existing pivots; candidates with a nonzero
-entry at an existing pivot are skipped because Gauss--Jordan elimination would
-reduce them against the current basis. Because candidates are visited in global
-lexicographic order, the first time an orbit is seen its representative is
-automatically the lexicographically least, so no separate minimality test is
-needed.
-
-Deduplication uses a hash set of RREF keys.
-For each kept representative $c$ we insert the RREF of every store image
-$\sigma(c)$, $\sigma\in\Sigma$; for each new candidate $q$ we probe with
-the RREF of every query image $\kappa(q)$, $\kappa\in\Kappa$, and
-discard $q$ if any probe hits, since a hit means $q\equiv (\kappa^{-1}\sigma)(c)$
-lies in $c$'s orbit. Algorithm~\ref{alg:enum}, in Appendix~\ref{app:enum}, states the procedure.
-
-\section{Rank lower-bound techniques}\label{sec:techniques}
-
-The dynamic program sweeps subspace
-dimension from $N_A$ down to $0$. At each dimension it processes all orbits of that
-dimension in parallel, then inserts their freshly computed bounds into the orbit
-map so that the next (smaller) dimension can consult them. This ordering is sound
-because the two techniques that look anything up --- degenerate reduction and
-backtracking --- only ever query \emph{strictly larger} dimensions, which have
-already been settled. Each orbit tries four techniques in this order: flatten,
-degenerate reduction, forced product, and backtracking; later techniques run only
-if the earlier ones have not already met the goal.
-
-\paragraph{Flatten.} Compute the three flattening matrix ranks of the constrained
-tensor and take the maximum. This is
-the base case and needs no other orbit.
-
-\paragraph{Degenerate reduction.} Add one more independent constraint to the
-current subspace, producing a strictly smaller subspace whose orbit was processed
-at the previous (larger) dimension; its bound is a valid bound for the current
-orbit. We scan candidate constraints, look up each enlarged subspace in the orbit
-map, and keep the best. The proof
-records the extra constraint together with the witness pair from
-Equation~\eqref{eq:witness}.
-
-\paragraph{Forced product.} This automates the Hopcroft--Kerr substitution~\cite{hopcroft1971minimizing}.
-Grouping the tensor along the $C$ factor into $t$
-slices, the slices whose $A\otimes B$ part has matrix rank $1$ are single products;
-we greedily take a maximal linearly independent set of $s$ of them and assume an
-optimal decomposition computes them literally. Stripping these $s$ terms leaves
-$s(t-s)$ unknown field coefficients in the residual; we enumerate all $q^{s(t-s)}$
-assignments, flatten each residual, and take the minimum, so the bound is
-$s+\min$. We repeat for all three cyclic orientations of the tensor and keep the
-best. Because the minimum
-must range over \emph{every} assignment for soundness, and the coefficients live in
-$\F_q$, for $q>2$ each coefficient runs over all $q$ values; we skip the technique
-when $q^{s(t-s)}$ is too large to enumerate. The proof records only which of the three
-orientations won.
-
-\paragraph{Substitution with backtracking.} This is the workhorse. Fixing an
-optimal decomposition of length $r$, we repeatedly pick a linear form in the
-$A$-variables, set it to zero, drop the terms it kills, and recurse on the
-resulting more-constrained orbit; if a sequence of substitutions that removes
-$\delta$ terms lands in an orbit of bound $b$ with $\delta+b\ge$ target, then
-$r\ge$ target. The search is a DFS over canonical $A$-components --- the nonzero
-linear forms supported away from the current pivots, one per coset.
-The DFS depth is capped at the known lower bound given by the previous techniques.
-Several optimizations make it scale: the DFS branches are run in parallel;
-a thread-local cache memoizes the bound of each enlarged subspace, halving
-itself stochastically when it grows too large; the target bound is raised one unit
-at a time so that easy branches prune early; and a step limit aborts large
-branches. Each branch that reaches the target contributes one record to the proof:
-the depth, the subset mask of substituted forms, and the witness pair identifying
-the orbit it reduced to.
-
-Appendix~\ref{sec:toy} works all four techniques on the toy example
-$\Rk{\F_2}{\mmt{2}{2}{2}}\ge 7$.
-
-\section{Proof certificates and verification}\label{sec:certificates}
-
-Every bound is emitted as a certificate that a verifier rechecks.
-The verifier is simpler than the search program, and it runs faster and uses less memory.
-
-For each orbit, the certificate records
-its canonical constraint subspace, the certified lower bound, and a proof that is
-exactly one of the four techniques.
-The bound for the unconstrained orbit is ``the'' bound for the problem.
-Each proof stores only what the
-verifier cannot cheaply recompute:
-\begin{itemize}
-  \item \textbf{Flatten:} nothing; the verifier recomputes the flattening rank.
-  \item \textbf{Forced product:} the winning cyclic orientation, an integer in
-        $\{0,1,2\}$.
-  \item \textbf{Degenerate:} the extra constraint, together with the witness pair
-        $(\kappa,\sigma)$ of Equation~\eqref{eq:witness} that identifies the enlarged
-        subspace's orbit.
-  \item \textbf{Backtracking:} for each DFS leaf that reached the target, its depth,
-        the subset of substituted forms, and the witness pair of the orbit it reduced
-        to.
-\end{itemize}
-
-The verifier replays the same sweep from dimension $N_A$ down to $0$, so each orbit
-is checked only against strictly larger orbits already confirmed. It rechecks
-flatten and forced product by recomputation, and degenerate and backtracking by
-reconstructing the canonical form of every claimed reduction from its witness via
-Equation~\eqref{eq:witness} and confirming the looked-up bound supports the claim. A
-witness that misses a known orbit, a recomputed bound that falls short, or a
-miscounted trace aborts verification. Soundness follows by induction on decreasing
-dimension: at dimension $N_A$ only flatten and forced product apply, and every
-smaller-dimension step reduces to an orbit verified earlier.
-
-As a global sanity check, every lower bound our framework proves is consistent with the
-prior literature: in no case (Tables~\ref{tab:matrix}, \ref{tab:full}, \ref{tab:cyc},
-\ref{tab:trunc}, and~\ref{tab:nega}) does a proved bound exceed the best previously known
-upper bound, and in many small cases it coincides with the exact rank that is already
-known. A soundness bug that inflated a bound would, across the dozens of tabulated cases,
-is likely to produce a lower bound exceeding the known upper bound or
-much smaller than the known lower bound.
-\section{Conclusion and open problems}\label{sec:conclusion}
-
-We have given a single automated framework for bilinear-complexity lower bounds
-over finite fields, parameterized only by a tensor and a symmetry
-group, and used it to improve the long-standing bound on $\mmt{3}{3}{3}$ over
-$\F_2$ to $20$, to settle three more matrix formats, and to obtain eighteen new
-lower bounds for polynomial multiplication --- across the
-full, cyclic, truncated, and negacyclic products.
-Every bound comes with a certificate that an auditable verifier
-rechecks, typically faster than the search.
-
-The source code for the search and the verifier, together with all certificates, is
-available at \\
-\url{https://github.com/wcgbg/tensor-rank-lower-bound}.
-
-Several questions remain. The exact rank of $\mmt{3}{3}{3}$ over $\F_2$ is still
-open in $[20,23]$. Scaling to $\mmt{4}{4}{4}$ is blocked by the sheer number of
-constraint orbits and will need stronger symmetry reduction. For polynomial
-multiplication, the full, cyclic, truncated, and negacyclic bounds should extend to
-larger $N$ with more compute. A natural next family is the multiplication in the
-extension-field $\F_{q^n}$ over $\F_q$,
-computing $f\cdot g \bmod p(x)$ for an irreducible $p$ of degree $n$ over $\F_q$.
-Finally, the framework applies verbatim to other finite fields; finding genuinely
-new bounds over fields beyond $\F_2$ and $\F_3$ is left for future work.
-
-\section*{Acknowledgements}
-Thanks to Youming Qiao for helpful discussions on the tensor isomorphism problem.
-
-\bibliography{refs}
-
-\appendix
-
 \section{Computational results}\label{app:results}
 
 Table~\ref{tab:results} reports the search and verification details for each new bound.
 The bounds themselves and their comparison to prior work appear in
-Tables~\ref{tab:matrix}, \ref{tab:full}, \ref{tab:cyc}, \ref{tab:trunc},
-and~\ref{tab:nega}.
+Tables~\ref{tab:matrix}--\ref{tab:nega} of Appendix~\ref{app:bound-tables}.
 
 \begin{table}[h]
   \centering
@@ -913,9 +1050,9 @@ the points the symmetry group permutes and record the resulting rank distributio
 multiplication, the projective line $\mathbb{P}^1$ for full polynomial
 multiplication, and the $N$-th roots of unity for cyclic convolution.
 
-\section{A worked example: $\Rk{\F_2}{\mmt{2}{2}{2}}\ge 7$}\label{sec:toy}
+\section{Toy example in detail: $\Rk{\F_2}{\mmt{2}{2}{2}}\ge 7$}\label{sec:toy-in-detail}
 
-We illustrate the dynamic program on $\mmt{2}{2}{2}$ over $\F_2$, where $A$ is the
+We illustrate the dynamic program on $\mmt{2}{2}{2}$ over $\F_2$ in detail, where $A$ is the
 space of $2\times 2$ matrices and the symmetry group is
 $G=(\GL_2(\F_2)\times\GL_2(\F_2))\rtimes C_2$ acting by $X\mapsto PXQ^{-1}$ and by
 transposition. There are ten orbits of constraint subspaces. The program processes
@@ -965,26 +1102,8 @@ $A=
   +a_{11}\otimes b_{10}\otimes c_{01}+a_{11}\otimes b_{11}\otimes c_{11}.
 \]
 Flattening yields only $4$, so we invoke the forced-product technique
-(Section~\ref{sec:techniques}), which automates a substitution of Hopcroft and
-Kerr~\cite{hopcroft1971minimizing}. The technique rests on the following lemma.
-
-\begin{lemma}[Hopcroft and Kerr~{\cite[Lemma~2]{hopcroft1971minimizing}}]\label{lem:forced-product}
-  Let $f_0,\dots,f_{s-1},f_{s},\dots,f_{t-1}$ be bilinear forms of which $f_0,\dots,f_{s-1}$ are
-  linearly independent and each is a single product (a form of rank $1$). If the
-  whole set can be computed with $r$ multiplications, then it can be computed with
-  $r$ multiplications $s$ of which are exactly $f_0,\dots,f_{s-1}$.
-\end{lemma}
-
-\begin{proof}[Proof sketch]
-  Take any bilinear algorithm with $r$ products $m_1,\dots,m_r$ computing the
-  $f_i$. Each $f_j$ is a fixed $\F_q$-linear combination of the $m_\lambda$. Since
-  $f_0$ has rank $1$ and is independent of $f_1,\dots,f_{s-1}$, some product
-  appearing in $f_0$ can be replaced by $f_0$ itself without shrinking the span of
-  the products, so $f_0$ is then computed by one multiplication. Repeating for
-  $f_1,\dots,f_{s-1}$ --- whose independence guarantees a fresh product to trade at
-  each step --- yields an $r$-product algorithm that computes $f_0,\dots,f_{s-1}$
-  literally.
-\end{proof}
+(Section~\ref{sec:techniques}), which automates the substitution of Hopcroft and
+Kerr stated in Lemma~\ref{lem:forced-product}.
 
 Fix an optimal decomposition $T_4=\sum_{\lambda} u_\lambda\otimes v_\lambda\otimes
   w_\lambda$ with $r=\R(T_4)$ terms. Grouping $T_4$ along the $C$ factor exposes its
