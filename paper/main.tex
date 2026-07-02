@@ -92,8 +92,9 @@ several of these small cases.
 Strassen~\cite{strassen1969gaussian} showed $\R(\mmt{2}{2}{2})\le 7$ over $\mathbb{Z}$, and
 Winograd~\cite{winograd1971multiplication} proved the matching lower bound over $\mathbb{Q}$.
 Hopcroft and Kerr~\cite{hopcroft1971minimizing} then established several lower
-bounds over $\F_2$, including $\Rk{\F_2}{\mmt{2}{3}{3}}\ge 15$, and stated
-$\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19$ without a full proof, while
+bounds over $\F_2$, including $\Rk{\F_2}{\mmt{2}{3}{3}}\ge 15$, and reported that a
+detailed analysis ``seems to indicate'' $\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19$, without
+publishing a proof, while
 Bshouty~\cite{bshouty1989lower} proved $\Rk{\F_2}{\mmt{n}{n}{n}}\ge \tfrac{5}{2}n^2-o(n^2)$.
 Bl\"aser established the influential bounds
 $\R(\mmt{l}{m}{n})\ge lm+mn+l-m+n-3$ over algebraically closed
@@ -144,8 +145,7 @@ treats exactly $\F_q[x]/x^N$), strengthens these on the local-algebra factors. U
 bounds come from the convolution constructions of Wagh and
 Morgera~\cite{wagh1983structured} and Morgera~\cite{morgera1990multiplicative},
 refined by Cenk and \"Ozbudak~\cite{cenk2010multiplication,cenk2011multiplication}.
-Over characteristic $2$ the negacyclic product coincides with the cyclic one, since
-$x^N+1=x^N-1$.
+
 
 \subsection{Our contributions}
 
@@ -176,8 +176,8 @@ in about $40$ minutes on a laptop and the certificate verifies in seconds. The s
 certificate has since been re-verified independently by
 Beuchert~\cite{beuchert_2026_20752782}, using a checker written from scratch in a
 different programming language. The bound
-$\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19$ completes a bound stated without proof by Hopcroft and
-Kerr~\cite{hopcroft1971minimizing}.
+$\Rk{\F_2}{\mmt{2}{3}{4}}\ge 19$ confirms a claim that Hopcroft and
+Kerr~\cite{hopcroft1971minimizing} reported without proof.
 
 For polynomial multiplication the same framework yields eighteen new lower bounds,
 over $\F_2$ and $\F_3$ --- for the full product and for the
@@ -246,33 +246,28 @@ three quotient families $\F_q[x]/(x^N-\gamma)$.
   {\footnotesize\raggedright
     $^\ast$ We obtain a new upper bound of $26$ by flip-graph search~\cite{kauers2023flip}. See Table~\ref{tab:trunc} for the decomposition.
     \par}
-  \caption{The twenty-two new lower bounds proved in this paper.}
+  \caption{The 22 new lower bounds (4 matrix, 18 polynomial) proved in this paper.}
   \label{tab:summary}
 \end{table}
 
 Table~\ref{tab:summary} collects all twenty-two new
 lower bounds against the previous best lower bound and the best known upper bound.
-Over $\F_2$ the negacyclic product coincides
-with the cyclic one ($x^N+1=x^N-1$).
 Tables~\ref{tab:matrix}--\ref{tab:nega} in Appendix~\ref{app:bound-tables} set these
 in the full context of each family, including the many small cases where our
 framework reproduces the exact rank already known.
 
-The rest of the paper is organized as follows.
-Section~\ref{sec:toy} sketches the whole framework on a single toy example.
-Section~\ref{sec:framework} sets up tensors, constraints, and symmetries;
-Section~\ref{sec:symmetries} instantiates the symmetries for
-matrix and polynomial multiplication; Section~\ref{sec:orbits} describes orbit
-enumeration; Section~\ref{sec:techniques} formalizes the four lower-bound techniques;
-Section~\ref{sec:certificates} details the certificates and the verifier; and
-Section~\ref{sec:conclusion} concludes.
+The rest of the paper is organized as follows. Section~\ref{sec:toy} sketches the
+framework on a toy example; Sections~\ref{sec:framework}--\ref{sec:certificates}
+develop it in full --- setup, per-problem symmetries, orbit enumeration, the four
+lower-bound techniques, and certificates --- and Section~\ref{sec:conclusion}
+concludes.
 
 \section{A toy example: $\Rk{\F_2}{\mmt{2}{2}{2}}\ge 7$}\label{sec:toy}
 
 Before the formal development, we sketch how the framework proves an easy case: that
 $2\times 2$ matrix multiplication over $\F_2$ needs at least $7$ multiplications.
-The aim is to convey the shape of the argument, not its details; everything below is
-made precise in Sections~\ref{sec:framework}--\ref{sec:certificates}.
+Everything below is made precise in
+Sections~\ref{sec:framework}--\ref{sec:certificates}.
 
 Write the tensor as $\mmt{2}{2}{2}=\sum_{i,j,k} a_{ij}\otimes b_{jk}\otimes c_{ki}$,
 where the $a_{ij}$ are the four entries of the first matrix factor $A$. The method
@@ -330,7 +325,7 @@ Appendix~\ref{sec:toy-in-detail} works this example in full.
 
 \section{The framework}\label{sec:framework}
 
-\subsection{Tensors rank}
+\subsection{Tensor rank}
 
 Fix a finite field $\F_q$ with $q=p^m$. A multiplication problem is given by an
 order-$3$ tensor
@@ -571,14 +566,17 @@ which rests on the following lemma.
   multiplications $s$ of which are exactly $f_0,\dots,f_{s-1}$.
 \end{lemma}
 
-\begin{proof}[Proof sketch]
-  Take any bilinear algorithm with $r$ products computing the $f_i$, each of which is a
-  fixed $\F_q$-linear combination of the products. Since $f_0$ has rank $1$ and is
-  independent of $f_1,\dots,f_{s-1}$, some product appearing in $f_0$ can be replaced by
-  $f_0$ itself without shrinking the span of the products, so $f_0$ is then computed by
-  one multiplication. Repeating for $f_1,\dots,f_{s-1}$ --- whose independence
-  guarantees a fresh product to trade at each step --- yields an $r$-product algorithm
-  that computes $f_0,\dots,f_{s-1}$ literally.
+\begin{proof}
+  Take any bilinear algorithm with products $p_0,\dots,p_{r-1}$ computing the $f_i$,
+  each a fixed $\F_q$-linear combination of the products. Exchange products for the
+  $f_i$ one at a time, maintaining the invariant that the current $r$ products are
+  $f_0,\dots,f_{i-1}$ together with $r-i$ of the original $p_j$, spanning all the
+  $f_i$. At step $i$, since $f_i$ is independent of $f_0,\dots,f_{i-1}$, its
+  expression in the current products gives a nonzero coefficient to some remaining
+  \emph{original} product $p_j$; then $p_j$ lies in the span of $f_i$ and the other
+  current products, so swapping $p_j$ for $f_i$ --- itself a legal product, having
+  rank $1$ --- preserves the invariant. After $s$ steps the algorithm has $r$
+  products, $s$ of which are exactly $f_0,\dots,f_{s-1}$.
 \end{proof}
 
 Grouping the tensor along the $C$ factor into $t$ slices, those whose $A\otimes B$
@@ -589,9 +587,13 @@ unknown field coefficients in the residual; we enumerate all $q^{s(t-s)}$
 assignments, flatten each, and take the minimum, so the bound is $s+\min$. We repeat
 for all three cyclic orientations and keep the best. Since the minimum must range
 over \emph{every} assignment for soundness, we skip the technique when $q^{s(t-s)}$ is
-too large to enumerate. The proof records only which orientation won.
+too large to enumerate. The proof records only which orientation won. Note that
+Lemma~\ref{lem:forced-product} holds over any field; it is the exhaustive enumeration
+of the $q^{s(t-s)}$ residuals that makes the technique \emph{effective} only over a
+small finite field.
 
-\paragraph{Substitution with backtracking.} Substitution is a powerful inductive technique, used extensively by Pan, Hopcroft, Kerr, and Bl{\"a}ser.
+\paragraph{Substitution with backtracking.} Substitution is a powerful inductive technique,
+used extensively by Pan, Hopcroft, Kerr, and Bl{\"a}ser.
 
 \begin{lemma}[Substitution]\label{lem:substitution}
   Fix an optimal decomposition $T_S=\sum_{\lambda}u_\lambda\otimes v_\lambda\otimes
@@ -616,13 +618,20 @@ already-certified bound $b$ with $\delta+b\ge$ target, then $\R(T_S)\ge$ target.
 technique searches for such a chain by DFS over canonical $A$-components --- the
 nonzero linear forms supported away from the current pivots, one per coset.
 The DFS depth is capped at the known lower bound given by the previous techniques.
-Several optimizations make it scale: the DFS branches are run in parallel;
-a thread-local cache memoizes the bound of each enlarged subspace, halving
-itself stochastically when it grows too large; the target bound is raised one unit
-at a time so that easy branches prune early; and a step limit aborts large
-branches. Each branch that reaches the target contributes one record to the proof:
-the depth, the subset mask of substituted forms, and the witness pair identifying
-the orbit it reduced to.
+
+Soundness rests on a completeness invariant: the case analysis over the unknown
+$A$-components must be exhaustive, so the technique certifies the target only if
+\emph{every} branch of the DFS --- one per canonical nonzero form at each level ---
+reaches it. Several optimizations make the search scale without weakening this
+invariant: the DFS branches are run in parallel; a thread-local cache memoizes the
+bound of each enlarged subspace, halving itself stochastically when it grows too
+large; the target bound is raised one unit at a time so that easy branches prune
+early; and a step limit aborts large branches --- an aborted branch aborts the
+technique for the whole orbit, trading away completeness of the \emph{search} but
+never soundness of a reported bound, and the dynamic program falls back to the other
+techniques. On success, each branch contributes one record to the proof: the depth,
+the subset mask of substituted forms, and the witness pair identifying the orbit it
+reduced to.
 
 
 \section{Proof certificates and verification}\label{sec:certificates}
@@ -640,9 +649,10 @@ cheaply recompute:
   \item \textbf{Degenerate:} the extra constraint, together with the witness pair
         $(\kappa,\sigma)$ of Equation~\eqref{eq:witness} that identifies the enlarged
         subspace's orbit.
-  \item \textbf{Backtracking:} for each DFS leaf that reached the target, its depth,
-        the subset of substituted forms, and the witness pair of the orbit it reduced
-        to.
+  \item \textbf{Backtracking:} for each DFS leaf, its depth, the subset of
+        substituted forms, and the witness pair of the orbit it reduced to. The
+        verifier replays the case analysis and confirms that the recorded leaves
+        cover \emph{every} canonical nonzero form at each level.
 \end{itemize}
 
 The verifier replays the same sweep from dimension $N_A$ down to $0$, so each orbit
@@ -654,12 +664,6 @@ witness that misses a known orbit, a recomputed bound that falls short, or a
 miscounted trace aborts verification. Soundness follows by induction on decreasing
 dimension: at dimension $N_A$ only flatten and forced product apply, and every
 smaller-dimension step reduces to an orbit verified earlier.
-
-As a global sanity check, every bound we prove is consistent with the literature: in
-no case (Tables~\ref{tab:matrix}--\ref{tab:nega}) does a proved bound exceed the best
-known upper bound, and in many small cases it matches the exact rank already known. A
-soundness bug inflating a bound would, across the dozens of tabulated cases, likely
-have produced a lower bound exceeding some known upper bound.
 
 \section{Conclusion and open problems}\label{sec:conclusion}
 
@@ -674,12 +678,11 @@ than the search. The source code, verifier, and all certificates are available a
 
 Several questions remain. The exact rank of $\mmt{3}{3}{3}$ over $\F_2$ is still
 open in $[20,23]$, and scaling to $\mmt{4}{4}{4}$ is blocked by the sheer number of
-constraint orbits, needing stronger symmetry reduction. The polynomial bounds should
-extend to larger $N$ with more compute. A natural next family is extension-field
-multiplication in $\F_{q^n}$ over $\F_q$, computing $f\cdot g \bmod p(x)$ for an
-irreducible $p$ of degree $n$. Finally, the framework applies verbatim to other
-finite fields; finding genuinely new bounds beyond $\F_2$ and $\F_3$ is left for
-future work.
+constraint orbits, needing stronger symmetry reduction; the polynomial bounds should
+extend to larger $N$ with more compute. Natural next steps are extension-field
+multiplication in $\F_{q^n}$ over $\F_q$ ($f\cdot g \bmod p(x)$ for an irreducible
+$p$ of degree $n$), and genuinely new bounds beyond $\F_2$ and $\F_3$, to which the
+framework applies verbatim.
 
 \section*{Acknowledgements}
 Thanks to Youming Qiao for helpful discussions on the tensor isomorphism problem.
@@ -692,12 +695,29 @@ Thanks to Youming Qiao for helpful discussions on the tensor isomorphism problem
 
 Tables~\ref{tab:matrix}--\ref{tab:nega} give the full lower- and upper-bound picture
 for each problem family. The boxed entries are the new lower bounds proved in this
-paper and collected in Table~\ref{tab:summary}; the remaining rows, where our
-framework reproduces a value already known exactly, are a consistency check on the
-method. Over characteristic $2$ the negacyclic product coincides with cyclic
+paper and collected in Table~\ref{tab:summary}. Over characteristic $2$ the negacyclic product coincides with cyclic
 convolution ($x^N+1=x^N-1$), so Table~\ref{tab:nega} lists only $\F_3$.
 
-\begin{table}[h]
+In five entries the previously known lower bound exceeds ours by one: cyclic
+convolution at $N=5$ over both $\F_2$ and $\F_3$ and at $N=9$ over $\F_2$
+(Table~\ref{tab:cyc}), the truncated product at $N=4$ over $\F_3$
+(Table~\ref{tab:trunc}), and the negacyclic product at $N=5$ over $\F_3$
+(Table~\ref{tab:nega}). These entries share a pattern: the previous bound is tight
+(it meets the best known upper bound, so the rank is known exactly), and it comes
+from the algebra-specific minimal-rank theory of Bl\"aser~\cite{blaser2005complete}
+and of Averbuch, Galil, and Winograd~\cite{averbuch1991classification}, which
+exploits the multiplicative structure of the quotient algebra. Our
+substitution-based techniques do not subsume those arguments, and in each of these
+cases they stop one short of the known rank; the ``our LB'' column always reports
+what our framework proves, not the stronger inherited bound.
+
+The tables also serve as a global sanity check on the method: in no entry does a
+bound we prove exceed the best known upper bound, and in many small cases it matches
+the exact rank already known. A soundness bug inflating a bound would, across the
+dozens of tabulated cases, likely have produced a lower bound exceeding some known
+upper bound, or a lower bound that is much lower than the best known lower bound.
+
+\begin{table}[!ht]
   \centering
   \setlength{\tabcolsep}{14pt}
   \begin{tabular}{llll}
@@ -718,7 +738,7 @@ convolution ($x^N+1=x^N-1$), so Table~\ref{tab:nega} lists only $\F_3$.
   \label{tab:matrix}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[!ht]
   \centering
   \setlength{\tabcolsep}{6pt}
   \begin{tabular}{lllllll}
@@ -741,7 +761,7 @@ convolution ($x^N+1=x^N-1$), so Table~\ref{tab:nega} lists only $\F_3$.
   \label{tab:full}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[!ht]
   \centering
   \setlength{\tabcolsep}{6pt}
   \begin{tabular}{lllllll}
@@ -766,7 +786,7 @@ convolution ($x^N+1=x^N-1$), so Table~\ref{tab:nega} lists only $\F_3$.
   \label{tab:cyc}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[!ht]
   \centering
   \setlength{\tabcolsep}{6pt}
   \begin{tabular}{lllllll}
@@ -799,7 +819,7 @@ convolution ($x^N+1=x^N-1$), so Table~\ref{tab:nega} lists only $\F_3$.
   \label{tab:trunc}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[!ht]
   \centering
   \setlength{\tabcolsep}{12pt}
   \begin{tabular}{llll}
@@ -831,7 +851,7 @@ Table~\ref{tab:results} reports the search and verification details for each new
 The bounds themselves and their comparison to prior work appear in
 Tables~\ref{tab:matrix}--\ref{tab:nega} of Appendix~\ref{app:bound-tables}.
 
-\begin{table}[h]
+\begin{table}[!ht]
   \centering
   \setlength{\tabcolsep}{4pt}
   \begin{tabular}{lllcllc}
@@ -873,7 +893,10 @@ Tables~\ref{tab:matrix}--\ref{tab:nega} of Appendix~\ref{app:bound-tables}.
     $^\dagger$ Machines: Apple MacBook Air M4 with 16 GB RAM; AWS c8g.16xlarge Spot
     Instance, Graviton4 processors, 64 vCPUs, 128 GiB memory; AWS c8g.48xlarge Spot
     Instance, Graviton4 processors, 192 vCPUs, 384 GiB memory.\\
-    $^\ddagger$ Run on the equivalent $\mmt{3}{2}{4}$ format. The proof is
+    $^\ddagger$ Run on the equivalent $\mmt{3}{2}{4}$ format: composing the
+    transpose symmetry $\R(\mmt{l}{m}{n})=\R(\mmt{n}{m}{l})$ with one cyclic shift
+    $\R(\mmt{l}{m}{n})=\R(\mmt{m}{n}{l})$ of Section~\ref{sec:symmetries} gives
+    $\R(\mmt{2}{3}{4})=\R(\mmt{4}{3}{2})=\R(\mmt{3}{2}{4})$. The proof is
     forced-product-heavy, so CPU verification takes about as long as the search.
     The verification can be accelerated by an NVIDIA L20 GPU to approximately 1 minute.\\
     $^\S$ Search on c8g.16xlarge. Verification on c8g.48xlarge.\\
@@ -892,7 +915,7 @@ duplicate test is the meet-in-the-middle probe of that section. The
 $\textit{visited}$ set is cleared at the start of each dimension, since the
 subspace dimension is an invariant of the group action.
 
-\begin{algorithm}[h]
+\begin{algorithm}[!ht]
   \caption{Enumerate constraint-subspace orbits}
   \label{alg:enum}
   \begin{algorithmic}[1]
@@ -927,7 +950,7 @@ for each matrix multiplication format over $\F_2$ and $\F_3$. The count depends 
 symmetry is in force, which happens exactly when the format is square ($l=m=n$);
 the polynomial families are swept by the same procedure.
 
-\begin{table}[h]
+\begin{table}[!ht]
   \centering
   \setlength{\tabcolsep}{12pt}
   \begin{tabular}{llrr}
@@ -1141,9 +1164,14 @@ $A=
   \end{pmatrix}$. Flattening gives
 only $4$. Here, we try to get a better lower bound using substitution with backtracking (Section~\ref{sec:techniques}).
 Fix an optimal decomposition $T_6=\sum_\lambda u_\lambda\otimes v_\lambda\otimes
-  w_\lambda$. The free entries span $\{a_{00},a_{01}\}$, whose only nonzero linear
-forms over $\F_2$ are $a_{00}$, $a_{01}$, and $a_{00}+a_{01}$, so every nonzero
-$u_\lambda$ is one of these three. Since the decomposition has at least $4$ terms,
+  w_\lambda$; as in the hypothesis of Lemma~\ref{lem:substitution}, we may take each
+$u_\lambda$ to lie in the constrained space spanned by the free entries
+$\{a_{00},a_{01}\}$, since projecting the $u_\lambda$ onto that space changes no
+term's contribution on the constrained tensor and can only shorten the
+decomposition. The only nonzero linear forms in $a_{00},a_{01}$
+over $\F_2$ are $a_{00}$, $a_{01}$, and $a_{00}+a_{01}$, so every nonzero
+$u_\lambda$ is one of these three. The flattening bound just computed shows the
+decomposition has at least $4$ terms, so
 by pigeonhole one of the three forms occurs as some $u_\lambda$ at least twice, and
 setting it to zero kills at least two terms:
 \begin{itemize}
