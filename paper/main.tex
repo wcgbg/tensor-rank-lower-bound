@@ -136,8 +136,9 @@ and the \emph{negacyclic} product ($\gamma=-1$, modulo $x^N+1$), a twisted group
 algebra underlying skew-cyclic codes and lattice-based cryptography. The lower bounds
 for all three are governed by the factorization of $x^N-\gamma$:
 Winograd~\cite{winograd1977some} proved that multiplication modulo a polynomial with
-$k$ distinct irreducible factors needs at least $2N-k$ products, and Bl\"aser's
-characterization of algebras of minimal bilinear
+$k$ distinct irreducible factors needs at least $2N-k$ products (a bound Alder and
+Strassen~\cite{alder1981algorithmic} later extended to all associative algebras), and
+Bl\"aser's characterization of algebras of minimal bilinear
 complexity~\cite{blaser2005complete}, combined with the minimal-rank theory of
 Averbuch, Galil, and
 Winograd~\cite{averbuch1988classification,averbuch1991classification} (whose Part~II
@@ -206,45 +207,45 @@ three quotient families $\F_q[x]/(x^N-\gamma)$.
   \setlength{\tabcolsep}{10pt}
   \begin{tabular}{lllll}
     \toprule
-    family & problem                    & prev LB                                                          & our LB & prev UB                                                      \\
+    family & problem                    & prev LB                                                                       & our LB & prev UB                                                      \\
     \midrule
     \multirow{4}{*}{Matrix}
-           & $\Rk{\F_2}{\mmt{2}{3}{4}}$ & $18$~\cite{blaser1999lower}, $19$?~\cite{hopcroft1971minimizing} & $19$   & $20$~\cite{hopcroft1971minimizing}                           \\
-           & $\Rk{\F_2}{\mmt{3}{3}{3}}$ & $19$~\cite{blaser2003complexity}                                 & $20$   & $23$~\cite{laderman1976noncommutative}                       \\
-           & $\Rk{\F_2}{\mmt{3}{3}{4}}$ & $24$~\cite{blaser2003complexity}                                 & $25$   & $29$~\cite{smirnov2013bilinear}                              \\
-           & $\Rk{\F_2}{\mmt{3}{4}{4}}$ & $28$~\cite{blaser1999lower}                                      & $29$   & $38$~\cite{smirnov2013bilinear}                              \\
+           & $\Rk{\F_2}{\mmt{2}{3}{4}}$ & $18$~\cite{blaser1999lower}, $19$?~\cite{hopcroft1971minimizing}              & $19$   & $20$~\cite{hopcroft1971minimizing}                           \\
+           & $\Rk{\F_2}{\mmt{3}{3}{3}}$ & $19$~\cite{blaser2003complexity}                                              & $20$   & $23$~\cite{laderman1976noncommutative}                       \\
+           & $\Rk{\F_2}{\mmt{3}{3}{4}}$ & $24$~\cite{blaser2003complexity}                                              & $25$   & $29$~\cite{smirnov2013bilinear}                              \\
+           & $\Rk{\F_2}{\mmt{3}{4}{4}}$ & $28$~\cite{blaser1999lower}                                                   & $29$   & $38$~\cite{smirnov2013bilinear}                              \\
     \midrule
     \multirow{4}{*}{Full}
-           & $\Rk{\F_2}{\Fullt{6}}$     & $15$~\cite{lempel1983complexity,grassl2007codetables}            & $16$   & $17$~\cite{montgomery2005five}                               \\
-           & $\Rk{\F_2}{\Fullt{7}}$     & $18$~\cite{lempel1983complexity,grassl2007codetables}            & $19$   & $22$~\cite{montgomery2005five}                               \\
-           & $\Rk{\F_2}{\Fullt{8}}$     & $20$~\cite{lempel1983complexity,grassl2007codetables}            & $21$   & $26$~\cite{winograd1977some,fanhasan2015survey}              \\
-           & $\Rk{\F_3}{\Fullt{6}}$     & $12$~\cite{lempel1983complexity,griesmer1960bound}               & $14$   & $15$~\cite{winograd1977some}                                 \\
+           & $\Rk{\F_2}{\Fullt{6}}$     & $15$~\cite{lempel1983complexity,chudnovsky1988algebraic,grassl2007codetables} & $16$   & $17$~\cite{montgomery2005five}                               \\
+           & $\Rk{\F_2}{\Fullt{7}}$     & $18$~\cite{lempel1983complexity,chudnovsky1988algebraic,grassl2007codetables} & $19$   & $22$~\cite{montgomery2005five}                               \\
+           & $\Rk{\F_2}{\Fullt{8}}$     & $20$~\cite{lempel1983complexity,chudnovsky1988algebraic,grassl2007codetables} & $21$   & $26$~\cite{winograd1977some,fan2007comments}                 \\
+           & $\Rk{\F_3}{\Fullt{6}}$     & $12$~\cite{lempel1983complexity,chudnovsky1988algebraic,griesmer1960bound}    & $14$   & $15$~\cite{winograd1977some}                                 \\
     \midrule
     \multirow{4}{*}{Cyclic}
-           & $\Rk{\F_2}{\Cyct{7}}$      & $12$~\cite{blaser2005complete}                                   & $13$   & $13$~\cite{wagh1983structured}                               \\
-           & $\Rk{\F_2}{\Cyct{8}}$      & $16$~\cite{blaser2005complete}                                   & $19$   & $22$~\cite{morgera1990multiplicative,cenk2011multiplication} \\
-           & $\Rk{\F_2}{\Cyct{10}}$     & $19$~\cite{blaser2005complete}                                   & $22$   & $29$~\cite{morgera1990multiplicative}                        \\
-           & $\Rk{\F_3}{\Cyct{9}}$      & $18$~\cite{blaser2005complete}                                   & $19$   & $27$~\cite{morgera1990multiplicative,cenk2011multiplication} \\
+           & $\Rk{\F_2}{\Cyct{7}}$      & $12$~\cite{degroote1983characterization,blaser2005complete}                   & $13$   & $13$~\cite{wagh1983structured}                               \\
+           & $\Rk{\F_2}{\Cyct{8}}$      & $16$~\cite{averbuch1991classification,blaser2005complete}                     & $19$   & $22$~\cite{morgera1990multiplicative,cenk2011multiplication} \\
+           & $\Rk{\F_2}{\Cyct{10}}$     & $19$~\cite{averbuch1988classification,blaser2005complete}                     & $22$   & $29$~\cite{morgera1990multiplicative}                        \\
+           & $\Rk{\F_3}{\Cyct{9}}$      & $18$~\cite{averbuch1991classification,blaser2005complete}                     & $19$   & $27$~\cite{morgera1990multiplicative,cenk2011multiplication} \\
     \midrule
     \multirow{9}{*}{Truncated}
-           & $\Rk{\F_2}{\Trunct{6}}$    & $12$~\cite{averbuch1991classification,blaser2005complete}        & $13$   & $14$~\cite{cenk2011multiplication}                           \\
-           & $\Rk{\F_2}{\Trunct{7}}$    & $14$~\cite{averbuch1991classification,blaser2005complete}        & $16$   & $18$~\cite{cenk2011multiplication}                           \\
-           & $\Rk{\F_2}{\Trunct{8}}$    & $16$~\cite{averbuch1991classification,blaser2005complete}        & $19$   & $22$~\cite{cenk2011multiplication}                           \\
-           & $\Rk{\F_2}{\Trunct{9}}$    & $18$~\cite{averbuch1991classification,blaser2005complete}        & $21$   & $27$~\cite{cenk2011multiplication}$^\ast$                    \\
-           & $\Rk{\F_2}{\Trunct{10}}$   & $20$~\cite{averbuch1991classification,blaser2005complete}        & $24$   & $31$~\cite{cenk2011multiplication}                           \\
-           & $\Rk{\F_2}{\Trunct{11}}$   & $22$~\cite{averbuch1991classification,blaser2005complete}        & $27$   & $36$~\cite{cenk2011multiplication}                           \\
-           & $\Rk{\F_3}{\Trunct{8}}$    & $16$~\cite{averbuch1991classification,blaser2005complete}        & $17$   & $22$~\cite{cenk2011multiplication}                           \\
-           & $\Rk{\F_3}{\Trunct{9}}$    & $18$~\cite{averbuch1991classification,blaser2005complete}        & $19$   & $27$~\cite{winograd1977some}                                 \\
-           & $\Rk{\F_3}{\Trunct{10}}$   & $20$~\cite{averbuch1991classification,blaser2005complete}        & $21$   & $31$~\cite{winograd1977some}                                 \\
+           & $\Rk{\F_2}{\Trunct{6}}$    & $12$~\cite{averbuch1991classification,blaser2005complete}                     & $13$   & $14$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_2}{\Trunct{7}}$    & $14$~\cite{averbuch1991classification,blaser2005complete}                     & $16$   & $18$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_2}{\Trunct{8}}$    & $16$~\cite{averbuch1991classification,blaser2005complete}                     & $19$   & $22$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_2}{\Trunct{9}}$    & $18$~\cite{averbuch1991classification,blaser2005complete}                     & $21$   & $27$~\cite{cenk2011multiplication}$^\ast$                    \\
+           & $\Rk{\F_2}{\Trunct{10}}$   & $20$~\cite{averbuch1991classification,blaser2005complete}                     & $24$   & $31$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_2}{\Trunct{11}}$   & $22$~\cite{averbuch1991classification,blaser2005complete}                     & $27$   & $36$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_3}{\Trunct{8}}$    & $16$~\cite{averbuch1991classification,blaser2005complete}                     & $17$   & $22$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_3}{\Trunct{9}}$    & $18$~\cite{averbuch1991classification,blaser2005complete}                     & $19$   & $27$~\cite{winograd1977some}$^\ast$                          \\
+           & $\Rk{\F_3}{\Trunct{10}}$   & $20$~\cite{averbuch1991classification,blaser2005complete}                     & $21$   & $31$~\cite{winograd1977some}                                 \\
     \midrule
     Negacyclic
-           & $\Rk{\F_3}{\Negat{9}}$     & $18$~\cite{blaser2005complete}                                   & $19$   & $27$~\cite{cenk2011multiplication}                           \\
+           & $\Rk{\F_3}{\Negat{9}}$     & $18$~\cite{averbuch1991classification,blaser2005complete}                     & $19$   & $27$~\cite{cenk2011multiplication}                           \\
     \bottomrule
   \end{tabular}
 
   \smallskip
   {\footnotesize\raggedright
-    $^\ast$ We obtain a new upper bound of $26$ by flip-graph search~\cite{kauers2023flip}. See Table~\ref{tab:trunc} for the decomposition.
+    $^\ast$ We obtain a new bilinear complexity upper bound of $26$ for multiplication over $\mathbb{Z}[x]/x^9$ by flip-graph search~\cite{kauers2023flip} on $\F_2$ and lifting to $\mathbb{Z}$. See Table~\ref{tab:trunc} for the decomposition.
     \par}
   \caption{The 22 new lower bounds (4 matrix, 18 polynomial) proved in this paper.}
   \label{tab:summary}
@@ -592,8 +593,8 @@ Lemma~\ref{lem:forced-product} holds over any field; it is the exhaustive enumer
 of the $q^{s(t-s)}$ residuals that makes the technique \emph{effective} only over a
 small finite field.
 
-\paragraph{Substitution with backtracking.} Substitution is a powerful inductive technique,
-used extensively by Pan, Hopcroft, Kerr, and Bl{\"a}ser.
+\paragraph{Substitution with backtracking.} The substitution method of Pan~\cite{pan1966methods}
+is a powerful technique in bilinear complexity lower bound proofs
 
 \begin{lemma}[Substitution]\label{lem:substitution}
   Fix an optimal decomposition $T_S=\sum_{\lambda}u_\lambda\otimes v_\lambda\otimes
@@ -743,18 +744,18 @@ upper bound, or a lower bound that is much lower than the best known lower bound
   \setlength{\tabcolsep}{6pt}
   \begin{tabular}{lllllll}
     \toprule
-        & \multicolumn{3}{c}{over $\F_2$}                       & \multicolumn{3}{c}{over $\F_3$}                                                                                                                                                                \\
+        & \multicolumn{3}{c}{over $\F_2$}                                               & \multicolumn{3}{c}{over $\F_3$}                                                                                                                                                                                       \\
     \cmidrule(lr){2-4}\cmidrule(lr){5-7}
-    $N$ & prev LB                                               & our LB                          & prev UB                                         & prev LB                                            & our LB       & prev UB                                \\
+    $N$ & prev LB                                                                       & our LB                          & prev UB                                      & prev LB                                                                      & our LB       & prev UB                                \\
     \midrule
-    $1$ & $1$                                                   & $1$                             & $1$                                             & $1$                                                & $1$          & $1$                                    \\
-    $2$ & $3$~\cite{fiduccia1977algebras}                       & $3$                             & $3$~\cite{toom1963complexity}                   & $3$~\cite{fiduccia1977algebras}                    & $3$          & $3$~\cite{toom1963complexity}          \\
-    $3$ & $6$~\cite{lempel1983complexity,griesmer1960bound}     & $6$                             & $6$~\cite{kaminski1989multiplicative}           & $6$~\cite{kaminski1989multiplicative}              & $6$          & $6$~\cite{kaminski1989multiplicative}  \\
-    $4$ & $9$~\cite{kaminski1989multiplicative}                 & $9$                             & $9$~\cite{kaminski1989multiplicative}           & $9$~\cite{kaminski1989multiplicative}              & $9$          & $9$~\cite{kaminski1989multiplicative}  \\
-    $5$ & $13$~\cite{lempel1983complexity,grassl2007codetables} & $13$                            & $13$~\cite{montgomery2005five}                  & $12$~\cite{kaminski1989multiplicative}             & $12$         & $12$~\cite{kaminski1989multiplicative} \\
-    $6$ & $15$~\cite{lempel1983complexity,grassl2007codetables} & $\boxed{16}$                    & $17$~\cite{montgomery2005five}                  & $12$~\cite{lempel1983complexity,griesmer1960bound} & $\boxed{14}$ & $15$~\cite{winograd1977some}           \\
-    $7$ & $18$~\cite{lempel1983complexity,grassl2007codetables} & $\boxed{19}$                    & $22$~\cite{montgomery2005five}                  &                                                    &              &                                        \\
-    $8$ & $20$~\cite{lempel1983complexity,grassl2007codetables} & $\boxed{21}$                    & $26$~\cite{winograd1977some,fanhasan2015survey} &                                                    &              &                                        \\
+    $1$ & $1$                                                                           & $1$                             & $1$                                          & $1$                                                                          & $1$          & $1$                                    \\
+    $2$ & $3$~\cite{fiduccia1977algebras}                                               & $3$                             & $3$~\cite{toom1963complexity}                & $3$~\cite{fiduccia1977algebras}                                              & $3$          & $3$~\cite{toom1963complexity}          \\
+    $3$ & $6$~\cite{lempel1983complexity,chudnovsky1988algebraic,griesmer1960bound}     & $6$                             & $6$~\cite{kaminski1989multiplicative}        & $6$~\cite{lempel1983complexity,chudnovsky1988algebraic,grassl2007codetables} & $6$          & $6$~\cite{kaminski1989multiplicative}  \\
+    $4$ & $9$~\cite{kaminski1989multiplicative}                                         & $9$                             & $9$~\cite{kaminski1989multiplicative}        & $9$~\cite{kaminski1989multiplicative}                                        & $9$          & $9$~\cite{kaminski1989multiplicative}  \\
+    $5$ & $13$~\cite{lempel1983complexity,chudnovsky1988algebraic,grassl2007codetables} & $13$                            & $13$~\cite{montgomery2005five}               & $12$~\cite{kaminski1989multiplicative}                                       & $12$         & $12$~\cite{kaminski1989multiplicative} \\
+    $6$ & $15$~\cite{lempel1983complexity,chudnovsky1988algebraic,grassl2007codetables} & $\boxed{16}$                    & $17$~\cite{montgomery2005five}               & $12$~\cite{lempel1983complexity,chudnovsky1988algebraic,griesmer1960bound}   & $\boxed{14}$ & $15$~\cite{winograd1977some}           \\
+    $7$ & $18$~\cite{lempel1983complexity,chudnovsky1988algebraic,grassl2007codetables} & $\boxed{19}$                    & $22$~\cite{montgomery2005five}               &                                                                              &              &                                        \\
+    $8$ & $20$~\cite{lempel1983complexity,chudnovsky1988algebraic,grassl2007codetables} & $\boxed{21}$                    & $26$~\cite{winograd1977some,fan2007comments} &                                                                              &              &                                        \\
     \bottomrule
   \end{tabular}
   \caption{Full product of two degree-$(N-1)$ polynomials; boxed entries are new.}
@@ -766,20 +767,20 @@ upper bound, or a lower bound that is much lower than the best known lower bound
   \setlength{\tabcolsep}{6pt}
   \begin{tabular}{lllllll}
     \toprule
-         & \multicolumn{3}{c}{over $\F_2$} & \multicolumn{3}{c}{over $\F_3$}                                                                                                                                                                               \\
+         & \multicolumn{3}{c}{over $\F_2$}                             & \multicolumn{3}{c}{over $\F_3$}                                                                                                                                                                                                            \\
     \cmidrule(lr){2-4}\cmidrule(lr){5-7}
-    $N$  & prev LB                         & our LB                          & prev UB                                                      & prev LB                        & our LB       & prev UB                                                      \\
+    $N$  & prev LB                                                     & our LB                          & prev UB                                                      & prev LB                                                     & our LB       & prev UB                                                      \\
     \midrule
-    $1$  & $1$                             & $1$                             & $1$                                                          & $1$                            & $1$          & $1$                                                          \\
-    $2$  & $3$~\cite{winograd1977some}     & $3$                             & $3$~\cite{morgera1990multiplicative}                         & $2$~\cite{winograd1977some}    & $2$          & $2$~\cite{wagh1983structured}                                \\
-    $3$  & $4$~\cite{winograd1977some}     & $4$                             & $4$~\cite{wagh1983structured}                                & $5$~\cite{winograd1977some}    & $5$          & $5$~\cite{morgera1990multiplicative}                         \\
-    $4$  & $8$~\cite{blaser2005complete}   & $8$                             & $8$~\cite{morgera1990multiplicative,cenk2011multiplication}  & $5$~\cite{winograd1977some}    & $5$          & $5$~\cite{wagh1983structured}                                \\
-    $5$  & $10$~\cite{blaser2005complete}  & $9$                             & $10$~\cite{wagh1983structured}                               & $10$~\cite{blaser2005complete} & $9$          & $10$~\cite{wagh1983structured}                               \\
-    $6$  & $11$~\cite{blaser2005complete}  & $11$                            & $12$~\cite{morgera1990multiplicative}                        & $10$~\cite{winograd1977some}   & $10$         & $10$~\cite{barbulescu2012finding}                            \\
-    $7$  & $12$~\cite{blaser2005complete}  & $\boxed{13}$                    & $13$~\cite{wagh1983structured}                               & $13$~\cite{blaser2005complete} & $13$         & $16$~\cite{morgera1990multiplicative,cenk2010multiplication} \\
-    $8$  & $16$~\cite{blaser2005complete}  & $\boxed{19}$                    & $22$~\cite{morgera1990multiplicative,cenk2011multiplication} & $11$~\cite{winograd1977some}   & $11$         & $11$~\cite{wagh1983structured}                               \\
-    $9$  & $19$~\cite{blaser2005complete}  & $18$                            & $19$~\cite{morgera1990multiplicative}                        & $18$~\cite{blaser2005complete} & $\boxed{19}$ & $27$~\cite{morgera1990multiplicative,cenk2011multiplication} \\
-    $10$ & $19$~\cite{blaser2005complete}  & $\boxed{22}$                    & $29$~\cite{morgera1990multiplicative}                        &                                &              &                                                              \\
+    $1$  & $1$                                                         & $1$                             & $1$                                                          & $1$                                                         & $1$          & $1$                                                          \\
+    $2$  & $3$~\cite{winograd1977some}                                 & $3$                             & $3$~\cite{morgera1990multiplicative}                         & $2$~\cite{winograd1977some}                                 & $2$          & $2$~\cite{wagh1983structured}                                \\
+    $3$  & $4$~\cite{winograd1977some}                                 & $4$                             & $4$~\cite{wagh1983structured}                                & $5$~\cite{winograd1977some}                                 & $5$          & $5$~\cite{morgera1990multiplicative}                         \\
+    $4$  & $8$~\cite{blaser2005complete,barbulescu2012finding}         & $8$                             & $8$~\cite{morgera1990multiplicative,cenk2011multiplication}  & $5$~\cite{winograd1977some}                                 & $5$          & $5$~\cite{wagh1983structured}                                \\
+    $5$  & $10$~\cite{chudnovsky1988algebraic,blaser2005complete}      & $9$                             & $10$~\cite{wagh1983structured}                               & $10$~\cite{blaser2005complete,barbulescu2012finding}        & $9$          & $10$~\cite{wagh1983structured}                               \\
+    $6$  & $11$~\cite{averbuch1988classification,blaser2005complete}   & $11$                            & $12$~\cite{morgera1990multiplicative}                        & $10$~\cite{winograd1977some}                                & $10$         & $10$~\cite{morgera1990multiplicative}                        \\
+    $7$  & $12$~\cite{degroote1983characterization,blaser2005complete} & $\boxed{13}$                    & $13$~\cite{wagh1983structured}                               & $13$~\cite{degroote1983characterization,blaser2005complete} & $13$         & $16$~\cite{morgera1990multiplicative,cenk2010multiplication} \\
+    $8$  & $16$~\cite{averbuch1991classification,blaser2005complete}   & $\boxed{19}$                    & $22$~\cite{morgera1990multiplicative,cenk2011multiplication} & $11$~\cite{winograd1977some}                                & $11$         & $11$~\cite{wagh1983structured}                               \\
+    $9$  & $19$~\cite{chudnovsky1988algebraic,blaser2005complete}      & $18$                            & $19$~\cite{morgera1990multiplicative}                        & $18$~\cite{averbuch1991classification,blaser2005complete}   & $\boxed{19}$ & $27$~\cite{morgera1990multiplicative,cenk2011multiplication} \\
+    $10$ & $19$~\cite{averbuch1988classification,blaser2005complete}   & $\boxed{22}$                    & $29$~\cite{morgera1990multiplicative}                        &                                                             &              &                                                              \\
     \bottomrule
   \end{tabular}
   \caption{Cyclic convolution modulo $x^N-1$; boxed entries are new.}
@@ -791,29 +792,29 @@ upper bound, or a lower bound that is much lower than the best known lower bound
   \setlength{\tabcolsep}{6pt}
   \begin{tabular}{lllllll}
     \toprule
-         & \multicolumn{3}{c}{over $\F_2$}                           & \multicolumn{3}{c}{over $\F_3$}                                                                                                                                                             \\
+         & \multicolumn{3}{c}{over $\F_2$}                           & \multicolumn{3}{c}{over $\F_3$}                                                                                                                                                                                                  \\
     \cmidrule(lr){2-4}\cmidrule(lr){5-7}
-    $N$  & prev LB                                                   & our LB                          & prev UB                                   & prev LB                                                   & our LB       & prev UB                            \\
+    $N$  & prev LB                                                   & our LB                          & prev UB                                                  & prev LB                                                   & our LB       & prev UB                                                  \\
     \midrule
-    $1$  & $1$                                                       & $1$                             & $1$                                       & $1$                                                       & $1$          & $1$                                \\
-    $2$  & $3$~\cite{averbuch1991classification,blaser2005complete}  & $3$                             & $3$~\cite{toom1963complexity}             & $3$~\cite{averbuch1991classification,blaser2005complete}  & $3$          & $3$~\cite{toom1963complexity}      \\
-    $3$  & $5$~\cite{averbuch1991classification,blaser2005complete}  & $5$                             & $5$~\cite{cenk2011multiplication}         & $5$~\cite{averbuch1991classification,blaser2005complete}  & $5$          & $5$~\cite{cenk2011multiplication}  \\
-    $4$  & $8$~\cite{averbuch1991classification,blaser2005complete}  & $8$                             & $8$~\cite{cenk2011multiplication}         & $8$~\cite{averbuch1991classification,blaser2005complete}  & $7$          & $8$~\cite{cenk2011multiplication}  \\
-    $5$  & $10$~\cite{averbuch1991classification,blaser2005complete} & $10$                            & $11$~\cite{cenk2011multiplication}        & $10$~\cite{averbuch1991classification,blaser2005complete} & $10$         & $10$~\cite{barbulescu2012finding}  \\
-    $6$  & $12$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{13}$                    & $14$~\cite{cenk2011multiplication}        & $12$~\cite{averbuch1991classification,blaser2005complete} & $12$         & $14$~\cite{cenk2011multiplication} \\
-    $7$  & $14$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{16}$                    & $18$~\cite{cenk2011multiplication}        & $14$~\cite{averbuch1991classification,blaser2005complete} & $14$         & $18$~\cite{cenk2011multiplication} \\
-    $8$  & $16$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{19}$                    & $22$~\cite{cenk2011multiplication}        & $16$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{17}$ & $22$~\cite{cenk2011multiplication} \\
-    $9$  & $18$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{21}$                    & $27$~\cite{cenk2011multiplication}$^\ast$ & $18$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{19}$ & $27$~\cite{winograd1977some}       \\
-    $10$ & $20$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{24}$                    & $31$~\cite{cenk2011multiplication}        & $20$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{21}$ & $31$~\cite{winograd1977some}       \\
-    $11$ & $22$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{27}$                    & $36$~\cite{cenk2011multiplication}        &                                                           &              &                                    \\
+    $1$  & $1$                                                       & $1$                             & $1$                                                      & $1$                                                       & $1$          & $1$                                                      \\
+    $2$  & $3$~\cite{winograd1977some,alder1981algorithmic}          & $3$                             & $3$~\cite{toom1963complexity}                            & $3$~\cite{winograd1977some,alder1981algorithmic}          & $3$          & $3$~\cite{toom1963complexity}                            \\
+    $3$  & $5$~\cite{winograd1977some,alder1981algorithmic}          & $5$                             & $5$~\cite{averbuch1991classification,blaser2005complete} & $5$~\cite{winograd1977some,alder1981algorithmic}          & $5$          & $5$~\cite{averbuch1991classification,blaser2005complete} \\
+    $4$  & $8$~\cite{averbuch1991classification,blaser2005complete}  & $8$                             & $8$~\cite{cenk2011multiplication}                        & $8$~\cite{averbuch1991classification,blaser2005complete}  & $7$          & $8$~\cite{cenk2011multiplication}                        \\
+    $5$  & $10$~\cite{averbuch1991classification,blaser2005complete} & $10$                            & $11$~\cite{cenk2011multiplication}                       & $10$~\cite{averbuch1991classification,blaser2005complete} & $10$         & $10$~\cite{barbulescu2012finding}                        \\
+    $6$  & $12$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{13}$                    & $14$~\cite{cenk2011multiplication}                       & $12$~\cite{averbuch1991classification,blaser2005complete} & $12$         & $14$~\cite{cenk2011multiplication}                       \\
+    $7$  & $14$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{16}$                    & $18$~\cite{cenk2011multiplication}                       & $14$~\cite{averbuch1991classification,blaser2005complete} & $14$         & $18$~\cite{cenk2011multiplication}                       \\
+    $8$  & $16$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{19}$                    & $22$~\cite{cenk2011multiplication}                       & $16$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{17}$ & $22$~\cite{cenk2011multiplication}                       \\
+    $9$  & $18$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{21}$                    & $27$~\cite{cenk2011multiplication}$^\ast$                & $18$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{19}$ & $27$~\cite{winograd1977some}$^\ast$                      \\
+    $10$ & $20$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{24}$                    & $31$~\cite{cenk2011multiplication}                       & $20$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{21}$ & $31$~\cite{winograd1977some}                             \\
+    $11$ & $22$~\cite{averbuch1991classification,blaser2005complete} & $\boxed{27}$                    & $36$~\cite{cenk2011multiplication}                       &                                                           &              &                                                          \\
     \bottomrule
   \end{tabular}
 
   \smallskip
   {\footnotesize\raggedright
-    $^\ast$ We obtain a new upper bound of $26$ by flip-graph search~\cite{kauers2023flip}.
+    $^\ast$ We obtain a new bilinear complexity upper bound of $26$ for multiplication over $\mathbb{Z}[x]/x^9$ by flip-graph search on $\F_2$~\cite{kauers2023flip} and lifting to $\mathbb{Z}$.
     \scriptsize
-    $a0\otimes (b0+b2+b4+b6+b8)\otimes c8 + a1\otimes (b1+b3+b4+b5+b6+b7)\otimes (c7+c8) + (a0+a1)\otimes (b0+b1)\otimes (c1+c2+c4) + (a0+a1)\otimes (b0+b1+b3+b7)\otimes c7 + a3\otimes (b0+b4)\otimes (c4+c7) + (a0+a1+a4)\otimes (b1+b4)\otimes (c4+c5+c7) + (a0+a1+a4)\otimes (b0+b3+b4)\otimes (c5+c7+c8) + (a2+a4)\otimes (b2+b3)\otimes (c5+c6) + (a3+a4)\otimes (b0+b1+b2+b4)\otimes (c4+c6) + (a2+a3+a4)\otimes (b0+b2+b3+b4)\otimes (c4+c5+c6+c7) + (a1+a2+a3+a4)\otimes (b0+b3+b4)\otimes (c4+c5+c7) + (a4+a5)\otimes (b0+b1+b3+b5)\otimes (c3+c5) + (a0+a4+a5)\otimes (b1+b3+b5)\otimes (c3+c5+c8) + (a0+a3+a4+a5)\otimes (b0+b1+b5)\otimes (c3+c6) + (a0+a1+a3+a4+a5)\otimes (b0+b5)\otimes (c3+c6+c7+c8) + (a0+a2+a3+a4+a5)\otimes (b0+b1+b2+b5)\otimes (c3+c7) + (a1+a2+a3+a4+a5)\otimes (b2+b5)\otimes c3 + a6\otimes (b0+b2+b6)\otimes (c2+c3+c7) + (a0+a6)\otimes (b2+b6)\otimes (c2+c3+c7+c8) + (a1+a2+a6)\otimes (b1+b6)\otimes (c2+c3+c6+c7+c8) + (a0+a1+a2+a6)\otimes (b0+b1+b6)\otimes (c2+c3+c6+c7) + (a0+a1+a3+a4+a7)\otimes (b0+b1)\otimes c7 + (a0+a2+a4+a5+a6+a7)\otimes b1\otimes (c1+c5+c7+c8) + (a0+a1+a2+a4+a5+a6+a7)\otimes b1\otimes (c1+c5) + (a3+a5+a8)\otimes b0\otimes (c0+c1+c4+c5+c6) + (a0+a3+a5+a8)\otimes b0\otimes (c0+c1+c4+c5+c6+c8)$
+    $(5a1-6a2+2a3+a5-a6)\otimes (3b0+2b1+b2)\otimes (-c6-c7-c8) + a0\otimes b0\otimes (c0-c3-c5-c8) + (a1-a2)\otimes (3b0+2b1+b2)\otimes (-c2-c3-c4-c6) + (a0-a1)\otimes (b0+b1+3b2+3b3+b4+b6+b7)\otimes (-c7-c8) + (2a0-a1)\otimes (b0-b5+b7)\otimes c7 + (3a0-2a1+a2-2a3+a4)\otimes (4b0+3b1+b2+b3+b4)\otimes c4 + (a2-4a3+2a4-2a5+3a6-a7)\otimes (b0+b1)\otimes c7 + (a1-a2)\otimes (3b0+b1-b2-3b3-3b4-2b5-b6)\otimes (c6+c7+c8) + (a2-a3+a4-2a5+a6)\otimes (2b0+2b1+b2)\otimes (-c6-c7) + (a0-a2+a3)\otimes (b0+b1+b4+b5)\otimes (-c3+c5+c8) + (2a0-a1)\otimes (b0+b1)\otimes (c1-c2-c3-c4-c5) + (a0-2a1+2a2-a3)\otimes (6b0+4b1+2b2+b3+b4+b5)\otimes (-c3-c6-c7-c8) + (a0+2a1-a2-2a3+2a4-a5)\otimes (b0+b1+b2)\otimes c6 + a0\otimes (b1+b2+b3+b4+b6+b7+b8)\otimes c8 + (a0-a1+a2-2a3+a4)\otimes (5b0+4b1+b2+b3+b4)\otimes (-c4-c7) + (a0-a1-a2-a3+a4)\otimes (5b0+3b1+2b2+2b3+b4)\otimes (-c4-c5) + (a0+a1-a2)\otimes (3b0+2b1+b2+b3+b4+b5+b6)\otimes (c6+c7) + (6a0-3a1-2a2-a3+2a6-a7)\otimes (2b0+b1)\otimes (-c7-c8) + (6a0-a1+a3-a4+a6-2a7+a8)\otimes b0\otimes c8 + (a2-a3)\otimes (b2-b4-b5)\otimes (c3-c5-c6-c8) + (a2+a3-a4)\otimes (7b0+4b1+2b2+2b3+b4)\otimes (-c4-c5-c7-c8) + (2a0-2a1+2a2-a3)\otimes (4b0+3b1+b2+b3+b4+b5)\otimes (c3+c7) + (a0+a1-a2)\otimes (2b0+2b1+b2)\otimes (c2+c7+c8) + (a0+a3-2a4+a5)\otimes (2b0+2b1+b2+b3)\otimes (-c5-c7) + (3a0-2a1+a2+a3-2a4+a5)\otimes (3b0+2b1+b2+b3)\otimes (c5+c7+c8) + (a0-a1)\otimes (2b0+b1)\otimes (-c1+c3+c6+c7+c8)$
     \par}
   \caption{Truncated product modulo $x^N$; boxed entries are new lower bounds.}
   \label{tab:trunc}
@@ -824,19 +825,19 @@ upper bound, or a lower bound that is much lower than the best known lower bound
   \setlength{\tabcolsep}{12pt}
   \begin{tabular}{llll}
     \toprule
-        & \multicolumn{3}{c}{over $\F_3$}                                                          \\
+        & \multicolumn{3}{c}{over $\F_3$}                                                                                                       \\
     \cmidrule(lr){2-4}
-    $N$ & prev LB                         & our LB       & prev UB                                 \\
+    $N$ & prev LB                                                     & our LB       & prev UB                                                  \\
     \midrule
-    $1$ & $1$                             & $1$          & $1$                                     \\
-    $2$ & $3$~\cite{winograd1977some}     & $3$          & $3$~\cite{toom1963complexity}           \\
-    $3$ & $5$~\cite{winograd1977some}     & $5$          & $5$~\cite{morgera1990multiplicative}    \\
-    $4$ & $6$~\cite{winograd1977some}     & $6$          & $6$~\cite{degroote1983characterization} \\
-    $5$ & $10$~\cite{blaser2005complete}  & $9$          & $10$~\cite{cenk2010multiplication}      \\
-    $6$ & $12$~\cite{blaser2005complete}  & $12$         & $15$~\cite{morgera1990multiplicative}   \\
-    $7$ & $13$~\cite{blaser2005complete}  & $13$         & $16$~\cite{cenk2010multiplication}      \\
-    $8$ & $16$~\cite{blaser2005complete}  & $16$         & $18$~\cite{cenk2010multiplication}      \\
-    $9$ & $18$~\cite{blaser2005complete}  & $\boxed{19}$ & $27$~\cite{cenk2011multiplication}      \\
+    $1$ & $1$                                                         & $1$          & $1$                                                      \\
+    $2$ & $3$~\cite{winograd1977some}                                 & $3$          & $3$~\cite{toom1963complexity}                            \\
+    $3$ & $5$~\cite{winograd1977some}                                 & $5$          & $5$~\cite{averbuch1991classification,blaser2005complete} \\
+    $4$ & $6$~\cite{winograd1977some}                                 & $6$          & $6$~\cite{degroote1983characterization}                  \\
+    $5$ & $10$~\cite{blaser2005complete,barbulescu2012finding}        & $9$          & $10$~\cite{cenk2010multiplication}                       \\
+    $6$ & $12$~\cite{averbuch1988classification,blaser2005complete}   & $12$         & $15$~\cite{winograd1977some}                             \\
+    $7$ & $13$~\cite{degroote1983characterization,blaser2005complete} & $13$         & $16$~\cite{cenk2010multiplication}                       \\
+    $8$ & $16$~\cite{blaser2005complete,barbulescu2012finding}        & $16$         & $18$~\cite{cenk2010multiplication}                       \\
+    $9$ & $18$~\cite{averbuch1991classification,blaser2005complete}   & $\boxed{19}$ & $27$~\cite{cenk2011multiplication}                       \\
     \bottomrule
   \end{tabular}
   \caption{Negacyclic convolution modulo $x^N+1$; the boxed entry is

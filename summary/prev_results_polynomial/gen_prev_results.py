@@ -484,21 +484,24 @@ def full_ub(q, t):
 
 
 def block_lb(q, d, e):
-    """Best published lower bound for rank of F_q[x]/(p^e), deg p = d."""
+    """Best published lower bound for rank of F_q[x]/(p^e), deg p = d, as a
+    (value, ref) pair."""
     dim = d * e
     if dim == 1:
-        return 1
+        return (1, "trivial")
     if e == 1:
-        return mu_lb(q, d)[0]
+        return mu_lb(q, d)
     if d == 1:
         if q >= 2 * e - 4:
-            return 2 * e - 1  # minimal (AGW II / Blaser)
+            return (2 * e - 1, "AGW 1991 / Blaser 2005 Thm 22 (minimal)")
         if (q, e) == (2, 4):
-            return 8  # BDEZ 2012, Table 4 (exact)
+            return (8, "Barbulescu et al. 2012, Table 4 (exact)")
         if (q, e) == (2, 5):
-            return 10  # BDEZ 2012 (rank > 9)
-        return 2 * e  # not minimal
-    return (2 * dim - 1) if q >= 2 * dim - 2 else 2 * dim
+            return (10, "Barbulescu et al. 2012 (rank > 9)")
+        return (2 * e, "AGW 1991 / Blaser 2005 (not minimal -> >=2n)")
+    if q >= 2 * dim - 2:
+        return (2 * dim - 1, "AGW 1988, Thm 5.1' (minimal)")
+    return (2 * dim, "AGW 1988 (not minimal -> >=2 dim)")
 
 
 def block_ub(q, d, e):
@@ -891,9 +894,13 @@ def ref_blaser_cyclic_lb(c):
     blocks = cyclic_blocks(q, N, p)
     k = len(blocks)
     total_as = sum(2 * d * e - 1 for d, e in blocks)  # = 2N - k
-    best = max(total_as - (2 * d * e - 1) + block_lb(q, d, e) for d, e in blocks)
+    cands = []
+    for d, e in blocks:
+        v, ref = block_lb(q, d, e)
+        cands.append((total_as - (2 * d * e - 1) + v, ref))
+    best, ref = max(cands, key=lambda t: t[0])
     if best > 2 * N - k:
-        return [Claim("lb", best, "Blaser 2005, Lem. 26 + AGW/code block bounds", 2005)]
+        return [Claim("lb", best, "Blaser 2005, Lem. 26 + " + ref, 2005)]
     return []
 
 
@@ -1035,9 +1042,13 @@ def ref_negacyclic_blaser_lb(c):
     blocks = negacyclic_blocks(q, N, p)
     k = len(blocks)
     total_as = sum(2 * d * e - 1 for d, e in blocks)  # = 2N - k
-    best = max(total_as - (2 * d * e - 1) + block_lb(q, d, e) for d, e in blocks)
+    cands = []
+    for d, e in blocks:
+        v, ref = block_lb(q, d, e)
+        cands.append((total_as - (2 * d * e - 1) + v, ref))
+    best, ref = max(cands, key=lambda t: t[0])
     if best > 2 * N - k:
-        return [Claim("lb", best, "Blaser 2005, Lem. 26 + AGW/code block bounds", 2005)]
+        return [Claim("lb", best, "Blaser 2005, Lem. 26 + " + ref, 2005)]
     return []
 
 

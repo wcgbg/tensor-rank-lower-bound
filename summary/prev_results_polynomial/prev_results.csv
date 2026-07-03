@@ -2,25 +2,25 @@ problem,p,m,q,n,lb,lb_ref,ub,ub_ref
 cyclic,2,1,2,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
 cyclic,2,1,2,2,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22
 cyclic,2,1,2,3,4,"Winograd 1976, Cor. 1",4,"Wagh-Morgera 1983, Tables I-IV"
-cyclic,2,1,2,4,8,"Blaser 2005, Lem. 26 + AGW/code block bounds",8,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
-cyclic,2,1,2,5,10,"Blaser 2005, Lem. 26 + AGW/code block bounds",10,"Wagh-Morgera 1983, Tables I-IV"
-cyclic,2,1,2,6,11,"Blaser 2005, Lem. 26 + AGW/code block bounds",12,cyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
-cyclic,2,1,2,7,12,"Blaser 2005, Lem. 26 + AGW/code block bounds",13,"Wagh-Morgera 1983, Tables I-IV"
-cyclic,2,1,2,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",22,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
-cyclic,2,1,2,9,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",19,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; de Groote 1983 / Toom interp.; trivial
-cyclic,2,1,2,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",29,cyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
-cyclic,2,1,2,11,29,"Blaser 2005, Lem. 26 + AGW/code block bounds",34,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; trivial
+cyclic,2,1,2,4,8,"Blaser 2005, Lem. 26 + Barbulescu et al. 2012, Table 4 (exact)",8,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+cyclic,2,1,2,5,10,"Blaser 2005, Lem. 26 + Chudnovsky-Chudnovsky 1988, Ex. 3.2",10,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,2,1,2,6,11,"Blaser 2005, Lem. 26 + AGW 1988 (not minimal -> >=2 dim)",12,cyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+cyclic,2,1,2,7,12,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",13,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,2,1,2,8,16,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",22,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+cyclic,2,1,2,9,19,"Blaser 2005, Lem. 26 + Chudnovsky-Chudnovsky 1988, Ex. 3.3",19,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; de Groote 1983 / Toom interp.; trivial
+cyclic,2,1,2,10,19,"Blaser 2005, Lem. 26 + AGW 1988 (not minimal -> >=2 dim)",29,cyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+cyclic,2,1,2,11,29,"Blaser 2005, Lem. 26 + code embedding (LSW83/CC88) + Grassl codetables.de",34,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; trivial
 cyclic,3,1,3,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
 cyclic,3,1,3,2,2,"Winograd 1976, Cor. 1",2,"Wagh-Morgera 1983, Tables I-IV"
 cyclic,3,1,3,3,5,"Winograd 1976, Cor. 1",5,cyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22
 cyclic,3,1,3,4,5,"Winograd 1976, Cor. 1",5,"Wagh-Morgera 1983, Tables I-IV"
-cyclic,3,1,3,5,10,"Blaser 2005, Lem. 26 + AGW/code block bounds",10,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,3,1,3,5,10,"Blaser 2005, Lem. 26 + Barbulescu et al. 2012, Table 3 (exhaustive)",10,"Wagh-Morgera 1983, Tables I-IV"
 cyclic,3,1,3,6,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22
-cyclic,3,1,3,7,13,"Blaser 2005, Lem. 26 + AGW/code block bounds",16,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; trivial
+cyclic,3,1,3,7,13,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",16,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; trivial
 cyclic,3,1,3,8,11,"Winograd 1976, Cor. 1",11,"Wagh-Morgera 1983, Tables I-IV"
-cyclic,3,1,3,9,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",27,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
-cyclic,3,1,3,10,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",20,"Wagh-Morgera 1983, Tables I-IV"
-cyclic,3,1,3,11,20,"Blaser 2005, Lem. 26 + AGW/code block bounds",23,cyclic CRT (Morgera 1990); Barbulescu et al. 2012; trivial
+cyclic,3,1,3,9,18,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",27,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+cyclic,3,1,3,10,18,"Blaser 2005, Lem. 26 + Barbulescu et al. 2012, Table 3 (exhaustive)",20,"Wagh-Morgera 1983, Tables I-IV"
+cyclic,3,1,3,11,20,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",23,cyclic CRT (Morgera 1990); Barbulescu et al. 2012; trivial
 cyclic,2,2,4,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Winograd 1976/LSW 1983); trivial
 cyclic,2,2,4,2,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 cyclic,2,2,4,3,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); trivial
@@ -28,32 +28,32 @@ cyclic,2,2,4,4,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); 
 cyclic,2,2,4,5,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 cyclic,2,2,4,6,9,"Winograd 1976, Cor. 1",9,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 cyclic,2,2,4,7,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
-cyclic,2,2,4,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",20,cyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+cyclic,2,2,4,8,16,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",20,cyclic CRT (Winograd 1976/LSW 1983); fold of M_q
 cyclic,2,2,4,9,13,"Winograd 1976, Cor. 1",13,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
-cyclic,2,2,4,10,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",19,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
-cyclic,2,2,4,11,20,"Blaser 2005, Lem. 26 + AGW/code block bounds",23,cyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; trivial
+cyclic,2,2,4,10,18,"Blaser 2005, Lem. 26 + AGW 1988 (not minimal -> >=2 dim)",19,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+cyclic,2,2,4,11,20,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",23,cyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; trivial
 cyclic,5,1,5,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
 cyclic,5,1,5,2,2,"Winograd 1976, Cor. 1",2,cyclic CRT (Morgera 1990); trivial
 cyclic,5,1,5,3,4,"Winograd 1976, Cor. 1",4,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
 cyclic,5,1,5,4,4,"Winograd 1976, Cor. 1",4,cyclic CRT (Morgera 1990); trivial
-cyclic,5,1,5,5,10,"Blaser 2005, Lem. 26 + AGW/code block bounds",11,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+cyclic,5,1,5,5,10,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",11,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
 cyclic,5,1,5,6,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
-cyclic,5,1,5,7,13,"Blaser 2005, Lem. 26 + AGW/code block bounds",15,cyclic CRT (Morgera 1990); Kaminski-Bshouty 1989 Thm 2; trivial
+cyclic,5,1,5,7,13,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",15,cyclic CRT (Morgera 1990); Kaminski-Bshouty 1989 Thm 2; trivial
 cyclic,5,1,5,8,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
-cyclic,5,1,5,9,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",18,cyclic CRT (Morgera 1990); Kaminski-Bshouty 1989 Thm 2; de Groote 1983 / Toom interp.; trivial
-cyclic,5,1,5,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",22,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
-cyclic,5,1,5,11,20,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,cyclic CRT (Morgera 1990); Shokrollahi 1992; Chaumine 2006; trivial
+cyclic,5,1,5,9,16,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",18,cyclic CRT (Morgera 1990); Kaminski-Bshouty 1989 Thm 2; de Groote 1983 / Toom interp.; trivial
+cyclic,5,1,5,10,19,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",22,cyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+cyclic,5,1,5,11,20,"Blaser 2005, Lem. 26 + Shokrollahi 1992; Chaumine 2006 (=2n)",21,cyclic CRT (Morgera 1990); Shokrollahi 1992; Chaumine 2006; trivial
 cyclic,7,1,7,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
 cyclic,7,1,7,2,2,"Winograd 1976, Cor. 1",2,cyclic CRT (Morgera 1990); trivial
 cyclic,7,1,7,3,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Morgera 1990); trivial
 cyclic,7,1,7,4,5,"Winograd 1976, Cor. 1",5,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
 cyclic,7,1,7,5,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
 cyclic,7,1,7,6,6,"Winograd 1976, Cor. 1",6,cyclic CRT (Morgera 1990); trivial
-cyclic,7,1,7,7,14,"Blaser 2005, Lem. 26 + AGW/code block bounds",16,cyclic CRT (Morgera 1990); fold of M_q
+cyclic,7,1,7,7,14,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",16,cyclic CRT (Morgera 1990); fold of M_q
 cyclic,7,1,7,8,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
 cyclic,7,1,7,9,13,"Winograd 1976, Cor. 1",13,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
 cyclic,7,1,7,10,16,"Winograd 1976, Cor. 1",16,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
-cyclic,7,1,7,11,22,"Blaser 2005, Lem. 26 + AGW/code block bounds",26,cyclic CRT (Morgera 1990); fold of M_q; trivial
+cyclic,7,1,7,11,22,"Blaser 2005, Lem. 26 + code embedding (LSW83/CC88) + Grassl codetables.de",26,cyclic CRT (Morgera 1990); fold of M_q; trivial
 cyclic,2,3,8,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Winograd 1976/LSW 1983); trivial
 cyclic,2,3,8,2,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 cyclic,2,3,8,3,4,"Winograd 1976, Cor. 1",4,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
@@ -61,10 +61,10 @@ cyclic,2,3,8,4,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); 
 cyclic,2,3,8,5,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 cyclic,2,3,8,6,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Winograd 1976/LSW 1983); AGW 1988; AGW 1991 / Blaser 2005 Thm 22
 cyclic,2,3,8,7,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); trivial
-cyclic,2,3,8,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",18,cyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+cyclic,2,3,8,8,16,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",18,cyclic CRT (Winograd 1976/LSW 1983); fold of M_q
 cyclic,2,3,8,9,13,"Winograd 1976, Cor. 1",13,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
-cyclic,2,3,8,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
-cyclic,2,3,8,11,22,"Blaser 2005, Lem. 26 + AGW/code block bounds",25,cyclic CRT (Winograd 1976/LSW 1983); Kaminski-Bshouty 1989 Thm 2; trivial
+cyclic,2,3,8,10,19,"Blaser 2005, Lem. 26 + AGW 1988 (not minimal -> >=2 dim)",21,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+cyclic,2,3,8,11,22,"Blaser 2005, Lem. 26 + code embedding (LSW83/CC88) + Grassl codetables.de",25,cyclic CRT (Winograd 1976/LSW 1983); Kaminski-Bshouty 1989 Thm 2; trivial
 cyclic,3,2,9,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Winograd 1976/LSW 1983); trivial
 cyclic,3,2,9,2,2,"Winograd 1976, Cor. 1",2,cyclic CRT (Winograd 1976/LSW 1983); trivial
 cyclic,3,2,9,3,5,"Winograd 1976, Cor. 1",5,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
@@ -73,7 +73,7 @@ cyclic,3,2,9,5,7,"Winograd 1976, Cor. 1",7,cyclic CRT (Winograd 1976/LSW 1983); 
 cyclic,3,2,9,6,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 cyclic,3,2,9,7,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 cyclic,3,2,9,8,8,"Winograd 1976, Cor. 1",8,cyclic CRT (Winograd 1976/LSW 1983); trivial
-cyclic,3,2,9,9,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,cyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+cyclic,3,2,9,9,18,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",21,cyclic CRT (Winograd 1976/LSW 1983); fold of M_q
 cyclic,3,2,9,10,14,"Winograd 1976, Cor. 1",14,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 cyclic,3,2,9,11,19,"Winograd 1976, Cor. 1",19,cyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 cyclic,11,1,11,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
@@ -86,7 +86,7 @@ cyclic,11,1,11,7,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Morgera 1990); de Gro
 cyclic,11,1,11,8,11,"Winograd 1976, Cor. 1",11,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
 cyclic,11,1,11,9,15,"Winograd 1976, Cor. 1",15,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
 cyclic,11,1,11,10,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Morgera 1990); trivial
-cyclic,11,1,11,11,22,"Blaser 2005, Lem. 26 + AGW/code block bounds",26,cyclic CRT (Morgera 1990); fold of M_q
+cyclic,11,1,11,11,22,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",26,cyclic CRT (Morgera 1990); fold of M_q
 cyclic,13,1,13,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Morgera 1990); trivial
 cyclic,13,1,13,2,2,"Winograd 1976, Cor. 1",2,cyclic CRT (Morgera 1990); trivial
 cyclic,13,1,13,3,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Morgera 1990); trivial
@@ -97,7 +97,7 @@ cyclic,13,1,13,7,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Morgera 1990); de Gro
 cyclic,13,1,13,8,10,"Winograd 1976, Cor. 1",10,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
 cyclic,13,1,13,9,13,"Winograd 1976, Cor. 1",13,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
 cyclic,13,1,13,10,16,"Winograd 1976, Cor. 1",16,cyclic CRT (Morgera 1990); de Groote 1983 / Toom interp.; trivial
-cyclic,13,1,13,11,21,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,cyclic CRT (Morgera 1990); Shokrollahi 1992; Chaumine 2006; trivial
+cyclic,13,1,13,11,21,"Blaser 2005, Lem. 26 + Shokrollahi 1992; Chaumine 2006 (=2n)",21,cyclic CRT (Morgera 1990); Shokrollahi 1992; Chaumine 2006; trivial
 cyclic,2,4,16,1,1,"Winograd 1976, Cor. 1",1,cyclic CRT (Winograd 1976/LSW 1983); trivial
 cyclic,2,4,16,2,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 cyclic,2,4,16,3,3,"Winograd 1976, Cor. 1",3,cyclic CRT (Winograd 1976/LSW 1983); trivial
@@ -442,25 +442,25 @@ truncated,2,4,16,11,22,AGW 1991 / Blaser 2005 (not minimal -> >=2n),23,"M-hat(n)
 negacyclic,2,1,2,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,negacyclic CRT (Morgera 1990); trivial
 negacyclic,2,1,2,2,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,negacyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22
 negacyclic,2,1,2,3,4,"Winograd 1976, Cor. 1 (mod x^n+1)",4,"Wagh-Morgera 1983, Tables I-IV [x^n+1=x^n-1 in char 2]"
-negacyclic,2,1,2,4,8,"Blaser 2005, Lem. 26 + AGW/code block bounds",8,negacyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
-negacyclic,2,1,2,5,10,"Blaser 2005, Lem. 26 + AGW/code block bounds",10,"Wagh-Morgera 1983, Tables I-IV [x^n+1=x^n-1 in char 2]"
-negacyclic,2,1,2,6,11,"Blaser 2005, Lem. 26 + AGW/code block bounds",12,negacyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
-negacyclic,2,1,2,7,12,"Blaser 2005, Lem. 26 + AGW/code block bounds",13,"Wagh-Morgera 1983, Tables I-IV [x^n+1=x^n-1 in char 2]"
-negacyclic,2,1,2,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",22,negacyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
-negacyclic,2,1,2,9,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",19,negacyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; de Groote 1983 / Toom interp.; trivial
-negacyclic,2,1,2,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",29,negacyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
-negacyclic,2,1,2,11,29,"Blaser 2005, Lem. 26 + AGW/code block bounds",34,negacyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; trivial
+negacyclic,2,1,2,4,8,"Blaser 2005, Lem. 26 + Barbulescu et al. 2012, Table 4 (exact)",8,negacyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+negacyclic,2,1,2,5,10,"Blaser 2005, Lem. 26 + Chudnovsky-Chudnovsky 1988, Ex. 3.2",10,"Wagh-Morgera 1983, Tables I-IV [x^n+1=x^n-1 in char 2]"
+negacyclic,2,1,2,6,11,"Blaser 2005, Lem. 26 + AGW 1988 (not minimal -> >=2 dim)",12,negacyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+negacyclic,2,1,2,7,12,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",13,"Wagh-Morgera 1983, Tables I-IV [x^n+1=x^n-1 in char 2]"
+negacyclic,2,1,2,8,16,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",22,negacyclic CRT (Morgera 1990); Cenk-Ozbudak 2011
+negacyclic,2,1,2,9,19,"Blaser 2005, Lem. 26 + Chudnovsky-Chudnovsky 1988, Ex. 3.3",19,negacyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; de Groote 1983 / Toom interp.; trivial
+negacyclic,2,1,2,10,19,"Blaser 2005, Lem. 26 + AGW 1988 (not minimal -> >=2 dim)",29,negacyclic CRT (Morgera 1990); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+negacyclic,2,1,2,11,29,"Blaser 2005, Lem. 26 + code embedding (LSW83/CC88) + Grassl codetables.de",34,negacyclic CRT (Morgera 1990); Cenk-Ozbudak 2010; trivial
 negacyclic,3,1,3,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,fold mod x^n+1 (<=M_q(n)); Toom 1963 / interpolation
 negacyclic,3,1,3,2,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,fold mod x^n+1 (<=M_q(n)); Toom 1963 / interpolation
 negacyclic,3,1,3,3,5,"Winograd 1976, Cor. 1 (mod x^n+1)",5,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 negacyclic,3,1,3,4,6,"Winograd 1976, Cor. 1 (mod x^n+1)",6,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
-negacyclic,3,1,3,5,10,"Blaser 2005, Lem. 26 + AGW/code block bounds",10,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; trivial
-negacyclic,3,1,3,6,12,"Blaser 2005, Lem. 26 + AGW/code block bounds",15,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
-negacyclic,3,1,3,7,13,"Blaser 2005, Lem. 26 + AGW/code block bounds",16,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; trivial
-negacyclic,3,1,3,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",18,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010
-negacyclic,3,1,3,9,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",27,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2011
-negacyclic,3,1,3,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; de Groote 1983 / Toom interp.
-negacyclic,3,1,3,11,20,"Blaser 2005, Lem. 26 + AGW/code block bounds",23,negacyclic CRT (Winograd 1976/LSW 1983); Barbulescu et al. 2012; trivial
+negacyclic,3,1,3,5,10,"Blaser 2005, Lem. 26 + Barbulescu et al. 2012, Table 3 (exhaustive)",10,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; trivial
+negacyclic,3,1,3,6,12,"Blaser 2005, Lem. 26 + AGW 1988 (not minimal -> >=2 dim)",15,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+negacyclic,3,1,3,7,13,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",16,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; trivial
+negacyclic,3,1,3,8,16,"Blaser 2005, Lem. 26 + Barbulescu et al. 2012, Table 3 (exhaustive)",18,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010
+negacyclic,3,1,3,9,18,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",27,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2011
+negacyclic,3,1,3,10,19,"Blaser 2005, Lem. 26 + Barbulescu et al. 2012, Table 3 (exhaustive)",21,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; de Groote 1983 / Toom interp.
+negacyclic,3,1,3,11,20,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",23,negacyclic CRT (Winograd 1976/LSW 1983); Barbulescu et al. 2012; trivial
 negacyclic,2,2,4,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,negacyclic CRT (Winograd 1976/LSW 1983); trivial
 negacyclic,2,2,4,2,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 negacyclic,2,2,4,3,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,negacyclic CRT (Winograd 1976/LSW 1983); trivial
@@ -468,32 +468,32 @@ negacyclic,2,2,4,4,7,"Winograd 1976, Cor. 1 (mod x^n+1)",7,negacyclic CRT (Winog
 negacyclic,2,2,4,5,7,"Winograd 1976, Cor. 1 (mod x^n+1)",7,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,2,2,4,6,9,"Winograd 1976, Cor. 1 (mod x^n+1)",9,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 negacyclic,2,2,4,7,11,"Winograd 1976, Cor. 1 (mod x^n+1)",11,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
-negacyclic,2,2,4,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",20,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+negacyclic,2,2,4,8,16,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",20,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
 negacyclic,2,2,4,9,13,"Winograd 1976, Cor. 1 (mod x^n+1)",13,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
-negacyclic,2,2,4,10,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",19,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
-negacyclic,2,2,4,11,20,"Blaser 2005, Lem. 26 + AGW/code block bounds",23,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; trivial
+negacyclic,2,2,4,10,18,"Blaser 2005, Lem. 26 + AGW 1988 (not minimal -> >=2 dim)",19,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+negacyclic,2,2,4,11,20,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",23,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2010; trivial
 negacyclic,5,1,5,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,fold mod x^n+1 (<=M_q(n)); Toom 1963 / interpolation
 negacyclic,5,1,5,2,2,"Winograd 1976, Cor. 1 (mod x^n+1)",2,negacyclic CRT (Winograd 1976/LSW 1983); trivial
 negacyclic,5,1,5,3,4,"Winograd 1976, Cor. 1 (mod x^n+1)",4,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,5,1,5,4,6,"Winograd 1976, Cor. 1 (mod x^n+1)",6,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
-negacyclic,5,1,5,5,10,"Blaser 2005, Lem. 26 + AGW/code block bounds",11,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2011
+negacyclic,5,1,5,5,10,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",11,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2011
 negacyclic,5,1,5,6,8,"Winograd 1976, Cor. 1 (mod x^n+1)",8,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
-negacyclic,5,1,5,7,13,"Blaser 2005, Lem. 26 + AGW/code block bounds",15,negacyclic CRT (Winograd 1976/LSW 1983); Kaminski-Bshouty 1989 Thm 2; trivial
-negacyclic,5,1,5,8,15,"Blaser 2005, Lem. 26 + AGW/code block bounds",16,negacyclic CRT (Winograd 1976/LSW 1983); Shokrollahi 1992; Chaumine 2006
-negacyclic,5,1,5,9,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",18,negacyclic CRT (Winograd 1976/LSW 1983); Kaminski-Bshouty 1989 Thm 2; de Groote 1983 / Toom interp.; trivial
-negacyclic,5,1,5,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",22,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2011
-negacyclic,5,1,5,11,20,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,negacyclic CRT (Winograd 1976/LSW 1983); Shokrollahi 1992; Chaumine 2006; trivial
+negacyclic,5,1,5,7,13,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",15,negacyclic CRT (Winograd 1976/LSW 1983); Kaminski-Bshouty 1989 Thm 2; trivial
+negacyclic,5,1,5,8,15,"Blaser 2005, Lem. 26 + Shokrollahi 1992; Chaumine 2006 (=2n)",16,negacyclic CRT (Winograd 1976/LSW 1983); Shokrollahi 1992; Chaumine 2006
+negacyclic,5,1,5,9,16,"Blaser 2005, Lem. 26 + de Groote 1983 (>2n-1, integrality)",18,negacyclic CRT (Winograd 1976/LSW 1983); Kaminski-Bshouty 1989 Thm 2; de Groote 1983 / Toom interp.; trivial
+negacyclic,5,1,5,10,19,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",22,negacyclic CRT (Winograd 1976/LSW 1983); Cenk-Ozbudak 2011
+negacyclic,5,1,5,11,20,"Blaser 2005, Lem. 26 + Shokrollahi 1992; Chaumine 2006 (=2n)",21,negacyclic CRT (Winograd 1976/LSW 1983); Shokrollahi 1992; Chaumine 2006; trivial
 negacyclic,7,1,7,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,fold mod x^n+1 (<=M_q(n)); Toom 1963 / interpolation
 negacyclic,7,1,7,2,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,fold mod x^n+1 (<=M_q(n)); Toom 1963 / interpolation
 negacyclic,7,1,7,3,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,negacyclic CRT (Winograd 1976/LSW 1983); trivial
 negacyclic,7,1,7,4,6,"Winograd 1976, Cor. 1 (mod x^n+1)",6,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
 negacyclic,7,1,7,5,8,"Winograd 1976, Cor. 1 (mod x^n+1)",8,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,7,1,7,6,9,"Winograd 1976, Cor. 1 (mod x^n+1)",9,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
-negacyclic,7,1,7,7,14,"Blaser 2005, Lem. 26 + AGW/code block bounds",16,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+negacyclic,7,1,7,7,14,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",16,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
 negacyclic,7,1,7,8,12,"Winograd 1976, Cor. 1 (mod x^n+1)",12,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
 negacyclic,7,1,7,9,13,"Winograd 1976, Cor. 1 (mod x^n+1)",13,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,7,1,7,10,17,"Winograd 1976, Cor. 1 (mod x^n+1)",17,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
-negacyclic,7,1,7,11,22,"Blaser 2005, Lem. 26 + AGW/code block bounds",26,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q; trivial
+negacyclic,7,1,7,11,22,"Blaser 2005, Lem. 26 + code embedding (LSW83/CC88) + Grassl codetables.de",26,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q; trivial
 negacyclic,2,3,8,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,negacyclic CRT (Winograd 1976/LSW 1983); trivial
 negacyclic,2,3,8,2,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 negacyclic,2,3,8,3,4,"Winograd 1976, Cor. 1 (mod x^n+1)",4,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
@@ -501,10 +501,10 @@ negacyclic,2,3,8,4,7,"Winograd 1976, Cor. 1 (mod x^n+1)",7,negacyclic CRT (Winog
 negacyclic,2,3,8,5,8,"Winograd 1976, Cor. 1 (mod x^n+1)",8,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,2,3,8,6,10,"Winograd 1976, Cor. 1 (mod x^n+1)",10,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1988; AGW 1991 / Blaser 2005 Thm 22
 negacyclic,2,3,8,7,7,"Winograd 1976, Cor. 1 (mod x^n+1)",7,negacyclic CRT (Winograd 1976/LSW 1983); trivial
-negacyclic,2,3,8,8,16,"Blaser 2005, Lem. 26 + AGW/code block bounds",18,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+negacyclic,2,3,8,8,16,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",18,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
 negacyclic,2,3,8,9,13,"Winograd 1976, Cor. 1 (mod x^n+1)",13,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
-negacyclic,2,3,8,10,19,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
-negacyclic,2,3,8,11,22,"Blaser 2005, Lem. 26 + AGW/code block bounds",25,negacyclic CRT (Winograd 1976/LSW 1983); Kaminski-Bshouty 1989 Thm 2; trivial
+negacyclic,2,3,8,10,19,"Blaser 2005, Lem. 26 + AGW 1988 (not minimal -> >=2 dim)",21,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22; fold of M_q
+negacyclic,2,3,8,11,22,"Blaser 2005, Lem. 26 + code embedding (LSW83/CC88) + Grassl codetables.de",25,negacyclic CRT (Winograd 1976/LSW 1983); Kaminski-Bshouty 1989 Thm 2; trivial
 negacyclic,3,2,9,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,fold mod x^n+1 (<=M_q(n)); Toom 1963 / interpolation
 negacyclic,3,2,9,2,2,"Winograd 1976, Cor. 1 (mod x^n+1)",2,negacyclic CRT (Winograd 1976/LSW 1983); trivial
 negacyclic,3,2,9,3,5,"Winograd 1976, Cor. 1 (mod x^n+1)",5,fold mod x^n+1 (<=M_q(n)); Toom 1963 / interpolation
@@ -513,7 +513,7 @@ negacyclic,3,2,9,5,7,"Winograd 1976, Cor. 1 (mod x^n+1)",7,negacyclic CRT (Winog
 negacyclic,3,2,9,6,10,"Winograd 1976, Cor. 1 (mod x^n+1)",10,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 negacyclic,3,2,9,7,11,"Winograd 1976, Cor. 1 (mod x^n+1)",11,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,3,2,9,8,12,"Winograd 1976, Cor. 1 (mod x^n+1)",12,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
-negacyclic,3,2,9,9,18,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+negacyclic,3,2,9,9,18,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",21,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
 negacyclic,3,2,9,10,14,"Winograd 1976, Cor. 1 (mod x^n+1)",14,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,3,2,9,11,19,"Winograd 1976, Cor. 1 (mod x^n+1)",19,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,11,1,11,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,fold mod x^n+1 (<=M_q(n)); Toom 1963 / interpolation
@@ -526,7 +526,7 @@ negacyclic,11,1,11,7,11,"Winograd 1976, Cor. 1 (mod x^n+1)",11,negacyclic CRT (W
 negacyclic,11,1,11,8,14,"Winograd 1976, Cor. 1 (mod x^n+1)",14,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
 negacyclic,11,1,11,9,15,"Winograd 1976, Cor. 1 (mod x^n+1)",15,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,11,1,11,10,15,"Winograd 1976, Cor. 1 (mod x^n+1)",15,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
-negacyclic,11,1,11,11,22,"Blaser 2005, Lem. 26 + AGW/code block bounds",26,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
+negacyclic,11,1,11,11,22,"Blaser 2005, Lem. 26 + AGW 1991 / Blaser 2005 (not minimal -> >=2n)",26,negacyclic CRT (Winograd 1976/LSW 1983); fold of M_q
 negacyclic,13,1,13,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,fold mod x^n+1 (<=M_q(n)); Toom 1963 / interpolation
 negacyclic,13,1,13,2,2,"Winograd 1976, Cor. 1 (mod x^n+1)",2,negacyclic CRT (Winograd 1976/LSW 1983); trivial
 negacyclic,13,1,13,3,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,negacyclic CRT (Winograd 1976/LSW 1983); trivial
@@ -537,7 +537,7 @@ negacyclic,13,1,13,7,10,"Winograd 1976, Cor. 1 (mod x^n+1)",10,negacyclic CRT (W
 negacyclic,13,1,13,8,14,"Winograd 1976, Cor. 1 (mod x^n+1)",14,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.
 negacyclic,13,1,13,9,13,"Winograd 1976, Cor. 1 (mod x^n+1)",13,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
 negacyclic,13,1,13,10,16,"Winograd 1976, Cor. 1 (mod x^n+1)",16,negacyclic CRT (Winograd 1976/LSW 1983); de Groote 1983 / Toom interp.; trivial
-negacyclic,13,1,13,11,21,"Blaser 2005, Lem. 26 + AGW/code block bounds",21,negacyclic CRT (Winograd 1976/LSW 1983); Shokrollahi 1992; Chaumine 2006; trivial
+negacyclic,13,1,13,11,21,"Blaser 2005, Lem. 26 + Shokrollahi 1992; Chaumine 2006 (=2n)",21,negacyclic CRT (Winograd 1976/LSW 1983); Shokrollahi 1992; Chaumine 2006; trivial
 negacyclic,2,4,16,1,1,"Winograd 1976, Cor. 1 (mod x^n+1)",1,negacyclic CRT (Winograd 1976/LSW 1983); trivial
 negacyclic,2,4,16,2,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,negacyclic CRT (Winograd 1976/LSW 1983); AGW 1991 / Blaser 2005 Thm 22
 negacyclic,2,4,16,3,3,"Winograd 1976, Cor. 1 (mod x^n+1)",3,negacyclic CRT (Winograd 1976/LSW 1983); trivial
