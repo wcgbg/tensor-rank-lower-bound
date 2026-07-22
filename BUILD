@@ -8,5 +8,5 @@ package(default_visibility = ["//visibility:public"])
 refresh_compile_commands(
     name = "refresh_compile_commands",
     exclude_external_sources = True,
-    targets = [],
+    targets = {"//...": "--config=opt"},
 )
