@@ -25,9 +25,9 @@
 #include <utility>
 #include <vector>
 
-#include <ng-log/logging.h>
-#include <tbb/blocked_range.h>
-#include <tbb/parallel_for.h>
+#include "ng-log/logging.h"
+#include "tbb/blocked_range.h"
+#include "tbb/parallel_for.h"
 
 #include "core/backtracking_proof.h"
 #include "core/bit_vec.h"

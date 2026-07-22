@@ -1,6 +1,6 @@
 #include "problems/negacyclic/tensor.h"
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 #include "core/gf.h"
 #include "core/tensor.h"

@@ -16,7 +16,7 @@
 #include <cstdint>
 #include <utility>
 
-#include <ng-log/logging.h>
+#include "ng-log/logging.h"
 
 #include "core/certificate.pb.h"
 #include "core/constraints.h"

@@ -18,9 +18,9 @@
 #include <iostream>
 #include <string>
 
-#include <gflags/gflags.h>
-#include <ng-log/logging.h>
-#include <tbb/parallel_for.h>
+#include "gflags/gflags.h"
+#include "ng-log/logging.h"
+#include "tbb/parallel_for.h"
 
 #include "core/certificate.pb.h"
 #include "core/constraints.h"

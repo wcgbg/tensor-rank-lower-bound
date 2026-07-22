@@ -4,7 +4,7 @@
 #include <set>
 #include <vector>
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 #include "problems/matrix/f2_matrix.h"
 

@@ -18,8 +18,8 @@
 #include <string>
 #include <vector>
 
-#include <gflags/gflags.h>
-#include <ng-log/logging.h>
+#include "gflags/gflags.h"
+#include "ng-log/logging.h"
 
 #include "core/certificate.pb.h"
 #include "core/proto_io.h"

@@ -1,6 +1,6 @@
 #include "tensor_utils.h"
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 // Convenience: all tests are over F_2 (P=2, M=1).
 template <std::size_t NA, std::size_t NB, std::size_t NC>

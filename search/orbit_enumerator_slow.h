@@ -25,8 +25,8 @@
 #include <cstdint>
 #include <vector>
 
-#include <boost/unordered/unordered_flat_set.hpp>
-#include <ng-log/logging.h>
+#include "boost/unordered/unordered_flat_set.hpp"
+#include "ng-log/logging.h"
 
 #include "core/bit_vec.h"
 #include "core/certificate.pb.h"

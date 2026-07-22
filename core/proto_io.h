@@ -4,12 +4,12 @@
 #include <fstream>
 #include <string>
 
-#include <boost/iostreams/device/file.hpp>
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/iostreams/filtering_stream.hpp>
-#include <google/protobuf/io/zero_copy_stream_impl.h>
-#include <google/protobuf/text_format.h>
-#include <ng-log/logging.h>
+#include "boost/iostreams/device/file.hpp"
+#include "boost/iostreams/filter/gzip.hpp"
+#include "boost/iostreams/filtering_stream.hpp"
+#include "google/protobuf/io/zero_copy_stream_impl.h"
+#include "google/protobuf/text_format.h"
+#include "ng-log/logging.h"
 
 // Read a proto message from a file. Supported extensions:
 //   .pb.txt       text format

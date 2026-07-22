@@ -28,7 +28,7 @@
 #include <string>
 #include <type_traits>
 
-#include <ng-log/logging.h>
+#include "ng-log/logging.h"
 
 namespace intpow_detail {
 // Non-constexpr on purpose: reaching this call during constant evaluation makes

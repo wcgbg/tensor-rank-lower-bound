@@ -38,10 +38,10 @@
 #include <mutex>
 #include <vector>
 
-#include <boost/unordered/unordered_flat_set.hpp>
-#include <ng-log/logging.h>
-#include <tbb/blocked_range.h>
-#include <tbb/parallel_for.h>
+#include "boost/unordered/unordered_flat_set.hpp"
+#include "ng-log/logging.h"
+#include "tbb/blocked_range.h"
+#include "tbb/parallel_for.h"
 
 #include "core/certificate.pb.h"
 #include "core/constraints.h"

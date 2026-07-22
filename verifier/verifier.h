@@ -28,9 +28,9 @@
 #include <string>
 #include <vector>
 
-#include <boost/unordered/unordered_flat_map.hpp>
-#include <ng-log/logging.h>
-#include <tbb/parallel_for.h>
+#include "boost/unordered/unordered_flat_map.hpp"
+#include "ng-log/logging.h"
+#include "tbb/parallel_for.h"
 
 #include "core/backtracking_proof.h"
 #include "core/certificate.pb.h"

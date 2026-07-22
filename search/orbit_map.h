@@ -25,9 +25,9 @@
 #include <cstdint>
 #include <mutex>
 
-#include <boost/unordered/unordered_flat_map.hpp>
-#include <ng-log/logging.h>
-#include <tbb/parallel_for.h>
+#include "boost/unordered/unordered_flat_map.hpp"
+#include "ng-log/logging.h"
+#include "tbb/parallel_for.h"
 
 #include "core/bit_vec.h"
 #include "core/constraints.h"

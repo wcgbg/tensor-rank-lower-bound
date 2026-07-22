@@ -3,8 +3,8 @@
 #include <string>
 #include <utility>
 
-#include <gtest/gtest.h>
-#include <tbb/global_control.h>
+#include "gtest/gtest.h"
+#include "tbb/global_control.h"
 
 #include "core/backtracking_proof.h"
 #include "core/certificate.pb.h"

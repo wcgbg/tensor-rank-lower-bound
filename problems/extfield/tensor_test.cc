@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <cstdint>
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 #include "core/gf.h"
 #include "core/gf_vec.h"

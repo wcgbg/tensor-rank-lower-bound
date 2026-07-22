@@ -15,9 +15,9 @@
 #include <string>
 #include <vector>
 
-#include <ng-log/logging.h>
-#include <tbb/blocked_range.h>
-#include <tbb/parallel_for.h>
+#include "ng-log/logging.h"
+#include "tbb/blocked_range.h"
+#include "tbb/parallel_for.h"
 
 #include "core/gf.h"
 #include "core/tensor.h"

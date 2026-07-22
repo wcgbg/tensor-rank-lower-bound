@@ -21,7 +21,7 @@
 #include <type_traits>
 #include <vector>
 
-#include <ng-log/logging.h>
+#include "ng-log/logging.h"
 
 #include "core/bit_vec.h"
 #include "core/gf_vec.h"

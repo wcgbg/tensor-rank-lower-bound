@@ -8,12 +8,12 @@
 #include <ostream>
 #include <string>
 
-#include <boost/iostreams/device/array.hpp>
-#include <boost/iostreams/device/back_inserter.hpp>
-#include <boost/iostreams/device/file.hpp>
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/iostreams/filtering_stream.hpp>
-#include <ng-log/logging.h>
+#include "boost/iostreams/device/array.hpp"
+#include "boost/iostreams/device/back_inserter.hpp"
+#include "boost/iostreams/device/file.hpp"
+#include "boost/iostreams/filter/gzip.hpp"
+#include "boost/iostreams/filtering_stream.hpp"
+#include "ng-log/logging.h"
 
 namespace io = boost::iostreams;
 

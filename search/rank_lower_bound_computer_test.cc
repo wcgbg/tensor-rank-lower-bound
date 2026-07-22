@@ -11,8 +11,8 @@
 
 #include <string>
 
-#include <google/protobuf/util/message_differencer.h>
-#include <gtest/gtest.h>
+#include "google/protobuf/util/message_differencer.h"
+#include "gtest/gtest.h"
 
 #include "core/certificate.pb.h"
 #include "core/proto_io.h"

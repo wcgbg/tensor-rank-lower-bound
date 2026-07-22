@@ -20,8 +20,8 @@
 #include <cstdint>
 #include <vector>
 
-#include <boost/unordered/unordered_flat_map.hpp>
-#include <ng-log/logging.h>
+#include "boost/unordered/unordered_flat_map.hpp"
+#include "ng-log/logging.h"
 
 #include "core/backtracking_proof.h"
 #include "core/bit_vec.h"

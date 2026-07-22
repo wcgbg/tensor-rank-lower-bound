@@ -1,6 +1,6 @@
 #include "dynamic_matrix.h"
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 TEST(DynamicMatrixTest, Constructor_ZeroMatrix) {
   DynamicMatrix<2, 1> m(2, 3);

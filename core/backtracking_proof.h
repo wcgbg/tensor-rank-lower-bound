@@ -26,7 +26,7 @@
 #include <string>
 #include <vector>
 
-#include <ng-log/logging.h>
+#include "ng-log/logging.h"
 
 // Derive the single per-certificate archive path from the certificate's path,
 // e.g. "foo/cert.pb.txt" -> "foo/cert.btp" (and ".pb" -> ".btp").

@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <random>
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 #include "core/gf.h"
 #include "core/gf_vec.h"

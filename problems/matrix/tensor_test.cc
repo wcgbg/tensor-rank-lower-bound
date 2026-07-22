@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 #include "core/tensor.h"
 #include "core/tensor_utils.h"

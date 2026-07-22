@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-#include <ng-log/logging.h>
+#include "ng-log/logging.h"
 
 template <int P, int M>
 DynamicMatrix<P, M>::DynamicMatrix(int n0, int n1)

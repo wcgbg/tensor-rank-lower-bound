@@ -4,4 +4,5 @@
 *.fdb_latexmk
 *.fls
 *.gz
+*.pdf
 main_test.*

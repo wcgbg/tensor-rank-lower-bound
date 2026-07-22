@@ -5,7 +5,7 @@
 #include <numeric>
 #include <sstream>
 
-#include <ng-log/logging.h>
+#include "ng-log/logging.h"
 
 namespace upper_bound {
 namespace {
