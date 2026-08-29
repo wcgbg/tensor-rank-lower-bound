@@ -11,8 +11,10 @@
 // engine (R = 𝔽_q[x]/(xᴺ − γ)); see problems/poly_quotient/symmetry.h. The
 // reduction constant is the 𝔽_p element −1, whose GFVec index is P−1. Over
 // characteristic 2, P−1 = 1, so this is *identical* to cyclic (xᴺ + 1 = xᴺ − 1).
-// The unit/auto enumeration follows the factorisation of xᴺ + 1 (the q-
-// cyclotomic cosets of the odd residues mod 2N for p odd).
+// The unit/auto enumeration follows the factorisation of xᴺ + 1: for p ∤ 2N the
+// q-cyclotomic cosets of the odd residues mod 2N (field factors), and for p | N
+// local ring factors instead. The shared engine brute-forces the definitions of
+// R^* and Aut(R), so both cases are handled without a case split.
 
 #include "problems/poly_quotient/symmetry.h"
 

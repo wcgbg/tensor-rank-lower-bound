@@ -214,13 +214,27 @@ MONTGOMERY_FULL = {
 F2_FULL = {2: 3, 3: 6, 4: 9, 5: 13, 6: 17, 7: 22, 8: 26, 9: 30, 10: 35}
 
 # ---- Code-embedding lower bound data ---------------------------------------- #
-# Embedding lemma (Lempel-Seroussi-Winograd 1983; Chudnovsky-Chudnovsky 1988;
-# for the full product: Brockett/Brown-Dobkin, cf. Kaminski-Bshouty 1989 p.151):
-# a rank-r bilinear algorithm for F_{q^n}/F_q (or for the product of two n-term
-# polynomials) yields a linear [r, n, >=n]_q code, so
+# Embedding lemma: a rank-r bilinear algorithm for F_{q^n}/F_q (or for the
+# product of two n-term polynomials) yields a linear [r, n, >=n]_q code, so
 #       rank >= N_q(n, n) := min length of a q-ary linear code, dim n, dist n.
-# N_q(n,n) >= Griesmer bound g_q(n,n) (Griesmer 1960); the values below sharpen
-# Griesmer using M. Grassl's tables, https://www.codetables.de, whose full BKLC
+# Attribution (primary sources read 2026-08): the correspondence is due to
+# Lempel-Winograd 1977 (IEEE Trans. IT 23, 503-508) -- so credited verbatim by
+# LSW 1983, p. 287 ("Lempel and Winograd have shown in [2] that a bilinear
+# algorithm of length t(n) for r (or for r_P) gives rise to a q-ary linear
+# code of length N = t(n), dimension k = n and minimum distance d >= n") --
+# and lower bounds via codes were first used by Brockett-Dobkin 1978 (LAA 19)
+# (CC 1988, p. 290: "Brockett and Dobkin [8] were the first to generalize the
+# linear independence argument in the finite field ... case, and used lower
+# bounds from the theory of Hamming's linear codes"), sharpened by
+# Brown-Dobkin 1980.  The general tensor form is CC 1988, Prop. 1.2; the
+# "min length of a linear code of dimension n+1 and minimal distance n+1"
+# statement of the bound is Kaminski-Bshouty 1989, p. 151 (their refs
+# [2,3,9,11,12] = BD78, BrD80, Kaminski85, LSW83, LW77).  LSW 1983 and CC 1988
+# themselves derive only asymptotic Plotkin-type consequences (LSW Thm 1:
+# (2 + 1/(q-1))n - o(n); CC Prop. 4.3 / Cor. 4.4), not the finite-n values.
+# N_q(n,n) >= Griesmer bound g_q(n,n) (Griesmer 1960 for q = 2; the q-ary form
+# sum ceil(d/q^i) is Solomon-Stiffler 1965); the values below sharpen this
+# using M. Grassl's tables, https://www.codetables.de, whose full BKLC
 # pages (one per field) are cached under paper/ref/codetables/q<q>.html.
 #
 # From a table we read d_lo[n,k] <= d_max[n,k] <= d_hi[n,k] (the cell shows
@@ -298,7 +312,8 @@ NQKK_EXACT = {
 
 
 def griesmer(q, k, d):
-    """Griesmer 1960: any [n, k, d]_q linear code has n >= sum ceil(d/q^i)."""
+    """Any [n, k, d]_q linear code has n >= sum_{i<k} ceil(d/q^i): Griesmer
+    1960 for q = 2; the q-ary form is Solomon-Stiffler 1965."""
     total, x = 0, d
     for i in range(k):
         total += -(-d // (q**i))
@@ -310,7 +325,7 @@ def code_n(q, k):
     g = griesmer(q, k, k)
     if (q, k) in NQKK_EXACT and NQKK_EXACT[(q, k)] > g:
         return (NQKK_EXACT[(q, k)], "Grassl codetables.de")
-    return (g, "Griesmer 1960")
+    return (g, "Griesmer 1960" if q == 2 else "Solomon-Stiffler 1965")
 
 
 def mu_ub(q, n):
@@ -344,26 +359,37 @@ def mu_lb(q, n):
         ref = "Shokrollahi 1992; Chaumine 2006 (=2n)"
     cn, csrc = code_n(q, n)
     if cn > val:
-        val, ref = cn, f"code embedding (LSW83/CC88) + {csrc}"
-    # Stronger, specifically-proven exact lower bounds:
-    if (q, n) == (2, 4):
-        return (9, "Chudnovsky-Chudnovsky 1988, Ex. 3.2")
-    if (q, n) == (2, 6):
-        return (15, "Chudnovsky-Chudnovsky 1988, Ex. 3.3")
+        val, ref = cn, f"code embedding (LW77/BD78) + {csrc}"
+    # Stronger, specifically-proven exact lower bounds (exhaustive search).
+    # NB mu_2(6) >= 15 needs no special entry: the code embedding + Grassl
+    # (no [14,6,6]_2 code) already gives 15.  Earlier revisions credited
+    # mu_2(4)=9 and mu_2(6)=15 to "CC 1988, Ex. 3.2/3.3"; CC 1988 (read in
+    # full) contains no such examples, and its Prop. 4.3 yields only 8 / 14.
+    if (q, n) == (2, 4) and val < 9:
+        return (9, "Barbulescu et al. 2012, Table 3 (exhaustive)")
     if (q, n) == (3, 4) and val < 9:
         return (9, "Barbulescu et al. 2012, Table 3 (exhaustive)")
     return (val, ref)
 
 
 # ---- classical CRT/interpolation upper bound for the FULL product ----------- #
-# The classical algorithm (Winograd 1976; CC 1988; KB89 App. B; Fan-Hasan 2007
-# comments): evaluate both t-term factors modulo pairwise-coprime prime powers
-# p_i^{e_i} (including the place at infinity, treated as a linear place) of
-# total degree 2t-1 and recombine by CRT.  Cost = sum of block ranks, where a
-# block F_q[x]/(p^e) costs:  e=1: mu_q(deg p) (best published);  deg p=1, e>1:
-# the short product (minimal 2e-1 when q >= 2e-4, else M-hat(e));  deg p>1,
-# e>1: 2*deg(p)*e-1 when q >= 2*deg(p)*e-2 (AGW 1988).  Over F_2 this DP
-# reproduces Fan-Hasan 2007 Table I (e.g. M_2(8) <= 26).
+# The algorithm: evaluate both t-term factors modulo pairwise-coprime prime
+# powers p_i^{e_i} (including the place at infinity, treated as a linear place)
+# of total degree 2t-1 and recombine by CRT.  Cost = sum of block ranks, where
+# a block F_q[x]/(p^e) costs:  e=1: mu_q(deg p) (best published);  deg p=1,
+# e>1: the short product (minimal 2e-1 when q >= 2e-4, else M-hat(e));
+# deg p>1, e>1: 2*deg(p)*e-1 when q >= 2*deg(p)*e-2 (AGW 1988).
+# Attribution (Winograd 1976 read in full, 2026-08): that paper has only the
+# large-field interpolation (2n-1, credited there to Toom/Fiduccia-Zalcstein)
+# and the CRT split across coprime factors (p. 175); it contains NO small-field
+# higher-degree-place construction and NO numeric values, so it must not be
+# credited for these bounds.  Evaluation at places of higher degree is the
+# Chudnovsky-Chudnovsky 1988 interpolation idea; over F_2 the resulting n-term
+# counts are tabulated by Fan-Hasan 2007 ("Comments...", Table I, e.g.
+# M_2(8) <= 26), which this DP reproduces.  For q != 2 no publication known to
+# the author tabulates the values, so they are emitted as *derived* composites
+# (year 9999: any directly published source of the same value wins the tie,
+# e.g. BDEZ 2012's symmetric M_3(6) <= 15).
 
 
 def count_irreducibles(q, d):
@@ -466,9 +492,16 @@ def full_ub(q, t):
         cands.append((F2_FULL[t], "Fan-Hasan 2015 survey, Table 2", 2015))
     if t in MONTGOMERY_FULL:
         cands.append((MONTGOMERY_FULL[t], "Montgomery 2005", 2005))
+    if ("full", q, t) in BDEZ_UB:
+        cands.append(
+            (BDEZ_UB[("full", q, t)], "Barbulescu et al. 2012 (symmetric formula)", 2012)
+        )
     v = crt_interp_full_ub(q, t)
     if v is not None:
-        cands.append((v, "CRT/interpolation (Winograd 1976; cf. FH 2007)", 2007))
+        if q == 2:  # tabulated: Fan-Hasan 2007, Table I (this DP reproduces it)
+            cands.append((v, "CRT/interpolation (Fan-Hasan 2007, Table I)", 2007))
+        else:  # derived composite; no tabulating publication known (see above)
+            cands.append((v, "CRT/interpolation (derived, per-place blocks)", 9999))
     return min(cands, key=lambda c: (c[0], c[2])) if cands else None
 
 
@@ -504,6 +537,27 @@ def block_lb(q, d, e):
     return (2 * dim, "AGW 1988 (not minimal -> >=2 dim)")
 
 
+# Randriambololona 2012, "Bilinear complexity of algebras and the Chudnovsky-
+# Chudnovsky interpolation method", J. Complexity 28(4) 489-517.  Defines
+# mu_q(m, l) = bilinear complexity over F_q of A_q(m, l) = F_{q^m}[t]/(t^l)
+# (Def. 3.1), i.e. exactly our (d, e) = (m, l) repeated-factor block.  Published
+# upper bounds used here, keyed (q, d, e):
+#   * (2, 4, 2): 24  -- Lemma 4.6 (mu_q(de,l) <= mu_q(d) mu_{q^d}(e,l)) with
+#     Example 4.4 (mu_4(2,2) <= 8), instantiated verbatim in the paper:
+#     "mu_2(4, 2) <= mu_2(2) mu_4(2, 2) <= 24".  (Ex. 4.5's direct construction
+#     gives only 26.)
+#   * (3, 4, 2): 21  -- same Lemma 4.6 instance "mu_3(4, 2) <= mu_3(2)
+#     mu_9(2, 2) <= 21" (currently outside the emitted grid; kept for reference).
+#   * (2, 2, 2): 9   -- Prop. 4.2; the paper notes "it seems difficult to
+#     improve the bound mu_q(2, 2) <= 9 for q = 2 or 3" (ties the fold value).
+# No mu_q(2, 3) bound is given, so the F_9[u]/(u^3) block is unaffected.
+RANDRIAM_BLOCK_UB = {
+    (2, 4, 2): (24, "Randriambololona 2012, Lem. 4.6 + Ex. 4.4"),
+    (3, 4, 2): (21, "Randriambololona 2012, Lem. 4.6 + Ex. 4.4"),
+    (2, 2, 2): (9, "Randriambololona 2012, Prop. 4.2"),
+}
+
+
 def block_ub(q, d, e):
     """Best published upper bound for rank of F_q[x]/(p^e), with source, or
     None.  Always also a candidate: FOLD the full product of two (de)-term
@@ -526,6 +580,8 @@ def block_ub(q, d, e):
     else:
         if q >= 2 * dim - 2:
             cands.append((2 * dim - 1, "AGW 1988, Thm 5.1' (minimal)"))
+        if (q, d, e) in RANDRIAM_BLOCK_UB:
+            cands.append(RANDRIAM_BLOCK_UB[(q, d, e)])
     return min(cands) if cands else None
 
 
@@ -643,22 +699,6 @@ def ref_shokrollahi_1992(c):
     return []
 
 
-def ref_chudnovsky_1988(c):
-    """D.V. & G.V. Chudnovsky 1988, 'Algebraic complexities and algebraic curves
-    over finite fields', Examples 3.2/3.3: mu_2(4)=9 and mu_2(6)=15 (exact)."""
-    if c["problem"] != "extfield":
-        return []
-    q, n = c["q"], c["n"]
-    exact = {(2, 4): 9, (2, 6): 15}
-    if (q, n) in exact:
-        v = exact[(q, n)]
-        return [
-            Claim("lb", v, "Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3", 1988),
-            Claim("ub", v, "Chudnovsky-Chudnovsky 1988, Ex. 3.2/3.3", 1988),
-        ]
-    return []
-
-
 def ref_toom_interpolation_full(c):
     """A. Toom 1963 / S. Winograd 1979 evaluation-interpolation: a product of two
     degree-(n-1) polynomials over F_q can be computed in 2n-1 multiplications
@@ -766,6 +806,7 @@ BDEZ_LB = {  # (problem, q, n): proven rank >= value (no soln at value-1)
 BDEZ_UB = {  # (problem, q, n): best symmetric formula found
     ("full", 2, 6): 17,
     ("full", 2, 7): 22,
+    ("full", 3, 6): 15,  # Table 2, 6x6 (Sym.) k=15, 4 solutions
     ("extfield", 2, 5): 13,
     ("extfield", 2, 6): 15,
     ("extfield", 3, 5): 11,
@@ -800,6 +841,37 @@ def ref_bdez_2012(c):
     return out
 
 
+# --- Covanov 2019 exhaustive search (F_2) ------------------------------------ #
+# S. Covanov, "Improved method for finding optimal formulas for bilinear maps in
+# a finite field", Theoret. Comput. Sci. 790 (2019) 41-65 (extends BDEZ 2012 with
+# the covering-sets method).  Sect. 7.1: the target rank r is increased
+# progressively, each run below the true rank exhaustively finding no solution,
+# so the ranks reported in Table 3 for the maps actually computed are exact and
+# *all* optimal decompositions are enumerated.  Actually-computed maps over F_2
+# (Sects. 7.2-7.5, Tables 4-7): MatProduct(3,2,3) rank 15, MatProduct(2,3,2)
+# rank 11, ShortProduct_4 rank 8, ShortProduct_5 (F_2[X]/(X^5)) rank 11
+# (146,944 optimal decompositions, Table 6), CirculantProduct_5 (F_2[X]/(X^5-1))
+# rank 10 (2,025 optimal decompositions, Table 7).  This settles the short
+# product mod X^5 over F_2 at 11, closing BDEZ's [10,11] gap.  NB the
+# ShortProduct_6 and CirculantProduct_6 rows of Table 3 carry "(est.)" timings:
+# they are cost estimates, not computations, so no bound is taken from them.
+COVANOV_EXACT = {  # (problem, q, n): rank  (lb == ub)
+    ("truncated", 2, 5): 11,
+    ("cyclic", 2, 5): 10,  # already exact in BDEZ 2012; kept for completeness
+}
+
+
+def ref_covanov_2019(c):
+    key = (c["problem"], c["q"], c["n"])
+    if key not in COVANOV_EXACT:
+        return []
+    v = COVANOV_EXACT[key]
+    return [
+        Claim("lb", v, "Covanov 2019 (exhaustive, exact)", 2019),
+        Claim("ub", v, "Covanov 2019 (exhaustive, exact)", 2019),
+    ]
+
+
 def ref_kb89_general_lb(c):
     """Kaminski-Bshouty 1989 (J. ACM 36), Theorem 1 (proof, p. 158): for q >= 3,
     M_q(deg) >= 3*deg + 1 - i_q(deg), where i_q(d) is the maximal number of
@@ -831,16 +903,22 @@ def ref_mu_le_full_product(c):
 
 
 def ref_crt_interp_full(c):
-    """Classical CRT / evaluation-interpolation algorithm for the full product
-    of two n-term polynomials over F_q (Winograd 1976; Chudnovsky-Chudnovsky
-    1988; KB89 App. B; the construction tabulated by Fan-Hasan 2007).  Upper
-    bound = crt_interp_full_ub(q, n); valid for every q and n."""
+    """CRT / evaluation-interpolation algorithm for the full product of two
+    n-term polynomials over F_q, evaluating at places of higher degree
+    (Chudnovsky-Chudnovsky 1988; NOT Winograd 1976, which has no small-field
+    construction -- see the note above crt_interp_full_ub).  Over F_2 the
+    values are tabulated by Fan-Hasan 2007, Table I; for q != 2 they are
+    derived composites (year 9999, so any directly published equal value,
+    e.g. BDEZ 2012's M_3(6) <= 15, wins the tie).  Upper bound =
+    crt_interp_full_ub(q, n); valid for every q and n."""
     if c["problem"] != "full":
         return []
     v = crt_interp_full_ub(c["q"], c["n"])
     if v is None:
         return []
-    return [Claim("ub", v, "CRT/interpolation (Winograd 1976; cf. FH 2007)", 2007)]
+    if c["q"] == 2:
+        return [Claim("ub", v, "CRT/interpolation (Fan-Hasan 2007, Table I)", 2007)]
+    return [Claim("ub", v, "CRT/interpolation (derived, per-place blocks)", 9999)]
 
 
 def ref_kaminski_bshouty_1989(c):
@@ -867,18 +945,22 @@ def ref_kaminski_bshouty_1989(c):
 
 
 def ref_code_embedding(c):
-    """Code-embedding lower bound: a rank-r algorithm for F_{q^n}/F_q (LSW 1983;
-    CC 1988) or for the n-term full product (Brockett/Brown-Dobkin, cf. KB89
-    p. 151) yields an [r, n, >=n]_q linear code, so rank >= N_q(n,n).
-    N values: Griesmer 1960 bound, sharpened by Grassl's codetables.de for
-    q in {2,3,4,5,7,8,9} (e.g. no [12,5,5]_2 -> mu_2(5) >= 13)."""
+    """Code-embedding lower bound: a rank-r algorithm for F_{q^n}/F_q or for
+    the n-term full product yields an [r, n, >=n]_q linear code (correspondence
+    Lempel-Winograd 1977; first used for lower bounds by Brockett-Dobkin 1978;
+    stated in this form by KB89 p. 151 -- see the attribution note above
+    NQKK_EXACT), so rank >= N_q(n,n).  N values: Griesmer 1960 /
+    Solomon-Stiffler 1965 bound, sharpened by Grassl's codetables.de for
+    q in {2,3,4,5,7,8,9} (e.g. no [12,5,5]_2 -> mu_2(5) >= 13).  The claim
+    year follows the N-value source (the embedding itself is 1977/78)."""
     if c["problem"] not in ("extfield", "full"):
         return []
     q, n = c["q"], c["n"]
     if n < 2:
         return []
     v, src = code_n(q, n)
-    return [Claim("lb", v, f"code embedding (LSW83/CC88) + {src}", 1983)]
+    year = 2007 if src.startswith("Grassl") else (1960 if q == 2 else 1965)
+    return [Claim("lb", v, f"code embedding (LW77/BD78) + {src}", year)]
 
 
 def ref_blaser_cyclic_lb(c):
@@ -929,12 +1011,19 @@ def ref_wagh_morgera_1983(c):
 
 
 def ref_crt_cyclic(c):
-    """CRT decomposition of F_q[x]/(x^N-1) = prod_i F_q[x]/(p_i^e), the cyclic-
-    convolution method of Morgera 1990 (Eq. 3) [for prime q; Winograd 1976 /
-    LSW 1983 in general].  Upper bound = sum of best published block ranks
-    (block_ub: de Groote/Shokrollahi/Cenk-Ozbudak 2010 for field blocks,
-    AGW 1988/1991 + Blaser 2005 minimal-rank values or Cenk-Ozbudak 2011 M-hat
-    for repeated factors); emitted only when every block has a published value."""
+    """CRT decomposition of F_q[x]/(x^N-1) = prod_i F_q[x]/(p_i^e): upper bound
+    = sum of best published block ranks (block_ub: de Groote/Shokrollahi/
+    Cenk-Ozbudak 2010 for field blocks, AGW 1988/1991 + Blaser 2005 minimal-rank
+    values or Cenk-Ozbudak 2011 M-hat for repeated factors); emitted only when
+    every block has a published value.  The CRT step itself is classical
+    (Winograd 1976/1980; LSW 1983); the *value* is a derived composite, so the
+    claim carries year 9999 and any directly published source of the same value
+    (BDEZ 2012, Wagh-Morgera 1983, ...) wins the tie instead.
+    NB: NOT attributable to Morgera 1990 -- that paper (read in full) assumes
+    gcd(N, p) = 1 throughout (its Eq. 3 direct design is Wagh-Morgera 1983's),
+    uses polynomial-product blocks M_sigma rather than field blocks mu_q(d)
+    (e.g. it quotes M(9) = 22 over GF(2), M(7) = 19 over GF(3)), and its
+    Tables 1-2 only list long composite coprime lengths (N >= 15 / N >= 10)."""
     if c["problem"] != "cyclic":
         return []
     q, N, p = c["q"], c["n"], c["p"]
@@ -945,9 +1034,8 @@ def ref_crt_cyclic(c):
             return []
         total += b[0]
         srcs.add(b[1].split("(")[0].split(",")[0].strip())
-    method = "Morgera 1990" if c["m"] == 1 else "Winograd 1976/LSW 1983"
-    label = f"cyclic CRT ({method}); " + "; ".join(sorted(srcs))
-    return [Claim("ub", total, label, 1990 if c["m"] == 1 else 1976)]
+    label = "cyclic CRT (per-factor blocks); " + "; ".join(sorted(srcs))
+    return [Claim("ub", total, label, 9999)]
 
 
 # --------------------------------------------------------------------------- #
@@ -1056,9 +1144,11 @@ def ref_negacyclic_crt(c):
     """CRT decomposition F_q[x]/(x^n+1) = prod_i F_q[x]/(p_i^e), summing the best
     published per-block ranks (block_ub: de Groote/Shokrollahi/Cenk-Ozbudak field
     blocks; AGW 1988/1991 + Blaser 2005 / Cenk-Ozbudak 2011 repeated factors).
-    The classical negacyclic-convolution construction (Winograd 1976 / LSW 1983;
-    over char 2 the cyclic Morgera 1990 method).  Emitted only when every block
-    has a published value."""
+    The CRT step is classical (Winograd 1976/1980; LSW 1983); the value is a
+    derived composite (year 9999, so any directly published equal value wins the
+    tie).  Not attributable to Morgera 1990: see ref_crt_cyclic's note --
+    that paper assumes gcd(N, p) = 1 and covers no small negacyclic length.
+    Emitted only when every block has a published value."""
     if c["problem"] != "negacyclic":
         return []
     q, N, p = c["q"], c["n"], c["p"]
@@ -1069,13 +1159,8 @@ def ref_negacyclic_crt(c):
             return []
         total += b[0]
         srcs.add(b[1].split("(")[0].split(",")[0].strip())
-    if p == 2:  # x^n+1 = x^n-1: the cyclic-convolution construction applies
-        method = "Morgera 1990" if c["m"] == 1 else "Winograd 1976/LSW 1983"
-        year = 1990 if c["m"] == 1 else 1976
-    else:
-        method, year = "Winograd 1976/LSW 1983", 1976
-    label = f"negacyclic CRT ({method}); " + "; ".join(sorted(srcs))
-    return [Claim("ub", total, label, year)]
+    label = "negacyclic CRT (per-factor blocks); " + "; ".join(sorted(srcs))
+    return [Claim("ub", total, label, 9999)]
 
 
 def ref_negacyclic_full_fold(c):
@@ -1099,7 +1184,7 @@ def ref_negacyclic_char2_cyclic(c):
     if c["problem"] != "negacyclic" or c["p"] != 2:
         return []
     cyc = dict(c, problem="cyclic")
-    out = ref_bdez_2012(cyc) + ref_wagh_morgera_1983(cyc)
+    out = ref_bdez_2012(cyc) + ref_covanov_2019(cyc) + ref_wagh_morgera_1983(cyc)
     return [
         Claim(k, v, r + " [x^n+1=x^n-1 in char 2]", y) for (k, v, r, y) in out
     ]
@@ -1110,7 +1195,6 @@ REFERENCE_FUNCTIONS = [
     ref_winograd_1976_cor1,
     ref_degroote_1983,
     ref_shokrollahi_1992,
-    ref_chudnovsky_1988,
     ref_toom_interpolation_full,
     ref_crt_interp_full,
     ref_mu_le_full_product,
@@ -1121,6 +1205,7 @@ REFERENCE_FUNCTIONS = [
     ref_montgomery_full,
     ref_f2_full,
     ref_bdez_2012,
+    ref_covanov_2019,
     ref_blaser_cyclic_lb,
     ref_wagh_morgera_1983,
     ref_crt_cyclic,
@@ -1204,20 +1289,47 @@ if __name__ == "__main__":
 #     Soviet Math. Dokl. 3 (1963) 714-716 (interpolation upper bound 2n-1).
 # Winograd 1976  S. Winograd, "Some bilinear forms whose multiplicative
 #     complexity depends on the field of constants", Math. Systems Theory 10
-#     (1977) 169-180 (Cor. 1 / Thm 5: mult mod P needs >= 2 deg(P) - k).
+#     (1977) 169-180.  Read in full: Cor. 1 / Thm 5 give the LOWER bound
+#     "mult mod P = prod P_i^{l_i} needs >= 2 deg(P) - k" over any field of
+#     constants G (Thm 4: P = Pbar^l needs >= 2 deg(P) - 1; Thm 5 adds
+#     disjointness of minimal algorithms); the matching upper bounds implicitly
+#     assume G has enough elements for interpolation.  The paper contains NO
+#     small-field upper-bound constructions and NO numeric tables -- do not
+#     cite it for any UB value (see the CRT/interpolation note above).
 # Winograd 1979  S. Winograd, "On multiplication in algebraic extension fields",
 #     Theoret. Comput. Sci. 8 (1979) 359-377.
 # de Groote 1983  H.F. de Groote, "Characterization of division algebras of
 #     minimal rank...", SIAM J. Comput. 12 (1983) 101-117 (mu_q(n)=2n-1 iff
 #     n <= q/2+1).
-# Lempel-Seroussi-Winograd 1983  TCS 22 (1983) 285-296.
+# Lempel-Winograd 1977  A. Lempel, S. Winograd, "A new approach to
+#     error-correcting codes", IEEE Trans. Inform. Theory 23 (1977) 503-508
+#     (the bilinear-algorithm -> [t, n, >=n]_q linear code correspondence, as
+#     credited by LSW 1983, p. 287).
+# Brockett-Dobkin 1978  R.W. Brockett, D. Dobkin, "On the optimal evaluation
+#     of a set of bilinear forms", Linear Algebra Appl. 19 (1978) 207-235
+#     (first code-based lower bounds for polynomial multiplication, per
+#     CC 1988, p. 290; sharpened by Brown-Dobkin, IEEE TC 29 (1980) 337-340).
+# Lempel-Seroussi-Winograd 1983  TCS 22 (1983) 285-296.  Read in full: states
+#     the LW77 code correspondence (p. 287) and proves the asymptotic lower
+#     bound mu(r_P) >= (2 + 1/(q-1))n - o(n) (Thm 1) plus the quasi-linear
+#     upper bound f_q(n)*n (Thm 2); contains no finite-n numeric values.
 # Chudnovsky-Chudnovsky 1988  D.V./G.V. Chudnovsky, "Algebraic complexities and
-#     algebraic curves over finite fields", J. Complexity 4 (1988) 285-316
-#     (Ex. 3.2/3.3: mu_2(4)=9, mu_2(6)=15).
+#     algebraic curves over finite fields", J. Complexity 4 (1988) 285-316.
+#     Read in full: Prop. 1.2 is the tensor form of the code correspondence;
+#     Prop. 4.3 / Cor. 4.4 give asymptotic Plotkin-type lower bounds only
+#     (Prop. 4.3 yields mu_2(4) >= 8 and mu_2(6) >= 14, NOT 9/15 -- earlier
+#     revisions of this script wrongly cited "Ex. 3.2/3.3" for those); Secs.
+#     5-7 give the algebraic-curve interpolation upper bounds.
 # Morgera 1990  S.D. Morgera, "Multiplicative complexity of bilinear algorithms
 #     for cyclic convolution over finite fields", Multidim. Syst. Signal Process.
-#     1 (1990) 99-111 (Eq. 3 / Thm 1; Tables 1-2: cyclic-convolution CRT method
-#     over GF(2), GF(3)).
+#     1 (1990) 99-111.  Read in full: assumes gcd(N, p) = 1 THROUGHOUT (the
+#     Eq. 1-3 direct design is Wagh-Morgera 1983's, with polynomial-product
+#     blocks M_sigma); main content is mutually-prime-factor vs direct design,
+#     M(N1 N2) <= M(N1) M(N2) with equality iff gcd(e1, e2) = 1 (Thm 1);
+#     Tables 1-2 list only long composite coprime lengths (GF(2): N = 15..6643;
+#     GF(3): N = 10..6056).  It contains NO values for N <= 11 beyond WM83's
+#     (it quotes M(7) = 13, M(9) = 22, M(15) = 31 over GF(2); M(10) = 20 over
+#     GF(3)), so no bound in this script is taken from it.
 # Shokrollahi 1992  M.A. Shokrollahi, "Optimal algorithms for multiplication in
 #     certain finite fields using elliptic curves", SIAM J. Comput. 21 (1992)
 #     1193-1198; Chaumine 2006 (AGCT) (mu_q(n)=2n in the elliptic window).
@@ -1235,6 +1347,11 @@ if __name__ == "__main__":
 # Barbulescu-Detrey-Estibals-Zimmermann 2012  "Finding Optimal Formulae for
 #     Bilinear Maps", WAIFI 2012, LNCS 7369, 168-186 (exhaustive/symmetric
 #     search over F_2, F_3: Tables 1-4).
+# Covanov 2019  S. Covanov, "Improved method for finding optimal formulas for
+#     bilinear maps in a finite field", Theoret. Comput. Sci. 790 (2019) 41-65
+#     (covering-sets exhaustive search over F_2; Sects. 7.1/7.4/7.5, Tables 3,
+#     6, 7: ShortProduct_5 = F_2[X]/(X^5) rank exactly 11, CirculantProduct_5 =
+#     F_2[X]/(X^5-1) rank exactly 10, all optimal decompositions enumerated).
 # Wagh-Morgera 1983  "A new structured design method for convolutions over
 #     finite fields", IEEE Trans. Inform. Theory IT-29 (1983) 583-595
 #     (Tables I-IV: cyclic convolution over GF(2)/GF(3)).
@@ -1249,7 +1366,10 @@ if __name__ == "__main__":
 #     complexity", SIAM J. Comput. 34 (2005) 277-298 (Thm 35, Thm 22, Lem. 26:
 #     per-factor minimal-rank criteria; product minimal iff every factor is).
 # Griesmer 1960  "A bound for error-correcting codes", IBM J. Res. Dev. 4
-#     (1960) 532-542 (length bound used in the code-embedding lower bound).
+#     (1960) 532-542 (binary length bound used in the code-embedding lower
+#     bound; the q-ary form sum ceil(d/q^i) is Solomon-Stiffler 1965).
+# Solomon-Stiffler 1965  G. Solomon, J.J. Stiffler, "Algebraically punctured
+#     cyclic codes", Inform. and Control 8 (1965) 170-179 (q-ary Griesmer).
 # Grassl codetables  M. Grassl, "Bounds on the minimum distance of linear
 #     codes", https://www.codetables.de (BKLC tables for q in {2,3,4,5,7,8,9}).
 # Fan-Hasan 2015  "A survey of some recent bit-parallel GF(2^n) multipliers",
@@ -1267,7 +1387,8 @@ if __name__ == "__main__":
 #   TCS 412, Table 2 (M-hat, over any ring, incl. Oseledets 2011 n=6,7), and the
 #   trivial fold M-hat_q(n) <= M_q(n).  Exact small F_2/F_3 cells: Barbulescu et
 #   al. 2012, Table 4 (F_p[X]/(X^n) column): F_2 n=2,3,4 = 3,5,8 exact, n=5 in
-#   [10,11], n=6 <= 14; F_3 n=2,3,4 = 3,5,8 exact, n=5 <= 10.
+#   [10,11], n=6 <= 14; F_3 n=2,3,4 = 3,5,8 exact, n=5 <= 10.  Covanov 2019
+#   closed the F_2 n=5 gap: rank exactly 11 (all decompositions enumerated).
 # --- negacyclic product  F_q[x]/(x^n + 1) ---------------------------------------
 #   Same CRT machinery as 'cyclic' but over the factors of x^n + 1.  Write
 #   n = p^a * nn (gcd(nn,p)=1); then x^n+1 = (x^nn+1)^{p^a}.  In char 2,
@@ -1279,9 +1400,14 @@ if __name__ == "__main__":
 #   the negacyclic-convolution CRT (Winograd 1976 / LSW 1983) and the fold
 #   <= M_q(n).  No paper is known to the author tabulating exact small negacyclic
 #   ranks in odd characteristic, so those cells rest on these general theorems.
-# (Checked, no usable small-parameter values for these cells: Ballet-Pieltant
-#     2011 (J. Compl. 27, asymptotic only); Randriambololona 2012 (J. Compl. 28,
-#     algebra bounds mu_q(m,l) only); Ballet-Bonnecaze-Pacifico 2021
+# Randriambololona 2012  H. Randriambololona, "Bilinear complexity of algebras
+#     and the Chudnovsky-Chudnovsky interpolation method", J. Complexity 28(4)
+#     (2012) 489-517 (Def. 3.1: mu_q(m,l) = rank of F_{q^m}[t]/(t^l) over F_q;
+#     Lem. 4.6 + Ex. 4.4: mu_2(4,2) <= 24, used for the F_16[u]/(u^2) block of
+#     cyclic/negacyclic length 10 over F_2 -> UB 27; Prop. 4.2: mu_2(2,2) <= 9).
+# (Checked, no other usable small-parameter values for these cells:
+#     Ballet-Pieltant 2011 (J. Compl. 27, asymptotic only);
+#     Ballet-Bonnecaze-Pacifico 2021
 #     (arXiv:2007.16082, projective-line Chudnovsky: values match or exceed the
 #     tables above; mu_4(3)=5 already de Groote); Alexeev-Forbes-Tsimerman 2011;
 #     Lavrauw-Sheekey 2021 (arXiv:2102.01997, semifield ranks: confirms

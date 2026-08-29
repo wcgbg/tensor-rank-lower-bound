@@ -3,8 +3,8 @@
 #include <string>
 #include <utility>
 
-#include "gtest/gtest.h"
 #include "tbb/global_control.h"
+#include "gtest/gtest.h"
 
 #include "core/backtracking_proof.h"
 #include "core/certificate.pb.h"
@@ -37,6 +37,17 @@ template <class Problem> int RunPipeline() {
     return -1;
   EXPECT_EQ(certificate.characteristic(), Problem::kP);
   return VerifyRankLowerBound<Problem>(certificate, archive_path);
+}
+
+int FirstBacktrackingOrbit(const pb::Certificate &certificate) {
+  for (int i = 0; i < certificate.constrained_tensors_size(); ++i) {
+    if (certificate.constrained_tensors(i)
+            .rank_lower_bound_proof()
+            .has_backtracking_proof()) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 TEST(VerifierTest, VerifiesFullPolyMulN3) {
@@ -91,6 +102,53 @@ TEST(VerifierDeathTest, DetectsInflatedBound) {
       certificate.constrained_tensors_size() - 1);
   last->set_rank_lower_bound(last->rank_lower_bound() + 1);
   EXPECT_DEATH(VerifyRankLowerBound<Problem>(certificate, archive_path), "");
+}
+
+TEST(VerifierDeathTest, RejectsBacktrackingLeafPastDepthBound) {
+  using Problem = full::Problem<2, 1, 3>;
+  tbb::global_control control(tbb::global_control::max_allowed_parallelism, 1);
+
+  auto [certificate, archive_path] = BuildVerifiedCertificate<Problem>();
+  const int orbit = FirstBacktrackingOrbit(certificate);
+  ASSERT_GE(orbit, 0);
+
+  BacktrackingProofArchive archive =
+      BacktrackingProofArchive::Load(archive_path);
+  BacktrackingProof proof = archive.Get(orbit);
+  ASSERT_FALSE(proof.Empty());
+  const int claimed_bound =
+      certificate.constrained_tensors(orbit).rank_lower_bound();
+  ASSERT_GT(claimed_bound, 0);
+  ASSERT_LE(claimed_bound, 31);
+  proof.dfs_constraints_size_array[0] = static_cast<uint8_t>(claimed_bound);
+  archive.Set(orbit, proof);
+  archive.Save(archive_path);
+
+  EXPECT_DEATH(VerifyRankLowerBound<Problem>(certificate, archive_path),
+               "exceeds the L-1 decomposition depth");
+}
+
+TEST(VerifierDeathTest, RejectsBacktrackingMaskOutsidePath) {
+  using Problem = full::Problem<2, 1, 3>;
+  tbb::global_control control(tbb::global_control::max_allowed_parallelism, 1);
+
+  auto [certificate, archive_path] = BuildVerifiedCertificate<Problem>();
+  const int orbit = FirstBacktrackingOrbit(certificate);
+  ASSERT_GE(orbit, 0);
+
+  BacktrackingProofArchive archive =
+      BacktrackingProofArchive::Load(archive_path);
+  BacktrackingProof proof = archive.Get(orbit);
+  ASSERT_FALSE(proof.Empty());
+  const uint8_t depth = proof.dfs_constraints_size_array[0];
+  ASSERT_GT(depth, 0);
+  ASSERT_LT(depth, 32);
+  proof.mask_array[0] |= uint32_t{1} << depth;
+  archive.Set(orbit, proof);
+  archive.Save(archive_path);
+
+  EXPECT_DEATH(VerifyRankLowerBound<Problem>(certificate, archive_path),
+               "outside the recorded path");
 }
 
 } // namespace

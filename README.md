@@ -9,7 +9,7 @@ the orbits combining four lower-bound techniques, and emits a proof certificate
 that a verifier rechecks, typically faster than the search.
 
 Instantiating the framework for matrix multiplication, we improve the lower bounds
-for four small formats over $`\mathbb{F}_2`$, most notably showing that
+for three small formats over $`\mathbb{F}_2`$, most notably showing that
 the bilinear complexity of multiplying two $`3 \times 3`$ matrices over $`\mathbb{F}_2`$ is at
 least $`20`$, raising the bound of $`19`$ that had stood since Bläser (2003).
 Instantiating it for polynomial multiplication — full products,
@@ -23,11 +23,10 @@ For full details, definitions, and proofs, see the [paper](https://arxiv.org/abs
 
 ### Matrix multiplication
 
-The framework improves the best known lower bound for four small formats over
+The framework improves the best known lower bound for three small formats over
 $`\mathbb{F}_2`$:
 
-$$\mathbf{R}_{\mathbb{F}_2}(\langle 2,3,4\rangle)\ge 19,\quad
-  \mathbf{R}_{\mathbb{F}_2}(\langle 3,3,3\rangle)\ge 20,\quad
+$$\mathbf{R}_{\mathbb{F}_2}(\langle 3,3,3\rangle)\ge 20,\quad
   \mathbf{R}_{\mathbb{F}_2}(\langle 3,3,4\rangle)\ge 25,\quad
   \mathbf{R}_{\mathbb{F}_2}(\langle 3,4,4\rangle)\ge 29.$$
 
@@ -102,6 +101,16 @@ verifies the tensor rank lower bounds for the 3x3x3 matrix multiplication proble
 
 Other subcommands of `run.py` tell how `certs/` are generated.
 
+## Verifying the rank-26 integer upper bound
+
+The paper gives a 26-term decomposition for multiplication in
+$`\mathbb{Z}[x]/x^9`$. The dedicated checker reconstructs its tensor and
+compares all $`9^3`$ coefficients:
+
+```bash
+bazel run --config=opt //upper_bound:verify_truncated_n9_rank26_main
+```
+
 ## Code layout
 
 The directory split mirrors the verifier's trust boundary — the set of code a
@@ -117,14 +126,15 @@ reviewer must trust to believe a reported rank **lower** bound. See
   rank upper bound). A bug here can only make the verifier *reject*, never wrongly
   accept.
 
-Four problem families live under `problems/`: full and cyclic polynomial
-multiplication, extension-field multiplication, and ⟨N0,N1,N2⟩ matrix
-multiplication.
+Six problem families live under `problems/`: full polynomial multiplication; the
+three quotient families cyclic (modulo $`x^N-1`$), truncated (modulo $`x^N`$), and
+negacyclic (modulo $`x^N+1`$), which share the `poly_quotient` symmetry engine;
+extension-field multiplication; and ⟨N0,N1,N2⟩ matrix multiplication.
 
 ## Citation
 
 ```bibtex
-@misc{wang2026automatedlowerboundstensor,
+@misc{wang2026automatedlowerboundsbilinear,
       title={Automated Lower Bounds for Bilinear Complexity over Finite Fields}, 
       author={Chengu Wang},
       year={2026},

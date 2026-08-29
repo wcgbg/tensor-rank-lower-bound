@@ -52,3 +52,12 @@ cc_binary(
         "@onetbb//:tbb",
     ],
 )
+
+cc_binary(
+    name = "verify_truncated_n9_rank26_main",
+    srcs = ["verify_truncated_n9_rank26_main.cc"],
+    deps = [
+        "@gflags",
+        "@ng-log//:ng-log",
+    ],
+)

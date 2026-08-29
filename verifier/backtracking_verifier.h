@@ -121,6 +121,11 @@ private:
   }
 
   void Verify() const {
+    // A backtracking proof of L argues against a decomposition with exactly
+    // L - 1 terms, so no DFS path may contain more than L - 1 components.
+    // The on-disk path mask is uint32_t and the prover enforces the same bound.
+    CHECK_GT(rank_lower_bound_, 0);
+    CHECK_LE(rank_lower_bound_, 32);
     size_t proof_index = 0;
     Constraints<P, M, NA> dfs_constraints;
     Verify(static_cast<int>(minimal_constraints_.size()) - 1, &dfs_constraints,
@@ -133,9 +138,19 @@ private:
     CHECK_LT(*proof_index, proof_.Size());
     const size_t proof_dfs_constraints_size =
         proof_.dfs_constraints_size_array[*proof_index];
+    const size_t max_depth = static_cast<size_t>(rank_lower_bound_ - 1);
+    CHECK_LE(proof_dfs_constraints_size, max_depth)
+        << "backtracking leaf exceeds the L-1 decomposition depth";
     CHECK_LE(dfs_constraints->size(), proof_dfs_constraints_size);
     if (dfs_constraints->size() == proof_dfs_constraints_size) {
       const uint32_t mask = proof_.mask_array[*proof_index];
+      CHECK_GT(proof_dfs_constraints_size, 0u);
+      const uint32_t valid_mask =
+          (uint32_t{1} << proof_dfs_constraints_size) - 1;
+      CHECK_EQ(mask & ~valid_mask, 0u)
+          << "backtracking mask selects entries outside the recorded path";
+      CHECK_NE(mask & (uint32_t{1} << (proof_dfs_constraints_size - 1)), 0u)
+          << "backtracking mask must select the newest path entry";
       const auto query_elem =
           static_cast<QueryElem>(proof_.query_elem_array[*proof_index]);
       const auto store_elem =
@@ -158,6 +173,8 @@ private:
       return;
     }
 
+    CHECK_LT(dfs_constraints->size(), max_depth)
+        << "backtracking branch did not close within the L-1 depth bound";
     for (int i = 0; i <= max_constraint_idx; ++i) {
       dfs_constraints->push_back(minimal_constraints_[i]);
       Verify(i, dfs_constraints, proof_index);

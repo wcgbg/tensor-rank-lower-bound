@@ -55,10 +55,10 @@ int main(int argc, char **argv) {
   constexpr std::size_t NC = Problem::kNC;
   constexpr int P = Problem::kP;
   constexpr int M = Problem::kM;
-  // The flip-graph upper bound search is F₂-only (see plan, Section B "Tools").
+  // The flip-graph upper bound search is F₂-only (see upper_bound/flip_scheme.h).
   static_assert(P == 2 && M == 1,
                 "rank_upper_bound_main only supports the F_2 flip-graph "
-                "search; q != 2 runs skip this stage entirely (run.sh).");
+                "search; q != 2 runs skip this stage entirely (run.py).");
 
   pb::Certificate certificate = ReadProtoFromFile<pb::Certificate>(path);
   CHECK_EQ(certificate.characteristic(), P);

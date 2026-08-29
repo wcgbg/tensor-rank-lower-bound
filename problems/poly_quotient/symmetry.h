@@ -41,13 +41,18 @@
 //   Store  := R^* / 𝔽_q^*,     |Store|  = |R^*| / (q − 1).
 //
 // Examples of the per-family unit/auto counts (P=2, M=1):
-//   - cyclic (γ=1):     R^* = ∏ 𝔽_{q^d}^* over the q-cyclotomic cosets mod N.
+//   - cyclic (γ=1):     for p ∤ N, R^* = ∏ 𝔽_{q^d}^* over the q-cyclotomic
+//     cosets mod N; for p | N the ring is not reduced (xᴺ−1 = (x^N'−1)^(p^s)
+//     with N = N'p^s, p ∤ N') and the factors are local rings, not fields, so
+//     R^* and Aut(R) are both larger than that product suggests. The
+//     enumeration below assumes neither case: it brute-forces the definitions.
 //   - truncated (γ=0):  R = 𝔽_q[x]/(xᴺ), units are {p : p_0 ≠ 0}, so
 //     |R^*| = (q−1)·q^(N−1) and |Store| = q^(N−1); autos are {y : y_0 = 0,
 //     y_1 ≠ 0}, so |Aut(R)| = (q−1)·q^(N−2) (and 1 for N = 1, where x ≡ 0).
 //   - negacyclic (γ=−1): R = 𝔽_q[x]/(xᴺ+1); the unit/auto counts follow the
-//     factorisation of xᴺ+1 (cyclotomic cosets of the odd residues mod 2N for
-//     p odd; identical to cyclic for p = 2 since xᴺ+1 = xᴺ−1).
+//     factorisation of xᴺ+1 (for p ∤ 2N, the cyclotomic cosets of the odd
+//     residues mod 2N; for p | N local factors as in the cyclic case above;
+//     identical to cyclic for p = 2 since xᴺ+1 = xᴺ−1).
 //
 // Factorisation across Query⁻¹ · Store: the Galois piece and Aut(R) go on Query
 // (a subgroup, Gal normalises the 𝔽_q-linear Aut(R)); R^*/𝔽_q^* goes on Store
