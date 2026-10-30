@@ -246,6 +246,25 @@ constexpr GFVec<P, M, N> DecodeGFVec(uint64_t i) {
   }
 }
 
+// Whether `v` is a well-formed element of 𝔽_q^N: for (P, M) == (2, 1) no bit
+// at or above N is set in the backing BitVec; otherwise every element's index
+// lies in [0, q). Rows read from a certificate must be checked with this before
+// any arithmetic, since GF's table lookups assume in-range indices and F₂ code
+// takes the highest set bit as a coordinate.
+template <int P, int M, int N>
+constexpr bool IsValidGFVec(const GFVec<P, M, N> &v) {
+  if constexpr (P == 2 && M == 1) {
+    return (v.data & static_cast<BitVec<N>>(~kBitVecAllOnes<N>)) == 0;
+  } else {
+    for (std::size_t k = 0; k < v.data.size(); ++k) {
+      if (v.data[k].value >= GF<P, M>::kQ) {
+        return false;
+      }
+    }
+    return true;
+  }
+}
+
 // Encode an GFVec to its integer in [0, q^N): Σ data[k] · q^k, where q = P^M.
 template <int P, int M, int N>
 constexpr uint64_t EncodeGFVec(const GFVec<P, M, N> &v) {

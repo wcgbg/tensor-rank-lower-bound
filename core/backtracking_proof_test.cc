@@ -72,6 +72,9 @@ TEST(BacktrackingProofTest, GetBacktrackingProofArchivePath) {
   EXPECT_EQ(GetBacktrackingProofArchivePath("cert_n3.pb.txt"), "cert_n3.btp");
   EXPECT_EQ(GetBacktrackingProofArchivePath("proof/cert_n4.pb"),
             "proof/cert_n4.btp");
+  EXPECT_EQ(GetBacktrackingProofArchivePath("cert_n11.pb.txt.gz"),
+            "cert_n11.btp");
+  EXPECT_EQ(GetBacktrackingProofArchivePath("cert_n11.pb.gz"), "cert_n11.btp");
 }
 
 namespace {

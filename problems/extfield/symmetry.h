@@ -409,6 +409,7 @@ public:
     int Size() const { return M * N; }
     Elem At(int i) const { return i; }
     Elem Identity() const { return 0; }
+    bool Contains(Elem e) const { return 0 <= e && e < Size(); }
     Vec ApplyInverse(Elem k, Vec v) const {
       return Apply((M * N - k) % (M * N), v);
     }
@@ -457,6 +458,7 @@ public:
     int Size() const { return static_cast<int>(reps_.size()); }
     Elem At(int j) const { return j; }
     Elem Identity() const { return 0; }
+    bool Contains(Elem e) const { return 0 <= e && e < Size(); }
 
     Vec Apply(Elem s, Vec v) const {
       return extfield_internal::MatVec<P, M, N>(duals_[s], v);

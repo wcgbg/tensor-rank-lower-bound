@@ -49,12 +49,23 @@ template <class Problem>
 Constraints<Problem::kP, Problem::kM, Problem::kNA> CanonicalFromWitness(
     const typename Problem::SymmetryGroup &group,
     const Constraints<Problem::kP, Problem::kM, Problem::kNA> &q,
-    typename Problem::SymmetryGroup::QuerySet::Elem query_elem,
-    typename Problem::SymmetryGroup::StoreSet::Elem store_elem) {
+    uint32_t raw_query_elem, uint32_t raw_store_elem) {
   constexpr int NA = Problem::kNA;
   constexpr int P = Problem::kP;
   constexpr int M = Problem::kM;
   using Vec = GFVec<P, M, NA>;
+  using QueryElem = typename Problem::SymmetryGroup::QuerySet::Elem;
+  using StoreElem = typename Problem::SymmetryGroup::StoreSet::Elem;
+  const auto query_elem = static_cast<QueryElem>(raw_query_elem);
+  const auto store_elem = static_cast<StoreElem>(raw_store_elem);
+  CHECK_EQ(static_cast<uint32_t>(query_elem), raw_query_elem)
+      << "witness query element does not fit its encoding";
+  CHECK_EQ(static_cast<uint32_t>(store_elem), raw_store_elem)
+      << "witness store element does not fit its encoding";
+  CHECK(group.query.Contains(query_elem))
+      << "witness query element is not in the symmetry group";
+  CHECK(group.store.Contains(store_elem))
+      << "witness store element is not in the symmetry group";
   Constraints<P, M, NA> image;
   image.reserve(q.size());
   for (const Vec v : q) {
@@ -73,8 +84,6 @@ public:
   static constexpr int M = Problem::kM;
   using Vec = GFVec<P, M, NA>;
   using SymmetryGroup = typename Problem::SymmetryGroup;
-  using QueryElem = typename SymmetryGroup::QuerySet::Elem;
-  using StoreElem = typename SymmetryGroup::StoreSet::Elem;
 
   static void Verify(const Constraints<P, M, NA> &constraints,
                      int rank_lower_bound, const BacktrackingProof &proof,
@@ -151,10 +160,6 @@ private:
           << "backtracking mask selects entries outside the recorded path";
       CHECK_NE(mask & (uint32_t{1} << (proof_dfs_constraints_size - 1)), 0u)
           << "backtracking mask must select the newest path entry";
-      const auto query_elem =
-          static_cast<QueryElem>(proof_.query_elem_array[*proof_index]);
-      const auto store_elem =
-          static_cast<StoreElem>(proof_.store_elem_array[*proof_index]);
       Constraints<P, M, NA> extended = base_constraints_;
       for (int i = 0; i < static_cast<int>(dfs_constraints->size()); ++i) {
         if (mask & (uint32_t(1) << i)) {
@@ -163,7 +168,8 @@ private:
       }
       CHECK_GT(extended.size(), base_constraints_.size());
       const Constraints<P, M, NA> canonical = CanonicalFromWitness<Problem>(
-          group_, extended, query_elem, store_elem);
+          group_, extended, proof_.query_elem_array[*proof_index],
+          proof_.store_elem_array[*proof_index]);
       const auto it = map_.find(canonical);
       CHECK(it != map_.end())
           << "backtracking: canonical orbit not found in map";

@@ -89,21 +89,20 @@ void VerifyDegenerateProof(
   constexpr int NA = Problem::kNA;
   constexpr int P = Problem::kP;
   constexpr int M = Problem::kM;
-  using QueryElem = typename Problem::SymmetryGroup::QuerySet::Elem;
-  using StoreElem = typename Problem::SymmetryGroup::StoreSet::Elem;
 
+  const uint32_t raw_extra = degenerate_proof.extra_constraint();
+  const GFVec<P, M, NA> extra = DecodeGFVec<P, M, NA>(raw_extra);
+  CHECK((IsValidGFVec<P, M, NA>(extra) &&
+         EncodeGFVec<P, M, NA>(extra) == raw_extra))
+      << "degenerate: extra_constraint is not an element of F_q^NA";
   Constraints<P, M, NA> extended = constraints;
-  extended.push_back(
-      DecodeGFVec<P, M, NA>(degenerate_proof.extra_constraint()));
+  extended.push_back(extra);
   CHECK((IsLinearIndependentRREF<P, M, NA>(extended)));
   CHECK_EQ(extended.size(), constraints.size() + 1);
 
-  const auto query_elem =
-      static_cast<QueryElem>(degenerate_proof.transformation().query_elem());
-  const auto store_elem =
-      static_cast<StoreElem>(degenerate_proof.transformation().store_elem());
-  const Constraints<P, M, NA> canonical =
-      CanonicalFromWitness<Problem>(group, extended, query_elem, store_elem);
+  const Constraints<P, M, NA> canonical = CanonicalFromWitness<Problem>(
+      group, extended, degenerate_proof.transformation().query_elem(),
+      degenerate_proof.transformation().store_elem());
   const auto it = map.find(canonical);
   CHECK(it != map.end()) << "degenerate: canonical orbit not found in map";
   CHECK_GE(it->second, rank_lower_bound);
@@ -138,6 +137,23 @@ void VerifyOne(const pb::ConstrainedTensor &rt,
   const Constraints<P, M, NA> constraints =
       ConstraintsFromBytes<P, M, NA>(rt.constraints());
 
+  // Every row must be an element of F_q^NA (no stray high bits, no digit ≥ q),
+  // and the set must be in canonical (column-reversed) RREF with no zero rows.
+  // Malformed rows would otherwise drive out-of-range table lookups and tensor
+  // indices in the checks below.
+  for (const auto &row : constraints) {
+    CHECK((IsValidGFVec<P, M, NA>(row)))
+        << "Orbit " << rt.index() << " has a constraint outside F_q^NA";
+  }
+  {
+    Constraints<P, M, NA> rref = constraints;
+    const int rank = GaussJordanRREF<P, M, NA>(&rref);
+    CHECK(rref == constraints)
+        << "Orbit " << rt.index() << " constraints are not in RREF";
+    CHECK_EQ(rank, static_cast<int>(constraints.size()))
+        << "Orbit " << rt.index() << " constraints contain a zero row";
+  }
+
   // A claimed positive bound must carry a proof; a 0 bound is vacuously true.
   const int rank_lower_bound =
       rt.has_rank_lower_bound() ? rt.rank_lower_bound() : 0;
@@ -146,14 +162,6 @@ void VerifyOne(const pb::ConstrainedTensor &rt,
     CHECK_LE(rank_lower_bound, 0) << "Orbit " << rt.index() << " claims bound "
                                   << rank_lower_bound << " with no proof";
     return;
-  }
-
-  // Constraints must already be in canonical (column-reversed) RREF.
-  {
-    Constraints<P, M, NA> rref = constraints;
-    GaussJordanRREF<P, M, NA>(&rref);
-    CHECK(rref == constraints)
-        << "Orbit " << rt.index() << " constraints are not in RREF";
   }
 
   if (proof.has_flatten_matrix_proof()) {
@@ -195,10 +203,11 @@ int VerifyRankLowerBound(const pb::Certificate &certificate,
   CHECK_EQ(certificate.na(), Problem::kNA);
   CHECK_EQ(certificate.nb(), Problem::kNB);
   CHECK_EQ(certificate.nc(), Problem::kNC);
-  if (!certificate.problem_name().empty()) {
-    CHECK_EQ(certificate.problem_name(), Problem::Name())
-        << "Certificate problem_name does not match the compiled-in problem";
-  }
+  // Required, not just checked when present: cyclic, truncated, negacyclic and
+  // extfield share (P, M, NA, NB, NC), so the name is the only thing tying the
+  // certificate's claim to the compiled-in problem.
+  CHECK_EQ(certificate.problem_name(), Problem::Name())
+      << "Certificate problem_name does not match the compiled-in problem";
   CHECK_GT(certificate.constrained_tensors_size(), 0);
 
   // Load the backtracking-trace archive once (read-only during the parallel

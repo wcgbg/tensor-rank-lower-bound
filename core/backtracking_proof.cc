@@ -7,6 +7,7 @@
 #include <istream>
 #include <ostream>
 #include <string>
+#include <string_view>
 
 #include "boost/iostreams/device/array.hpp"
 #include "boost/iostreams/device/back_inserter.hpp"
@@ -23,15 +24,15 @@ constexpr uint32_t kArchiveVersion = 2;
 } // namespace
 
 std::string GetBacktrackingProofArchivePath(const std::string &proto_path) {
-  std::string prefix;
-  if (proto_path.ends_with(".pb.txt")) {
-    prefix = proto_path.substr(0, proto_path.size() - 7);
-  } else if (proto_path.ends_with(".pb")) {
-    prefix = proto_path.substr(0, proto_path.size() - 3);
-  } else {
-    LOG(FATAL) << "Unsupported file extension: " << proto_path;
+  // Every extension ReadProtoFromFile accepts (core/proto_io.h), so a gzipped
+  // certificate maps to the same uncompressed cert_<problem>.btp sidecar.
+  for (const char *ext : {".pb.txt.gz", ".pb.gz", ".pb.txt", ".pb"}) {
+    const std::string_view suffix(ext);
+    if (proto_path.ends_with(suffix)) {
+      return proto_path.substr(0, proto_path.size() - suffix.size()) + ".btp";
+    }
   }
-  return prefix + ".btp";
+  LOG(FATAL) << "Unsupported file extension: " << proto_path;
 }
 
 void BacktrackingProof::WriteBody(std::ostream &out) const {

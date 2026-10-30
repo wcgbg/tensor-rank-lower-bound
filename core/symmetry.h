@@ -63,6 +63,7 @@
 //   int  Size() const;            // number of elements on this side
 //   Elem At(int i) const;         // i-th element, i ∈ [0, Size())
 //   Elem Identity() const;        // identity element
+//   bool Contains(Elem e) const;  // e is one of At(0..Size()-1)
 //   Vec  Apply(Elem e, Vec v) const;         // action of e on a row vector
 //   Vec  ApplyInverse(Elem e, Vec v) const;  // action of e⁻¹ on a row vector
 //
@@ -97,6 +98,8 @@ concept SymmetryGroupConcept =
       { g.store.At(i) } -> std::same_as<typename G::StoreSet::Elem>;
       { g.query.Identity() } -> std::same_as<typename G::QuerySet::Elem>;
       { g.store.Identity() } -> std::same_as<typename G::StoreSet::Elem>;
+      { g.query.Contains(query) } -> std::same_as<bool>;
+      { g.store.Contains(store) } -> std::same_as<bool>;
 
       { g.query.Apply(query, v) } -> std::same_as<typename G::Vec>;
       { g.store.Apply(store, v) } -> std::same_as<typename G::Vec>;

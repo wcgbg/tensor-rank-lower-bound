@@ -112,6 +112,7 @@ public:
     int Size() const { return M; }
     Elem At(int i) const { return i; }
     Elem Identity() const { return 0; }
+    bool Contains(Elem e) const { return 0 <= e && e < Size(); }
     Vec ApplyInverse(Elem r, Vec v) const { return Apply((M - r) % M, v); }
     Vec Apply(Elem r, Vec v) const {
       if constexpr (M == 1) {
@@ -187,6 +188,7 @@ public:
     int Size() const { return static_cast<int>(elems_.size()); }
     Elem At(int j) const { return j; }
     Elem Identity() const { return 0; }
+    bool Contains(Elem e) const { return 0 <= e && e < Size(); }
     Vec Apply(Elem t, Vec v) const { return MatVec(elems_[t], v); }
     // Inverse action via the precomputed inverse element (this store is a
     // closed group, so the inverse is itself an element — see core/symmetry.h

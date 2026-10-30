@@ -109,11 +109,21 @@ int RankLowerBoundForcedProductA(const Tensor<P, M, NA, NB, NC> &tensor,
   // num_iterations = kQ^bit_width. Cancel (return 0) when it exceeds the
   // enumeration budget. bit_width can be O(NA^2), so kQ^bit_width can be
   // astronomically larger than uint64 — we must NOT hand that to IntPow,
-  // which now treats overflow as fatal.
+  // which now treats overflow as fatal. The budget check alone is skipped at
+  // max_iterations_log2 == 64 (the verifier's default), so overflow is checked
+  // separately: a wrapped count would enumerate only a subset of the
+  // combinations (or none, if it wraps to 0, making the min INT_MAX), which is
+  // an unsound bound.
   CHECK_GE(max_iterations_log2, 0);
   CHECK_LE(max_iterations_log2, 64);
   uint64_t num_iterations = 1;
   for (int i = 0; i < bit_width; ++i) {
+    if (num_iterations > std::numeric_limits<uint64_t>::max() /
+                             static_cast<uint64_t>(kQ)) {
+      LOG(WARNING) << "Cancel Forced Product. num_iterations=" << kQ << "^("
+                   << r2p_size0 << "*" << r1_bc_rows << ") overflows uint64";
+      return 0;
+    }
     num_iterations *= static_cast<uint64_t>(kQ);
     if (max_iterations_log2 < 64 &&
         num_iterations > (uint64_t{1} << max_iterations_log2)) {
@@ -155,8 +165,11 @@ int RankLowerBoundForcedProductA(const Tensor<P, M, NA, NB, NC> &tensor,
           if (early_break) {
             break;
           }
-          // Scrambled visit order.
-          const uint64_t scrambled = (t * kPrime) % num_iterations;
+          // Scrambled visit order. The product is taken in 128 bits: a
+          // wrapped 64-bit t * kPrime would no longer be a bijection on
+          // [0, num_iterations) and would skip combinations.
+          const uint64_t scrambled = static_cast<uint64_t>(
+              (static_cast<unsigned __int128>(t) * kPrime) % num_iterations);
           Tensor<P, M, NA, NB, NC> tensor_t = r2p;
           if constexpr (P == 2 && M == 1) {
             // F_2 fast path: each coefficient is a bit, contribution is XOR.

@@ -78,6 +78,12 @@ public:
     int Size() const { return static_cast<int>(tables_.Gl1().size()); }
     Elem At(int j) const { return tables_.Gl1()[j].Data(); }
     Elem Identity() const { return tables_.Identity1().Data(); }
+    // Witnesses are read from the untrusted certificate, so a singular or
+    // oversized R must be rejected before it is applied.
+    bool Contains(Elem r) const {
+      return r < (uint32_t{1} << (N1 * N1)) &&
+             F2Matrix<N1, N1>(r).IsInvertible();
+    }
     Vec Apply(Elem r, Vec v) const {
       return FromMat(tables_.Mult011(ToMat(v), F2Matrix<N1, N1>(r)));
     }
@@ -126,6 +132,13 @@ public:
     int Size() const { return static_cast<int>(elems_.size()); }
     Elem At(int i) const { return elems_[i]; }
     Elem Identity() const { return QueryElem{tables_.Identity0().Data(), 0}; }
+    // Witnesses are read from the untrusted certificate: l must be in GL(N0)
+    // (a singular l is not a symmetry) and transpose must be a valid flag.
+    bool Contains(Elem e) const {
+      return e.l < (uint32_t{1} << (N0 * N0)) &&
+             F2Matrix<N0, N0>(e.l).IsInvertible() &&
+             e.transpose <= (kCubic ? 1 : 0);
+    }
 
     Vec Apply(Elem e, Vec v) const {
       F2Matrix<N0, N1> m = ToMat(v);

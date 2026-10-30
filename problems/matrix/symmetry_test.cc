@@ -69,6 +69,42 @@ TEST(SymmetryGroupTest, ActionIsValidForSmallFormats) {
   CheckGroupF2<3, 3, 3>();
 }
 
+// Contains accepts exactly the enumerated elements: the verifier relies on it to
+// reject certificate witnesses that are singular, oversized, or carry a bad
+// transpose flag.
+template <int N0, int N1, int N2> void CheckContainsF2() {
+  SymmetryGroup<2, 1, N0, N1, N2> g;
+  std::set<uint32_t> store_elems;
+  for (int j = 0; j < g.store.Size(); ++j) {
+    store_elems.insert(g.store.At(j));
+  }
+  for (uint32_t r = 0; r <= 0xFFFFu; ++r) {
+    EXPECT_EQ(g.store.Contains(static_cast<uint16_t>(r)),
+              store_elems.contains(r))
+        << "store r=" << r;
+  }
+  using QueryElem = typename SymmetryGroup<2, 1, N0, N1, N2>::QueryElem;
+  std::set<uint32_t> query_elems;
+  for (int i = 0; i < g.query.Size(); ++i) {
+    query_elems.insert(static_cast<uint32_t>(g.query.At(i)));
+  }
+  for (uint32_t t = 0; t <= 2; ++t) {
+    for (uint32_t l = 0; l <= 0xFFFFu; ++l) {
+      const uint32_t packed = l | (t << 16);
+      EXPECT_EQ(g.query.Contains(QueryElem(packed)),
+                query_elems.contains(packed))
+          << "query l=" << l << " t=" << t;
+    }
+  }
+}
+
+TEST(SymmetryGroupTest, ContainsMatchesEnumeration) {
+  CheckContainsF2<2, 2, 2>();
+  CheckContainsF2<2, 2, 3>();
+  CheckContainsF2<2, 3, 4>();
+  CheckContainsF2<3, 3, 3>();
+}
+
 // Store = |GL(N1, 2)|, Query = (cubic ? 2 : 1) · |GL(N0, 2)|.
 // |GL(2,2)| = 6, |GL(3,2)| = 168, |GL(4,2)| = 20160.
 TEST(SymmetryGroupTest, GroupSizes) {

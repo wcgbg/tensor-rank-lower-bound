@@ -459,6 +459,7 @@ public:
     int Size() const { return M * num_autos_; }
     Elem At(int i) const { return i; }
     Elem Identity() const { return 0; }
+    bool Contains(Elem e) const { return 0 <= e && e < Size(); }
 
     Vec Apply(Elem e, Vec v) const {
       const int a = e / M;
@@ -541,6 +542,7 @@ public:
     int Size() const { return static_cast<int>(elems_.size()); }
     Elem At(int j) const { return j; }
     Elem Identity() const { return 0; }
+    bool Contains(Elem e) const { return 0 <= e && e < Size(); }
     Vec Apply(Elem t, Vec v) const { return Detail::MatVec(elems_[t], v); }
     // Inverse action via the precomputed inverse element (this store is a
     // closed group, so the inverse is itself an element — see core/symmetry.h
